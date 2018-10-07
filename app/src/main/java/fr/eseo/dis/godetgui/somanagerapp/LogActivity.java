@@ -32,6 +32,9 @@ public class LogActivity extends AppCompatActivity {
         Log.d("LogActivity","LOGIN: "+login.getText().toString());
         Log.d("LogActivity","MDP: "+password.getText());
 
+        Log.d("LogActivity","Test GitHub: "+password.getText());
+
+
 
 
 
