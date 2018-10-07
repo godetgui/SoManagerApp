@@ -32,20 +32,6 @@ public class LogActivity extends AppCompatActivity {
         Log.d("LogActivity","LOGIN: "+login.getText().toString());
         Log.d("LogActivity","MDP: "+password.getText());
 
-        try{
-            URL url = new URL("http://www.siteduzero.com");
-            URLConnection urlConnection = url.openConnection();
-            HttpURLConnection httpUrlConnection = (HttpURLConnection)connection;
-
-
-        }
-        catch (Exception e){
-
-        }
-
-
-
-
 
 
 
