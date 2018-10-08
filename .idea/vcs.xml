@@ -5,5 +5,7 @@
     <mapping directory="$PROJECT_DIR$/app/src/androidTest" vcs="svn" />
     <mapping directory="$PROJECT_DIR$/app/src/main" vcs="svn" />
     <mapping directory="$PROJECT_DIR$/app/src/test" vcs="svn" />
+    <mapping directory="$USER_HOME$/git" vcs="Git" />
+    <mapping directory="$USER_HOME$/git/somanagerApp" vcs="Git" />
   </component>
 </project>
