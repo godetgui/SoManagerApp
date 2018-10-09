@@ -7,7 +7,7 @@ public class Visitor {
 
     @PrimaryKey
     @NonNull
-    private int id_visitor;
+    private int idVisitor;
     @NonNull
     private String nom;
     @NonNull
@@ -19,8 +19,8 @@ public class Visitor {
     @NonNull
     private String hash;
 
-    public Visitor(@NonNull int id_visitor, @NonNull String nom, @NonNull String prenom, @NonNull String email, @NonNull String login, @NonNull String hash) {
-        this.id_visitor = id_visitor;
+    public Visitor(@NonNull int idVisitor, @NonNull String nom, @NonNull String prenom, @NonNull String email, @NonNull String login, @NonNull String hash) {
+        this.idVisitor = idVisitor;
         this.nom = nom;
         this.prenom = prenom;
         this.email = email;
@@ -30,11 +30,11 @@ public class Visitor {
 
     @NonNull
     public int getId_visitor() {
-        return id_visitor;
+        return idVisitor;
     }
 
     public void setId_visitor(@NonNull int id_visitor) {
-        this.id_visitor = id_visitor;
+        this.idVisitor = id_visitor;
     }
 
     @NonNull
