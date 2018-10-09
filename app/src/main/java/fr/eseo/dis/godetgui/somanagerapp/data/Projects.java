@@ -22,11 +22,15 @@ public class Projects {
     @NonNull
     private Image poster;
 
-    public Projects(@NonNull int idProject, @NonNull String nom, @NonNull boolean isConfidential, @NonNull Image poster) {
+    @NonNull
+    private boolean isDone;
+
+    public Projects(@NonNull int idProject, @NonNull String nom, @NonNull boolean isConfidential, @NonNull Image poster,@NonNull boolean isDone) {
         this.idProject = idProject;
         this.nom = nom;
         this.isConfidential = isConfidential;
         this.poster = poster;
+        this.isDone = isDone;
     }
 
     @NonNull
