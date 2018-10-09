@@ -9,7 +9,7 @@ public class JM {
 
     @PrimaryKey
     @NonNull
-    private int id_jm;
+    private int idJm;
     @NonNull
     private String nom;
     @NonNull
@@ -22,8 +22,8 @@ public class JM {
     private String hash;
 
 
-    public JM(@NonNull int id_jm, @NonNull String nom, @NonNull String prenom, @NonNull String email, @NonNull String login, @NonNull String hash) {
-        this.id_jm = id_jm;
+    public JM(@NonNull int idJm, @NonNull String nom, @NonNull String prenom, @NonNull String email, @NonNull String login, @NonNull String hash) {
+        this.idJm = idJm;
         this.nom = nom;
         this.prenom = prenom;
         this.email = email;
@@ -33,12 +33,12 @@ public class JM {
 
 
     @NonNull
-    public int getId_jm() {
-        return id_jm;
+    public int getIdJm() {
+        return idJm;
     }
 
-    public void setId_jm(@NonNull int id_jm) {
-        this.id_jm = id_jm;
+    public void setIdJm(@NonNull int idJm) {
+        this.idJm = idJm;
     }
 
     @NonNull

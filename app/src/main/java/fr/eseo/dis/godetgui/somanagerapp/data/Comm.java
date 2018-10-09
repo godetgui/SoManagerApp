@@ -7,7 +7,7 @@ public class Comm {
 
     @PrimaryKey
     @NonNull
-    private int id_comm;
+    private int idComm;
     @NonNull
     private String nom;
     @NonNull
@@ -20,7 +20,7 @@ public class Comm {
     private String hash;
 
     public Comm(@NonNull int id_comm, @NonNull String nom, @NonNull String prenom, @NonNull String email, @NonNull String login, @NonNull String hash) {
-        this.id_comm = id_comm;
+        this.idComm = id_comm;
         this.nom = nom;
         this.prenom = prenom;
         this.email = email;
@@ -29,12 +29,12 @@ public class Comm {
     }
 
     @NonNull
-    public int getId_comm() {
-        return id_comm;
+    public int getIdComm() {
+        return idComm;
     }
 
     public void setId_comm(@NonNull int id_comm) {
-        this.id_comm = id_comm;
+        this.idComm = id_comm;
     }
 
     @NonNull
