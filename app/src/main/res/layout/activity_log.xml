@@ -6,19 +6,32 @@
     android:layout_height="match_parent"
     tools:context=".LogActivity">
 
+    <ImageView
+        android:id="@+id/LogoESEO"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="59dp"
+        android:layout_marginBottom="40dp"
+        android:src="@drawable/logoeseo"
+        app:layout_constraintBottom_toTopOf="@+id/loginText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <EditText
         android:id="@+id/loginText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="85dp"
-        android:layout_marginTop="202dp"
+        android:layout_marginTop="250dp"
         android:layout_marginEnd="84dp"
-        android:layout_marginBottom="31dp"
+        android:layout_marginBottom="20dp"
         android:ems="10"
         android:hint="Login"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/passwordText"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
