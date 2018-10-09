@@ -9,14 +9,14 @@ import android.support.annotation.NonNull;
 @Entity(tableName = "tutors", primaryKeys = {"idProject", "idJm"},
         foreignKeys = {@ForeignKey(entity = Projects.class, parentColumns ="idProject", childColumns = "idProject"),
                     @ForeignKey(entity = JM.class, parentColumns = "idJm", childColumns = "idJm")})
-public class Tutor {
+public class Tutors {
 
     @NonNull
     private int idJm;
     @NonNull
     private int idProject;
 
-    public Tutor(@NonNull int idJm, @NonNull int idProject) {
+    public Tutors(@NonNull int idJm, @NonNull int idProject) {
         this.idJm = idJm;
         this.idProject = idProject;
     }
