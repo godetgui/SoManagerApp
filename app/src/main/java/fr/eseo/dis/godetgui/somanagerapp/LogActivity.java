@@ -7,10 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-
-        ;import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLConnection;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 public class LogActivity extends AppCompatActivity {
 
@@ -32,10 +30,11 @@ public class LogActivity extends AppCompatActivity {
         Log.d("LogActivity","LOGIN: "+login.getText().toString());
         Log.d("LogActivity","MDP: "+password.getText());
 
-        Log.d("LogActivity","Test GitHub 2: "+password.getText());
 
-        Log.d("LogActivity","Test GitHub: Julien Test 2 "+password.getText());
-        Log.d("LogActivity","Test GitHub: Guillaume Test 2 "+password.getText());
+        Log.d("LogActivity","MDP HASHE: "+HashPassword(password.getText().toString()));
+
+
+
 
 
 
@@ -45,7 +44,39 @@ public class LogActivity extends AppCompatActivity {
         //'https://jsonplaceholder.typicode.com/todos/1'
 
 
+    }
 
+    public String HashPassword(String passwordToHash){
+        //String passwordToHash = "password";
+        String generatedPassword = null;
+        try {
+            // Create MessageDigest instance for MD5
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+            //Add password bytes to digest
+            md.update(passwordToHash.getBytes());
+            //Get the hash's bytes
+            byte[] bytes = md.digest();
+            //This bytes[] has bytes in decimal format;
+            //Convert it to hexadecimal format
+            StringBuilder sb = new StringBuilder();
+            for(int i=0; i< bytes.length ;i++)
+            {
+                sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+            }
+            //Get complete hashed password in hex format
+            generatedPassword = sb.toString();
+        }
+        catch (NoSuchAlgorithmException e)
+        {
+            e.printStackTrace();
+        }
+        return generatedPassword;
+        //System.out.println(generatedPassword);
 
     }
+
+
+
+
+
 }
