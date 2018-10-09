@@ -3,7 +3,7 @@ package fr.eseo.dis.godetgui.somanagerapp.data;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
-public class Visitor {
+public class Visitors {
 
     @PrimaryKey
     @NonNull
@@ -19,7 +19,7 @@ public class Visitor {
     @NonNull
     private String hash;
 
-    public Visitor(@NonNull int idVisitor, @NonNull String nom, @NonNull String prenom, @NonNull String email, @NonNull String login, @NonNull String hash) {
+    public Visitors(@NonNull int idVisitor, @NonNull String nom, @NonNull String prenom, @NonNull String email, @NonNull String login, @NonNull String hash) {
         this.idVisitor = idVisitor;
         this.nom = nom;
         this.prenom = prenom;
