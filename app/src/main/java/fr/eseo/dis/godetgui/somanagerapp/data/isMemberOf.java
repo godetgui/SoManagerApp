@@ -5,7 +5,7 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
 import android.support.annotation.NonNull;
 
-@Entity(tableName = "roles", primaryKeys ={"idJM","idJurie"} ,
+@Entity(tableName = "isMemberOf", primaryKeys ={"idJM","idJurie"} ,
         foreignKeys = {@ForeignKey(entity=JM.class, parentColumns = "idJM", childColumns = "idJM"),
                 @ForeignKey(entity = Juries.class, parentColumns = "idJurie",childColumns = "idJurie")})
 
