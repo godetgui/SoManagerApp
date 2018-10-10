@@ -20,20 +20,20 @@ import javax.net.ssl.HttpsURLConnection;
 import fr.eseo.dis.godetgui.somanagerapp.Certificates.TrustManager;
 import fr.eseo.dis.godetgui.somanagerapp.LogActivity;
 
-public class FetchDataLogon extends AsyncTask<Void, Void, Void> {
+public class FetchRole extends AsyncTask<Void, Void, Void> {
 
     String data = "";
     JSONObject JO;
     Context context;
     String user;
-    String password;
+    String token;
 
     LogActivity logActivity = new LogActivity();
 
-    public FetchDataLogon(Context context, String user, String password){
+    public FetchRole(Context context, String user, String token){
         this.context = context;
         this.user = user;
-        this.password = password;
+        this.token = token;
 
     }
 
@@ -43,7 +43,7 @@ public class FetchDataLogon extends AsyncTask<Void, Void, Void> {
         trustManager.getCertificate(this.context);
         try {
 
-            URL url =  new URL("https://192.168.4.248/pfe/webservice.php?q=LOGON&user="+user+"&pass="+password);
+            URL url =  new URL("https://192.168.4.248/pfe/webservice.php?q=MYINF&user="+user+"&token="+token);
 
             //Créer une connection
             HttpsURLConnection httpsURLConnection = (HttpsURLConnection) url.openConnection();
@@ -79,7 +79,7 @@ public class FetchDataLogon extends AsyncTask<Void, Void, Void> {
     protected void onPostExecute(Void aVoid) {
 
         try {
-            logActivity.getDataLogon(this.JO);
+            logActivity.getDataRole(this.JO);
         } catch (JSONException e) {
             e.printStackTrace();
         }

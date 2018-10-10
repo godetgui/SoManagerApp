@@ -19,6 +19,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 import fr.eseo.dis.godetgui.somanagerapp.threads.FetchDataLogon;
+import fr.eseo.dis.godetgui.somanagerapp.threads.FetchRole;
 
 public class LogActivity extends AppCompatActivity {
 
@@ -44,19 +45,22 @@ public class LogActivity extends AppCompatActivity {
         FetchDataLogon fetchDataLogon = new FetchDataLogon(this.getApplicationContext(),login.getText().toString(), password.getText().toString());
         fetchDataLogon.execute();
 
+    }
 
-
+    public void onClickBtnTest(View view){
+        FetchRole fetchRole = new FetchRole(this.getApplicationContext(),"alberpat", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE1MzkxODM5MjEsImp0aSI6IlpmTzlmeThJbDQwNjV3dldaSHgralF4b2Frb1ZWV0FWYnR6bFZhc3M3Z1E9IiwianNzIjoiMTkyLjE2OC40LjI0OCIsIm5iZiI6MTUzOTE4MzkyMSwiZXhwIjoxNTM5MTg0MjIxLCJkYXRhIjp7ImlkIjowLCJrZXkiOiJQQ3VKb0pLQU14SGxWWnc0OTF2bE9RPT0ifX0.1d7VIVbjXER9rfJH9JPVuW721cBtFOYEkpLSZca6cKinU62jEgS9z87sMgIKPNyTyGRAGa8q9jZI84xnuSbxrA");
+        fetchRole.execute();
     }
 
 
     //q=MYINF, token
 
-    public void getData(JSONObject JO) throws JSONException {
+    public void getDataLogon(JSONObject JO) throws JSONException {
         String result = JO.getString("result");
 
         if (result.equals("OK") ){
             String token = JO.getString("token");
-            this.getRole();
+            //this.getDataRole();
             Intent test = new Intent(LogActivity.this ,JurysJMActivity.class);
             startActivity(test);
 
@@ -66,15 +70,18 @@ public class LogActivity extends AppCompatActivity {
             String error = JO.getString("error");
             //createDialogAlert();
 
-
-
         }
 
     }
 
-    public void getRole(){
+    public void getDataRole(JSONObject JO) throws JSONException {
+        String result = JO.getString("info");
+
+        System.out.println("INFO :"+result);
 
     }
+
+
 
 
     public void createDialogAlert(){
