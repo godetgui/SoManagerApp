@@ -2,6 +2,7 @@ package fr.eseo.dis.godetgui.somanagerapp;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -48,11 +49,16 @@ public class LogActivity extends AppCompatActivity {
     }
 
 
+    //q=MYINF, token
+
     public void getData(JSONObject JO) throws JSONException {
         String result = JO.getString("result");
 
         if (result.equals("OK") ){
             String token = JO.getString("token");
+            this.getRole();
+            Intent test = new Intent(LogActivity.this ,JurysJMActivity.class);
+            startActivity(test);
 
 
 
@@ -64,6 +70,9 @@ public class LogActivity extends AppCompatActivity {
 
         }
 
+    }
+
+    public void getRole(){
 
     }
 
@@ -95,4 +104,4 @@ public class LogActivity extends AppCompatActivity {
 
 
 
-}
+    }

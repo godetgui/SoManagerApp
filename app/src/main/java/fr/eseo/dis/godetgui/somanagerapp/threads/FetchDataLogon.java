@@ -23,12 +23,12 @@ import fr.eseo.dis.godetgui.somanagerapp.LogActivity;
 public class FetchDataLogon extends AsyncTask<Void, Void, Void> {
 
     String data = "";
-    String dataParsed ="";
-    String singleParsed="";
     JSONObject JO;
     Context context;
     String user;
     String password;
+
+    LogActivity logActivity = new LogActivity();
 
     public FetchDataLogon(Context context, String user, String password){
         this.context = context;
@@ -78,10 +78,8 @@ public class FetchDataLogon extends AsyncTask<Void, Void, Void> {
     @Override
     protected void onPostExecute(Void aVoid) {
 
-        //System.out.println("DATAPARSED: "+this.dataParsed);
-
         try {
-            LogActivity.getData(this.JO);
+            logActivity.getData(this.JO);
         } catch (JSONException e) {
             e.printStackTrace();
         }
