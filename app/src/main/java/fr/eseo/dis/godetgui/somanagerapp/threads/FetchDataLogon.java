@@ -2,7 +2,6 @@ package fr.eseo.dis.godetgui.somanagerapp.threads;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -12,7 +11,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -24,9 +22,10 @@ import fr.eseo.dis.godetgui.somanagerapp.LogActivity;
 
 public class FetchDataLogon extends AsyncTask<Void, Void, Void> {
 
-    String data;
-    String dataParsed = "";
+    String data = "";
+    String dataParsed ="";
     String singleParsed="";
+    JSONObject JO;
     Context context;
     String user;
     String password;
@@ -53,21 +52,16 @@ public class FetchDataLogon extends AsyncTask<Void, Void, Void> {
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
 
             String line="";
-            ArrayList<String> arrayLine = new ArrayList<>();
             while(line != null){
                 line = bufferedReader.readLine();
+                System.out.println(line);
                 data = data + line;
             }
 
-            JSONArray JA = new JSONArray(data);
-            for( int i =0; i< JA.length(); i++){
-                JSONObject JO= (JSONObject) JA.get(i);
-                singleParsed = "result" + JO.get("result") + "\n" +
-                               "api" + JO.get("api") + "\n" +
-                               "error" + JO.get("error") + "\n" ;
-                dataParsed = dataParsed + singleParsed;
-            }
-            System.out.println("ArrayLine" + arrayLine);
+            JO = new JSONObject(data);
+
+
+
 
         } catch (MalformedURLException e) {
             e.printStackTrace();
@@ -84,9 +78,13 @@ public class FetchDataLogon extends AsyncTask<Void, Void, Void> {
     @Override
     protected void onPostExecute(Void aVoid) {
 
-        System.out.println("DATAPARSED: "+this.dataParsed);
+        //System.out.println("DATAPARSED: "+this.dataParsed);
 
-        LogActivity.getData(this.dataParsed);
+        try {
+            LogActivity.getData(this.JO);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
     }
 }

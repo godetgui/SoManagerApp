@@ -7,6 +7,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -15,6 +18,7 @@ import fr.eseo.dis.godetgui.somanagerapp.threads.FetchDataLogon;
 public class LogActivity extends AppCompatActivity {
 
     private Button btnConnexion;
+    private String status;
 
 
 
@@ -37,10 +41,9 @@ public class LogActivity extends AppCompatActivity {
 
     }
 
-    //context.getRessources().openRawRessources(cobntext.getRessources.getIdentifier(R.raw.chain)
 
-    public static void getData(String data){
-        Log.d("LogActivity","Résultat du JSON file: "+ data);
+    public static void getData(JSONObject JO) throws JSONException {
+        String result = JO.getString("result");
 
     }
 
