@@ -8,6 +8,7 @@
 
     <Button
         android:id="@+id/buttonGoToProjects"
+        android:fontFamily="sans-serif-black"
         android:layout_width="208dp"
         android:layout_height="75dp"
         android:layout_marginTop="30dp"

@@ -6,27 +6,26 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class JurysJMActivity extends AppCompatActivity {
+public class DetailsProjectsJM extends AppCompatActivity {
 
-    public Button buttonGoToProjects;
+    public Button buttonGoToProjects2;
 
         public void init(){
-            buttonGoToProjects = findViewById(R.id.buttonGoToProjects);
-            buttonGoToProjects.setOnClickListener(new View.OnClickListener() {
+            buttonGoToProjects2 = findViewById(R.id.buttonGoToProjects2);
+            buttonGoToProjects2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent test = new Intent(JurysJMActivity.this,ProjectsJMActivity.class);
+                    Intent test = new Intent(DetailsProjectsJM.this,ProjectsJMActivity.class);
                     startActivity(test);
                 }
             });
-        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_jurys_jm);
+        setContentView(R.layout.activity_details_projects_jm);
         init();
 
     }
 }
-
