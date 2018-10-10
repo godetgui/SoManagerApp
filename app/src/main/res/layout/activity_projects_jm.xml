@@ -1,68 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    tools:context=".ProjectsJMActivity"
+    tools:layout_editor_absoluteY="81dp">
 
     <Button
+        android:id="@+id/buttonGoToJurys"
         android:layout_width="208dp"
-        android:layout_height="66dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="30dp"
         android:layout_marginBottom="32dp"
         android:text="Voir tous les Jurys"
         app:layout_constraintBottom_toTopOf="@+id/tableProjects"
-        tools:layout_editor_absoluteX="88dp"
-        tools:ignore="HardcodedText,MissingConstraints"
-        android:onClick="activity_menu_jury"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
 
     <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/tableProjects"
-        android:layout_width="320dp"
-        android:layout_height="333dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="50dp"
         android:stretchColumns="1"
-        tools:layout_editor_absoluteX="32dp"
-        tools:layout_editor_absoluteY="128dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonGoToJurys"
         tools:ignore="MissingConstraints">
 
         <TableRow>
+
             <TextView
                 android:layout_column="1"
-                android:padding="10dp"
                 android:background="@drawable/border_cells"
-                android:textSize="18sp"
+                android:padding="10dp"
                 android:text="Projet n°1"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textSize="18sp" />
         </TableRow>
 
         <TableRow>
 
             <TextView
                 android:layout_column="1"
-                android:padding="10dp"
                 android:background="@drawable/border_cells"
-                android:textSize="18sp"
+                android:padding="10dp"
                 android:text="Projet n°2"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textSize="18sp" />
         </TableRow>
 
         <TableRow>
+
             <TextView
                 android:layout_column="1"
-                android:padding="10dp"
                 android:background="@drawable/border_cells"
-                android:textSize="18sp"
+                android:padding="10dp"
                 android:text="Projet n°3"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textSize="18sp" />
         </TableRow>
 
         <TableRow>
+
             <TextView
                 android:layout_column="1"
-                android:padding="10dp"
                 android:background="@drawable/border_cells"
-                android:textSize="18sp"
+                android:padding="10dp"
                 android:text="Projet n°4"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textSize="18sp" />
         </TableRow>
     </TableLayout>
 </android.support.constraint.ConstraintLayout>

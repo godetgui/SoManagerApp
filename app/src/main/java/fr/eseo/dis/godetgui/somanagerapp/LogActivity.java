@@ -20,17 +20,11 @@ public class LogActivity extends AppCompatActivity {
     private Button btnConnexion;
     private String status;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log);
-
-
-
     }
-
 
     public void onClickBtn(View view){
         EditText login = (EditText)findViewById(R.id.loginText);
@@ -38,21 +32,12 @@ public class LogActivity extends AppCompatActivity {
 
         FetchDataLogon fetchDataLogon = new FetchDataLogon(this.getApplicationContext(),login.getText().toString(), password.getText().toString());
         fetchDataLogon.execute();
-
     }
-
 
     public static void getData(JSONObject JO) throws JSONException {
         String result = JO.getString("result");
 
     }
-
-
-
-
-
-
-
 
 
 }
