@@ -85,13 +85,15 @@ public class LogActivity extends AppCompatActivity {
     }
 
     public void getDataRole(JSONObject JO) throws JSONException {
-        System.out.println("********************RESULTAT JSON ROLE: "+JO);
         JSONArray response = JO.getJSONArray("info");
         JSONObject infos = response.getJSONObject(0);
         String description = infos.getString("descr");
-        //String result = JO.getString("info");
-        System.out.println("INFOS :"+infos);
-        System.out.println("DESCRIPTION :"+description);
+
+        if ( description.equals("Professeur")){
+            Intent test = new Intent(LogActivity.this,JurysJMActivity.class);
+            startActivity(test);
+        }
+
     }
 
 
