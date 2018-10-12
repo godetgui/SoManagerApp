@@ -20,7 +20,7 @@ import javax.net.ssl.HttpsURLConnection;
 import fr.eseo.dis.godetgui.somanagerapp.Certificates.TrustManager;
 import fr.eseo.dis.godetgui.somanagerapp.LogActivity;
 
-public class FetchDataLogon extends AsyncTask<Void, Void, Void> {
+public class FetchLogon extends AsyncTask<Void, Void, Void> {
 
     String data = "";
     JSONObject JO;
@@ -29,7 +29,7 @@ public class FetchDataLogon extends AsyncTask<Void, Void, Void> {
 
     LogActivity logActivity;
 
-    public FetchDataLogon(LogActivity logActivity, String user, String password){
+    public FetchLogon(LogActivity logActivity, String user, String password){
         this.logActivity = logActivity;
         this.user = user;
         this.password = password;

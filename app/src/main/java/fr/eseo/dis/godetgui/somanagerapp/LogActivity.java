@@ -20,7 +20,8 @@ import org.json.JSONObject;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-import fr.eseo.dis.godetgui.somanagerapp.threads.FetchDataLogon;
+
+import fr.eseo.dis.godetgui.somanagerapp.threads.FetchLogon;
 import fr.eseo.dis.godetgui.somanagerapp.threads.FetchRole;
 
 public class LogActivity extends AppCompatActivity {
@@ -39,13 +40,16 @@ public class LogActivity extends AppCompatActivity {
         setContentView(R.layout.activity_log);
         this.context = this.getApplicationContext();
 
+
+
     }
 
 
     public void onClickBtn(View view){
         this.login = (EditText)findViewById(R.id.loginText);
         EditText password = (EditText)findViewById(R.id.passwordText);
-        FetchDataLogon fetchDataLogon = new FetchDataLogon(this,this.login.getText().toString(), password.getText().toString());
+
+        FetchLogon fetchDataLogon = new FetchLogon(this,this.login.getText().toString(), password.getText().toString());
         fetchDataLogon.execute();
 
     }
