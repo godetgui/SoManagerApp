@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -85,9 +86,12 @@ public class LogActivity extends AppCompatActivity {
 
     public void getDataRole(JSONObject JO) throws JSONException {
         System.out.println("********************RESULTAT JSON ROLE: "+JO);
-        String result = JO.getString("info");
-
-        System.out.println("INFO :"+result);
+        JSONArray response = JO.getJSONArray("info");
+        JSONObject infos = response.getJSONObject(0);
+        String description = infos.getString("descr");
+        //String result = JO.getString("info");
+        System.out.println("INFOS :"+infos);
+        System.out.println("DESCRIPTION :"+description);
     }
 
 
