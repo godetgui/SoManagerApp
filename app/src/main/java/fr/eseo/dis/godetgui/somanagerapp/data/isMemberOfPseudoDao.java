@@ -8,12 +8,10 @@ import android.arch.persistence.room.Query;
 import java.util.List;
 
 @Dao
-public interface VisitorsDao {
+public interface isMemberOfPseudoDao {
 
-    @Query("SELECT * FROM visitors")
-    public List<Visitors> dindAllVisitors();
+    @Query("SELECT * FROM isMemberOfPseudo")
+    public List<isMemberOfPseudoDao> findAllAssociations();
 
-    @Query("SELECT * FROM visitors WHERE idVisitor = :idVisitors")
-    public Comm findVisitorsFromId(int idVisitors);
 }
 
