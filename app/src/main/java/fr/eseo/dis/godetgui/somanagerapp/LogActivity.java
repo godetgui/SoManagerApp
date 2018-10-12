@@ -48,7 +48,7 @@ public class LogActivity extends AppCompatActivity {
         this.login = (EditText)findViewById(R.id.loginText);
         EditText password = (EditText)findViewById(R.id.passwordText);
 
-        FetchDataLogon fetchDataLogon = new FetchDataLogon(this.context,this.login.getText().toString(), password.getText().toString());
+        FetchDataLogon fetchDataLogon = new FetchDataLogon(this,this.login.getText().toString(), password.getText().toString());
         fetchDataLogon.execute();
 
     }
@@ -62,7 +62,7 @@ public class LogActivity extends AppCompatActivity {
      */
     //Impossibilité de récupérer le context de l'activity dans cette méthode ????
     public void getDataLogon(JSONObject JO, String user) throws JSONException {
-        System.out.println("********************RESULTAT JSON: "+JO);
+        System.out.println("********************RESULTAT JSON LOGON: "+JO);
         String result = JO.getString("result");
 
         if (result.equals("OK") ){
@@ -80,11 +80,12 @@ public class LogActivity extends AppCompatActivity {
     //Impossibilité de récupérer le context de l'activity dans cette méthode ????
     public void fetchRole(){
         //System.out.println("********************USER: "+userConnected);
-        FetchRole fetchRole = new FetchRole(this.context,userConnected, token);
+        FetchRole fetchRole = new FetchRole(this,userConnected, token);
         fetchRole.execute();
     }
 
     public void getDataRole(JSONObject JO) throws JSONException {
+        System.out.println("********************RESULTAT JSON ROLE: "+JO);
         String result = JO.getString("info");
 
         System.out.println("INFO :"+result);

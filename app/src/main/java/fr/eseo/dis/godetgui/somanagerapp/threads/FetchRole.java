@@ -24,14 +24,13 @@ public class FetchRole extends AsyncTask<Void, Void, Void> {
 
     String data = "";
     JSONObject JO;
-    Context context;
     String user;
     String token;
 
-    LogActivity logActivity = new LogActivity();
+    LogActivity logActivity;
 
-    public FetchRole(Context context, String user, String token){
-        this.context = context;
+    public FetchRole(LogActivity logActivity, String user, String token){
+        this.logActivity = logActivity;
         this.user = user;
         this.token = token;
 
@@ -40,7 +39,7 @@ public class FetchRole extends AsyncTask<Void, Void, Void> {
     @Override
     protected Void doInBackground(Void... voids) {
         TrustManager trustManager = new TrustManager();
-        trustManager.getCertificate(this.context);
+        trustManager.getCertificate(this.logActivity.getApplicationContext());
         try {
 
             URL url =  new URL("https://192.168.4.248/pfe/webservice.php?q=MYINF&user="+user+"&token="+token);

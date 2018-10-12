@@ -24,14 +24,13 @@ public class FetchDataLogon extends AsyncTask<Void, Void, Void> {
 
     String data = "";
     JSONObject JO;
-    Context context;
     String user;
     String password;
 
-    LogActivity logActivity = new LogActivity();
+    LogActivity logActivity;
 
-    public FetchDataLogon(Context context, String user, String password){
-        this.context = context;
+    public FetchDataLogon(LogActivity logActivity, String user, String password){
+        this.logActivity = logActivity;
         this.user = user;
         this.password = password;
 
@@ -40,7 +39,7 @@ public class FetchDataLogon extends AsyncTask<Void, Void, Void> {
     @Override
     protected Void doInBackground(Void... voids) {
         TrustManager trustManager = new TrustManager();
-        trustManager.getCertificate(this.context);
+        trustManager.getCertificate(this.logActivity.getApplicationContext());
         try {
 
             URL url =  new URL("https://192.168.4.248/pfe/webservice.php?q=LOGON&user="+user+"&pass="+password);
