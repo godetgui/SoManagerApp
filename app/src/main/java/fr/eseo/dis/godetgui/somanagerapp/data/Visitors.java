@@ -1,7 +1,10 @@
 package fr.eseo.dis.godetgui.somanagerapp.data;
 
+import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
+
+@Entity(tableName = "visitors")
 
 public class Visitors {
 
