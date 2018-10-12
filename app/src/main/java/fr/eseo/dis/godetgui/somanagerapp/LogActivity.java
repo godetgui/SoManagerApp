@@ -39,15 +39,12 @@ public class LogActivity extends AppCompatActivity {
         setContentView(R.layout.activity_log);
         this.context = this.getApplicationContext();
 
-
-
     }
 
 
     public void onClickBtn(View view){
         this.login = (EditText)findViewById(R.id.loginText);
         EditText password = (EditText)findViewById(R.id.passwordText);
-
         FetchDataLogon fetchDataLogon = new FetchDataLogon(this,this.login.getText().toString(), password.getText().toString());
         fetchDataLogon.execute();
 
