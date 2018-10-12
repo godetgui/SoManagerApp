@@ -1,6 +1,7 @@
 package fr.eseo.dis.godetgui.somanagerapp;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
@@ -25,6 +26,10 @@ public class LogActivity extends AppCompatActivity {
 
     private Button btnConnexion;
     private String status;
+    private EditText login;
+    private String token;
+    private String userConnected;
+    private Context context;
 
 
 
@@ -32,6 +37,7 @@ public class LogActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log);
+        this.context = this.getApplicationContext();
 
 
 
@@ -39,49 +45,50 @@ public class LogActivity extends AppCompatActivity {
 
 
     public void onClickBtn(View view){
-        EditText login = (EditText)findViewById(R.id.loginText);
+        this.login = (EditText)findViewById(R.id.loginText);
         EditText password = (EditText)findViewById(R.id.passwordText);
 
-        FetchDataLogon fetchDataLogon = new FetchDataLogon(this.getApplicationContext(),login.getText().toString(), password.getText().toString());
+        FetchDataLogon fetchDataLogon = new FetchDataLogon(this.context,this.login.getText().toString(), password.getText().toString());
         fetchDataLogon.execute();
 
     }
 
-    public void onClickBtnTest(View view){
-        FetchRole fetchRole = new FetchRole(this.getApplicationContext(),"alberpat", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE1MzkxODM5MjEsImp0aSI6IlpmTzlmeThJbDQwNjV3dldaSHgralF4b2Frb1ZWV0FWYnR6bFZhc3M3Z1E9IiwianNzIjoiMTkyLjE2OC40LjI0OCIsIm5iZiI6MTUzOTE4MzkyMSwiZXhwIjoxNTM5MTg0MjIxLCJkYXRhIjp7ImlkIjowLCJrZXkiOiJQQ3VKb0pLQU14SGxWWnc0OTF2bE9RPT0ifX0.1d7VIVbjXER9rfJH9JPVuW721cBtFOYEkpLSZca6cKinU62jEgS9z87sMgIKPNyTyGRAGa8q9jZI84xnuSbxrA");
-        fetchRole.execute();
-    }
 
 
-    //q=MYINF, token
-
-    public void getDataLogon(JSONObject JO) throws JSONException {
+    /**
+     * Récupération des données issues du webService LOGON
+     * @param JO
+     * @throws JSONException
+     */
+    //Impossibilité de récupérer le context de l'activity dans cette méthode ????
+    public void getDataLogon(JSONObject JO, String user) throws JSONException {
+        System.out.println("********************RESULTAT JSON: "+JO);
         String result = JO.getString("result");
 
         if (result.equals("OK") ){
-            String token = JO.getString("token");
-            //this.getDataRole();
-            Intent test = new Intent(LogActivity.this ,JurysJMActivity.class);
-            startActivity(test);
-
-
-
-        }else {
-            String error = JO.getString("error");
-            //createDialogAlert();
+            this.userConnected = user;
+            this.token = JO.getString("token");
+            this.fetchRole();
 
         }
+        else {
+            String error = JO.getString("error");
+            //createDialogAlert();
+        }
 
+    }
+    //Impossibilité de récupérer le context de l'activity dans cette méthode ????
+    public void fetchRole(){
+        //System.out.println("********************USER: "+userConnected);
+        FetchRole fetchRole = new FetchRole(this.context,userConnected, token);
+        fetchRole.execute();
     }
 
     public void getDataRole(JSONObject JO) throws JSONException {
         String result = JO.getString("info");
 
         System.out.println("INFO :"+result);
-
     }
-
-
 
 
     public void createDialogAlert(){

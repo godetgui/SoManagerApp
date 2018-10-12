@@ -51,13 +51,13 @@ public class FetchDataLogon extends AsyncTask<Void, Void, Void> {
             InputStream inputStream = httpsURLConnection.getInputStream();
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
 
+            //Lecture de la réponse et stockage dans un JSONObject
             String line="";
             while(line != null){
                 line = bufferedReader.readLine();
                 System.out.println(line);
                 data = data + line;
             }
-
             JO = new JSONObject(data);
 
 
@@ -79,7 +79,7 @@ public class FetchDataLogon extends AsyncTask<Void, Void, Void> {
     protected void onPostExecute(Void aVoid) {
 
         try {
-            logActivity.getDataLogon(this.JO);
+            logActivity.getDataLogon(this.JO, user);
         } catch (JSONException e) {
             e.printStackTrace();
         }
