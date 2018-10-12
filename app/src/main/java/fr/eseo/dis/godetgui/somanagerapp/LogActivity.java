@@ -32,7 +32,6 @@ public class LogActivity extends AppCompatActivity {
     private Context context;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,7 +72,7 @@ public class LogActivity extends AppCompatActivity {
         }
         else {
             String error = JO.getString("error");
-            //createDialogAlert();
+            createDialogAlert();
         }
 
     }
@@ -96,19 +95,12 @@ public class LogActivity extends AppCompatActivity {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(LogActivity.this);
 
         alertDialogBuilder
-                .setTitle("Error Conection")
-                .setMessage("Whould you like to try again?")
+                .setTitle("Error Connection")
+                .setMessage("Bad credentials")
                 .setCancelable( false)
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(LogActivity.this, "Yes", Toast.LENGTH_LONG).show();
-                    }
-                })
-                .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(LogActivity.this, "No", Toast.LENGTH_LONG).show();
                     }
                 });
 
