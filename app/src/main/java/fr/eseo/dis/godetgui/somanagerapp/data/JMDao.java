@@ -18,5 +18,9 @@ public interface JMDao {
 
     @Query("SELECT * FROM jm, isMemberOf WHERE isMemberOf.idJM = :idJm and jm.idJm = :idJm")
     public JM findAllTheirJuries(int idJm);
+
+    @Query("SELECT projects.* FROM tutors, jm, projects WHERE tutors.idJm = :idJm and jm.idJm = :idJm")
+    public JM findProjectsJmisTutor(int idJm);
+
 }
 
