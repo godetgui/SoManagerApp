@@ -73,6 +73,10 @@ public class FetchMyJurys extends AsyncTask<Void, Void, Void> {
 
     @Override
     protected void onPostExecute(Void aVoid) {
-        jurysJMActivity.getDataJurys(this.JO);
+        try {
+            jurysJMActivity.getDataJurys(this.JO);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 }

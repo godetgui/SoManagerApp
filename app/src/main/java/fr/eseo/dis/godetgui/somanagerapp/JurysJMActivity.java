@@ -6,7 +6,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 import fr.eseo.dis.godetgui.somanagerapp.threads.FetchMyJurys;
 
@@ -17,6 +21,8 @@ public class JurysJMActivity extends AppCompatActivity {
     private SharedPreferences myPrefs;
     private String usernameSession;
     private String tokenSession;
+    private int jurysSize;
+    private ArrayList<JSONObject> jurysList;
 
 
 
@@ -49,9 +55,27 @@ public class JurysJMActivity extends AppCompatActivity {
 
     }
 
-    public void getDataJurys(JSONObject JO){
-
+    public void getDataJurys(JSONObject JO) throws JSONException {
         System.out.println("********************RESULTAT JSON JURY: "+JO);
+
+        JSONArray response = JO.getJSONArray("juries");
+        jurysList = new ArrayList<>();
+
+        //Remplissage de la liste des jurys
+        for(int i = 0; i<response.length(); i++){
+            this.jurysList.add(i,response.getJSONObject(i));
+        }
+
+
+
+
+
+        System.out.println("********************RESULTAT JURYLIST: "+this.jurysList);
+
+        System.out.println("********************RESULTAT JSON PROJECTS: "+response);
+        System.out.println("********************RESULTAT JSON Jury length: "+response.length());
+
+
 
     }
 }
