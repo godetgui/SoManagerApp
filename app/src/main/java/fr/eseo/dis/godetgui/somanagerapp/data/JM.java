@@ -7,9 +7,9 @@ import android.support.annotation.NonNull;
 
 public class JM {
 
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     @NonNull
-    private int idJm;
+    private int idJm ;
     @NonNull
     private String nom;
     @NonNull

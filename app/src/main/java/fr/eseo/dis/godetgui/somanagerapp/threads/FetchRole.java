@@ -59,9 +59,6 @@ public class FetchRole extends AsyncTask<Void, Void, Void> {
 
             JO = new JSONObject(data);
 
-
-
-
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {

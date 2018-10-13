@@ -10,6 +10,7 @@ import java.util.List;
 @Dao
 public interface JMDao {
 
+
     @Query("SELECT * FROM JM")
     public List<JM> findAllJM();
 
