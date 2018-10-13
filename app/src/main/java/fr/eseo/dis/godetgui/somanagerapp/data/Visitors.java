@@ -5,7 +5,6 @@ import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
 @Entity(tableName = "visitors")
-
 public class Visitors {
 
     @PrimaryKey
@@ -32,11 +31,11 @@ public class Visitors {
     }
 
     @NonNull
-    public int getId_visitor() {
+    public int getIdVisitor() {
         return idVisitor;
     }
 
-    public void setId_visitor(@NonNull int id_visitor) {
+    public void setIdVisitor(@NonNull int id_visitor) {
         this.idVisitor = id_visitor;
     }
 

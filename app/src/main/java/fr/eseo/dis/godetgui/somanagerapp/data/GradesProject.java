@@ -4,14 +4,13 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
 import android.support.annotation.NonNull;
 
-@Entity(tableName = "gradesProject", primaryKeys ={"idJM","idProject"} ,
-        foreignKeys = {@ForeignKey(entity=JM.class, parentColumns = "idJM", childColumns = "idJM"),
+@Entity(tableName = "gradesProject", primaryKeys ={"idJm","idProject"} ,
+        foreignKeys = {@ForeignKey(entity=JM.class, parentColumns = "idJm", childColumns = "idJm"),
                 @ForeignKey(entity = Projects.class, parentColumns = "idProject",childColumns = "idProject")})
-
 public class GradesProject {
 
     @NonNull
-    private int idJM;
+    private int idJm;
 
     @NonNull
     private int idProject;
@@ -22,20 +21,20 @@ public class GradesProject {
     @NonNull
     private int grade;
 
-    public GradesProject(@NonNull int idJM, @NonNull int idProject, @NonNull String commentsGrades, @NonNull int grade) {
-        this.idJM = idJM;
+    public GradesProject(@NonNull int idJm, @NonNull int idProject, @NonNull String commentsGrades, @NonNull int grade) {
+        this.idJm = idJm;
         this.idProject = idProject;
         this.commentsGrades = commentsGrades;
         this.grade = grade;
     }
 
     @NonNull
-    public int getIdJM() {
-        return idJM;
+    public int getIdJm() {
+        return idJm;
     }
 
-    public void setIdJM(@NonNull int idJM) {
-        this.idJM = idJM;
+    public void setIdJm(@NonNull int idJm) {
+        this.idJm = idJm;
     }
 
     @NonNull

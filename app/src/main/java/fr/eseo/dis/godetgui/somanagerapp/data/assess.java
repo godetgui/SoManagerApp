@@ -7,10 +7,9 @@ import android.support.annotation.NonNull;
 import java.sql.Time;
 import java.util.Date;
 
-@Entity(tableName = "assess", primaryKeys ={"idJurie","idProject"} ,
-        foreignKeys = {@ForeignKey(entity=Juries.class, parentColumns = "idJurie", childColumns = "idJurie"),
+/*@Entity(tableName = "assess", primaryKeys ={"idJurie","idProject"} ,
+        foreignKeys = {@ForeignKey(entity=Juries.class, parentColumns = "idJury", childColumns = "idJury"),
                 @ForeignKey(entity = Students.class, parentColumns = "idProject",childColumns = "idProject")})
-
 public class assess {
 
     @NonNull
@@ -20,12 +19,12 @@ public class assess {
     private int idProject;
 
     @NonNull
-    private Date date;
+    private String date;
 
     @NonNull
-    private Time time;
+    private String time;
 
-    public assess(@NonNull int idJurie, @NonNull int idProject, @NonNull Date date, @NonNull Time time) {
+    public assess(@NonNull int idJurie, @NonNull int idProject, @NonNull String date, @NonNull String time) {
         this.idJurie = idJurie;
         this.idProject = idProject;
         this.date = date;
@@ -51,20 +50,20 @@ public class assess {
     }
 
     @NonNull
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(@NonNull Date date) {
+    public void setDate(@NonNull String date) {
         this.date = date;
     }
 
     @NonNull
-    public Time getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(@NonNull Time time) {
+    public void setTime(@NonNull String time) {
         this.time = time;
     }
-}
+}*/

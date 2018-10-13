@@ -10,8 +10,8 @@ import java.util.List;
 @Dao
 public interface assessDao {
 
-    @Query("SELECT * FROM assess")
-    public List<assess> findAllAssess();
+    //@Query("SELECT * FROM assess")
+    //public List<assess> findAllAssess();
 
 
 

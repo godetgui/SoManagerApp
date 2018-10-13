@@ -10,11 +10,11 @@ import java.util.List;
 @Dao
 public interface GradesStudentDao {
 
-    @Query("SELECT * FROM gradesStudent")
-    public List<GradesStudent> findAllProjects();
+    //@Query("SELECT * FROM gradesStudent")
+    //public List<GradesStudent> findAllProjects();
 
-    @Query("SELECT students.* FROM gradesStudent, students WHERE  students.idStudent= :idStudent and gradesStudent.idStudent = :idStudent")
-    public Projects findGradeByIdStudent(int idStudent);
+    //@Query("SELECT students.* FROM gradesStudent, students WHERE  students.idStudent= :idStudent and gradesStudent.idStudent = :idStudent")
+    //public Projects findGradeByIdStudent(int idStudent);
 
 
 }

@@ -5,7 +5,6 @@ import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
 @Entity(tableName = "comm")
-
 public class Comm {
 
     @PrimaryKey
@@ -22,8 +21,8 @@ public class Comm {
     @NonNull
     private String hash;
 
-    public Comm(@NonNull int id_comm, @NonNull String nom, @NonNull String prenom, @NonNull String email, @NonNull String login, @NonNull String hash) {
-        this.idComm = id_comm;
+    public Comm(@NonNull int idComm, @NonNull String nom, @NonNull String prenom, @NonNull String email, @NonNull String login, @NonNull String hash) {
+        this.idComm = idComm;
         this.nom = nom;
         this.prenom = prenom;
         this.email = email;
@@ -36,7 +35,7 @@ public class Comm {
         return idComm;
     }
 
-    public void setId_comm(@NonNull int id_comm) {
+    public void setIdComm(@NonNull int id_comm) {
         this.idComm = id_comm;
     }
 

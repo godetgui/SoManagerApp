@@ -38,6 +38,7 @@ public class LogActivity extends AppCompatActivity {
     private Context context;
     SharedPreferences myPrefs;
     SharedPreferences.Editor editor;
+    SomanagerDatabase db;
 
 
     @Override
@@ -45,6 +46,10 @@ public class LogActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log);
         this.context = this.getApplicationContext();
+        //Récupération de la db
+        this.db = SomanagerDatabase.getDatabase(this.context);
+        this.db.clearAllTables(); //UNIQUEMENT POUR LE DEV !!!!!!!!!!!!!!!!!
+
         this.myPrefs = this.getSharedPreferences("myPrefs", MODE_PRIVATE);
         this.editor = myPrefs.edit();
 
@@ -106,13 +111,15 @@ public class LogActivity extends AppCompatActivity {
         String forename = infos.getString("forename");
         String surname = infos.getString("surname");
 
-        //Insertion dans la database local de l'utilisateur connecté
-        SomanagerDatabase db = SomanagerDatabase.getDatabase(this.context);
 
 
-        if ( description.equals("Professeur")){
-            db.jmDao().insertJm(new JM(0, surname, forename, username));
-            System.out.println("$$$$$$$$$$$$$$$$$DANS LA TABLE JM: "+ db.jmDao().findAllJM());
+
+        if (description.equals("Professeur")){
+            System.out.println("$$$$$$$$$$$$$$$$$DANS LA TABLE JM AVANT DELETE: "+ db.jmDao().findAllJM());
+            this.db.jmDao().deleteJm(new JM(0, surname, forename, username));
+            System.out.println("$$$$$$$$$$$$$$$$$DANS LA TABLE JM APRES DELETE: "+ db.jmDao().findAllJM());
+            this.db.jmDao().insertJm(new JM(0, surname, forename, username));
+            System.out.println("$$$$$$$$$$$$$$$$$DANS LA TABLE JM APRES AJOUT: "+ db.jmDao().findAllJM());
             Intent test = new Intent(LogActivity.this,JurysJMActivity.class);
             startActivity(test);
         }

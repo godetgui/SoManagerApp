@@ -5,38 +5,37 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
 import android.support.annotation.NonNull;
 
-@Entity(tableName = "isMemberOf", primaryKeys ={"idJM","idJurie"} ,
-        foreignKeys = {@ForeignKey(entity=JM.class, parentColumns = "idJM", childColumns = "idJM"),
-                @ForeignKey(entity = Juries.class, parentColumns = "idJurie",childColumns = "idJurie")})
-
+@Entity(tableName = "isMemberOf", primaryKeys ={"idJm","idJury"} ,
+        foreignKeys = {@ForeignKey(entity=JM.class, parentColumns = "idJm", childColumns = "idJm"),
+                @ForeignKey(entity = Juries.class, parentColumns = "idJury",childColumns = "idJury")})
 public class isMemberOf {
 
 
     @NonNull
-    private int idJM;
+    private int idJm;
 
     @NonNull
-    private int idJurie;
+    private int idJury;
 
-    public isMemberOf(int idJM, @NonNull int idJurie) {
-        this.idJM = idJM;
-        this.idJurie = idJurie;
+    public isMemberOf(int idJm, @NonNull int idJury) {
+        this.idJm = idJm;
+        this.idJury = idJury;
     }
 
-    public int getIdJM() {
-        return idJM;
+    public int getIdJm() {
+        return idJm;
     }
 
-    public void setIdJM(int idJM) {
-        this.idJM = idJM;
+    public void setIdJm(int idJM) {
+        this.idJm = idJM;
     }
 
     @NonNull
-    public int getIdJurie() {
-        return idJurie;
+    public int getIdJury() {
+        return idJury;
     }
 
-    public void setIdJurie(@NonNull int idJurie) {
-        this.idJurie = idJurie;
+    public void setIdJury(@NonNull int idJurie) {
+        this.idJury = idJurie;
     }
 }

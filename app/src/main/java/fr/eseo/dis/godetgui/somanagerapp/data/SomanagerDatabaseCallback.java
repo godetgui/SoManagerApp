@@ -14,6 +14,7 @@ public class SomanagerDatabaseCallback extends RoomDatabase.Callback {
     @Override
     public void onCreate(@NonNull SupportSQLiteDatabase db) {
         super.onCreate(db);
+        db.execSQL("INSERT INTO jm VALUES(0,'Vict','Serizot','serizovi')");
 
     }
 

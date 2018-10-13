@@ -5,9 +5,8 @@ import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
+/*
 @Entity(tableName = "students", foreignKeys = {@ForeignKey(entity= Projects.class, parentColumns = "idProject", childColumns="idProject")})
-
-
 public class Students {
     @PrimaryKey
     @NonNull
@@ -92,3 +91,4 @@ public class Students {
         this.idProject = idProject;
     }
 }
+*/

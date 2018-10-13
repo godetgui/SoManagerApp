@@ -2,13 +2,18 @@ package fr.eseo.dis.godetgui.somanagerapp.data;
 
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
+import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
 @Entity(tableName = "pseudojuries", primaryKeys = {"idPseudoJuries"},
         foreignKeys = {@ForeignKey(entity = Projects.class, parentColumns ="idProject", childColumns = "idProject"),
                 @ForeignKey(entity = Comm.class, parentColumns = "idComm", childColumns = "idComm")})
-
 public class PseudoJuries {
+
+    @NonNull
+    private int idPseudoJuries;
+
+
     @NonNull
     private int idComm;
 
@@ -18,6 +23,15 @@ public class PseudoJuries {
     public PseudoJuries(@NonNull int idComm, @NonNull int idProject) {
         this.idComm = idComm;
         this.idProject = idProject;
+    }
+
+    @NonNull
+    public int getIdPseudoJuries() {
+        return idPseudoJuries;
+    }
+
+    public void setIdPseudoJuries(@NonNull int idPseudoJuries) {
+        this.idPseudoJuries = idPseudoJuries;
     }
 
     @NonNull

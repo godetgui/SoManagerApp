@@ -20,12 +20,13 @@ public class Projects {
     private boolean isConfidential;
 
     @NonNull
-    private Image poster;
+    private String poster;
+
 
     @NonNull
     private boolean isDone;
 
-    public Projects(@NonNull int idProject, @NonNull String nom, @NonNull boolean isConfidential, @NonNull Image poster,@NonNull boolean isDone) {
+    public Projects(@NonNull int idProject, @NonNull String nom, @NonNull boolean isConfidential, @NonNull String poster,@NonNull boolean isDone) {
         this.idProject = idProject;
         this.nom = nom;
         this.isConfidential = isConfidential;
@@ -61,11 +62,20 @@ public class Projects {
     }
 
     @NonNull
-    public Image getPoster() {
+    public String getPoster() {
         return poster;
     }
 
-    public void setPoster(@NonNull Image poster) {
+    public void setPoster(@NonNull String poster) {
         this.poster = poster;
+    }
+
+    @NonNull
+    public boolean isDone() {
+        return isDone;
+    }
+
+    public void setDone(@NonNull boolean done) {
+        isDone = done;
     }
 }

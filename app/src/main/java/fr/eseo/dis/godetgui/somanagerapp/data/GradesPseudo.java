@@ -7,7 +7,6 @@ import android.support.annotation.NonNull;
 @Entity(tableName = "gradesPseudo", primaryKeys ={"idVisitor","idProject"} ,
         foreignKeys = {@ForeignKey(entity=Visitors.class, parentColumns = "idVisitor", childColumns = "idVisitor"),
                 @ForeignKey(entity = Projects.class, parentColumns = "idProject",childColumns = "idProject")})
-
 public class GradesPseudo {
 
     @NonNull

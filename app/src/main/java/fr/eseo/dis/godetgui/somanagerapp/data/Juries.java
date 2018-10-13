@@ -8,19 +8,19 @@ import android.support.annotation.NonNull;
 public class Juries {
     @PrimaryKey
     @NonNull
-    private int idJurie;
+    private int idJury;
 
 
-    public Juries(@NonNull int idJurie) {
-        this.idJurie = idJurie;
+    public Juries(@NonNull int idJury) {
+        this.idJury = idJury;
     }
 
     @NonNull
-    public int getIdJurie() {
-        return idJurie;
+    public int getIdJury() {
+        return idJury;
     }
 
-    public void setIdJurie(@NonNull int idJurie) {
-        this.idJurie = idJurie;
+    public void setIdJury(@NonNull int idJury) {
+        this.idJury = idJury;
     }
 }

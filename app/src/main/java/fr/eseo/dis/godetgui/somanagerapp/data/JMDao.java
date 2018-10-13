@@ -1,7 +1,9 @@
 package fr.eseo.dis.godetgui.somanagerapp.data;
 import android.arch.persistence.db.SupportSQLiteDatabase;
 import android.arch.persistence.room.Dao;
+import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
+import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
 
 import android.arch.persistence.room.Dao;
@@ -17,8 +19,11 @@ public interface JMDao {
             public void insertJM(@NonNull SupportSQLiteDatabase db, String nom, String prenom, String login ){
     }*/
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertJm(JM jm);
+
+    @Delete
+    void deleteJm(JM jm);
 
 
 
@@ -32,8 +37,8 @@ public interface JMDao {
     @Query("SELECT * FROM jm, isMemberOf WHERE isMemberOf.idJM = :idJm and jm.idJm = :idJm")
     public JM findAllTheirJuries(int idJm);
 
-    @Query("SELECT projects.* FROM tutors, jm, projects WHERE tutors.idJm = :idJm and jm.idJm = :idJm")
-    public JM findProjectsJmisTutor(int idJm);
+    //@Query("SELECT projects.* FROM tutors, jm, projects WHERE tutors.idJm = :idJm and jm.idJm = :idJm")
+    //public JM findProjectsJmisTutor(int idJm);
 
 
 

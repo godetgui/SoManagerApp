@@ -10,8 +10,8 @@ import java.util.List;
 @Dao
 public interface isMemberOfPseudoDao {
 
-    @Query("SELECT * FROM isMemberOfPseudo")
-    public List<isMemberOfPseudoDao> findAllAssociations();
+    //@Query("SELECT * FROM isMemberOfPseudo")
+    //public List<isMemberOfPseudoDao> findAllAssociations();
 
 }
 
