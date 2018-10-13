@@ -8,7 +8,7 @@ import android.widget.Button;
 
 import org.json.JSONObject;
 
-import fr.eseo.dis.godetgui.somanagerapp.threads.FetchAllJurys;
+import fr.eseo.dis.godetgui.somanagerapp.threads.FetchMyJurys;
 
 public class JurysJMActivity extends AppCompatActivity {
 
@@ -44,8 +44,8 @@ public class JurysJMActivity extends AppCompatActivity {
 
 
 
-        FetchAllJurys fetchAllJurys = new FetchAllJurys(this, this.usernameSession, this.tokenSession);
-        fetchAllJurys.execute();
+        FetchMyJurys fetchMyJurys = new FetchMyJurys(this, this.usernameSession, this.tokenSession);
+        fetchMyJurys.execute();
 
     }
 

@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -32,6 +33,8 @@ public class LogActivity extends AppCompatActivity {
     private String token;
     private String userConnected;
     private Context context;
+    SharedPreferences myPrefs;
+    SharedPreferences.Editor editor;
 
 
     @Override
@@ -39,6 +42,8 @@ public class LogActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log);
         this.context = this.getApplicationContext();
+        this.myPrefs = this.getSharedPreferences("myPrefs", MODE_PRIVATE);
+        this.editor = myPrefs.edit();
 
 
 
@@ -69,6 +74,12 @@ public class LogActivity extends AppCompatActivity {
         if (result.equals("OK") ){
             this.userConnected = user;
             this.token = JO.getString("token");
+            editor.putString("USERNAME", this.login.getText().toString());
+            editor.putString("TOKEN", this.token);
+            editor.commit();
+
+
+
             this.fetchRole();
 
         }
@@ -80,7 +91,6 @@ public class LogActivity extends AppCompatActivity {
     }
     //Impossibilité de récupérer le context de l'activity dans cette méthode ????
     public void fetchRole(){
-        //System.out.println("********************USER: "+userConnected);
         FetchRole fetchRole = new FetchRole(this,userConnected, token);
         fetchRole.execute();
     }

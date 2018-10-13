@@ -16,9 +16,8 @@ import javax.net.ssl.HttpsURLConnection;
 
 import fr.eseo.dis.godetgui.somanagerapp.Certificates.TrustManager;
 import fr.eseo.dis.godetgui.somanagerapp.JurysJMActivity;
-import fr.eseo.dis.godetgui.somanagerapp.LogActivity;
 
-public class FetchAllJurys extends AsyncTask<Void, Void, Void> {
+public class FetchMyJurys extends AsyncTask<Void, Void, Void> {
 
     String data = "";
     JSONObject JO;
@@ -27,7 +26,7 @@ public class FetchAllJurys extends AsyncTask<Void, Void, Void> {
 
     JurysJMActivity jurysJMActivity;
 
-    public FetchAllJurys(JurysJMActivity jurysJMActivity, String user, String token){
+    public FetchMyJurys(JurysJMActivity jurysJMActivity, String user, String token){
         this.jurysJMActivity = jurysJMActivity;
         this.user = user;
         this.token = token;
