@@ -4,7 +4,6 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 @Entity(tableName = "jm")
-
 public class JM {
 
     @PrimaryKey(autoGenerate = true)
@@ -15,20 +14,15 @@ public class JM {
     @NonNull
     private String prenom;
     @NonNull
-    private String email;
-    @NonNull
     private String login;
-    @NonNull
-    private String hash;
 
 
-    public JM(@NonNull int idJm, @NonNull String nom, @NonNull String prenom, @NonNull String email, @NonNull String login, @NonNull String hash) {
+
+    public JM(@NonNull int idJm, @NonNull String nom, @NonNull String prenom, @NonNull String login) {
         this.idJm = idJm;
         this.nom = nom;
         this.prenom = prenom;
-        this.email = email;
         this.login = login;
-        this.hash = hash;
     }
 
 
@@ -60,15 +54,6 @@ public class JM {
     }
 
     @NonNull
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(@NonNull String email) {
-        this.email = email;
-    }
-
-    @NonNull
     public String getLogin() {
         return login;
     }
@@ -77,12 +62,5 @@ public class JM {
         this.login = login;
     }
 
-    @NonNull
-    public String getHash() {
-        return hash;
-    }
 
-    public void setHash(@NonNull String hash) {
-        this.hash = hash;
-    }
 }

@@ -22,6 +22,9 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 
+import fr.eseo.dis.godetgui.somanagerapp.data.JM;
+import fr.eseo.dis.godetgui.somanagerapp.data.SomanagerDatabase;
+import fr.eseo.dis.godetgui.somanagerapp.data.SomanagerDatabaseCallback;
 import fr.eseo.dis.godetgui.somanagerapp.threads.FetchLogon;
 import fr.eseo.dis.godetgui.somanagerapp.threads.FetchRole;
 
@@ -99,8 +102,17 @@ public class LogActivity extends AppCompatActivity {
         JSONArray response = JO.getJSONArray("info");
         JSONObject infos = response.getJSONObject(0);
         String description = infos.getString("descr");
+        String username = infos.getString("username");
+        String forename = infos.getString("forename");
+        String surname = infos.getString("surname");
+
+        //Insertion dans la database local de l'utilisateur connecté
+        SomanagerDatabase db = SomanagerDatabase.getDatabase(this.context);
+
 
         if ( description.equals("Professeur")){
+            db.jmDao().insertJm(new JM(0, surname, forename, username));
+            System.out.println("$$$$$$$$$$$$$$$$$DANS LA TABLE JM: "+ db.jmDao().findAllJM());
             Intent test = new Intent(LogActivity.this,JurysJMActivity.class);
             startActivity(test);
         }
