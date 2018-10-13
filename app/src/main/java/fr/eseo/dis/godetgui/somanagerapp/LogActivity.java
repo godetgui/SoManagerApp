@@ -53,8 +53,6 @@ public class LogActivity extends AppCompatActivity {
         this.myPrefs = this.getSharedPreferences("myPrefs", MODE_PRIVATE);
         this.editor = myPrefs.edit();
 
-
-
     }
 
 
@@ -115,11 +113,7 @@ public class LogActivity extends AppCompatActivity {
 
 
         if (description.equals("Professeur")){
-            System.out.println("$$$$$$$$$$$$$$$$$DANS LA TABLE JM AVANT DELETE: "+ db.jmDao().findAllJM());
-            this.db.jmDao().deleteJm(new JM(0, surname, forename, username));
-            System.out.println("$$$$$$$$$$$$$$$$$DANS LA TABLE JM APRES DELETE: "+ db.jmDao().findAllJM());
             this.db.jmDao().insertJm(new JM(0, surname, forename, username));
-            System.out.println("$$$$$$$$$$$$$$$$$DANS LA TABLE JM APRES AJOUT: "+ db.jmDao().findAllJM());
             Intent test = new Intent(LogActivity.this,JurysJMActivity.class);
             startActivity(test);
         }

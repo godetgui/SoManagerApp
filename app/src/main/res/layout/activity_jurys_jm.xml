@@ -6,76 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".JurysJMActivity">
 
-    <Button
-        android:id="@+id/buttonGoToProjects"
-        android:fontFamily="sans-serif-black"
-        android:layout_width="208dp"
-        android:layout_height="75dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="32dp"
-        android:text="Voir tous les projets"
-        app:layout_constraintBottom_toTopOf="@+id/tableJury"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
-
-    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/tableJury"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="50dp"
-        android:stretchColumns="1"
+    <ListView
+        android:id="@+id/listViewJuries"
+        android:layout_width="368dp"
+        android:layout_height="495dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonGoToProjects"
-        tools:ignore="MissingConstraints">
-
-        <TableRow>
-
-            <TextView
-                android:layout_column="1"
-                android:background="@drawable/border_cells"
-                android:padding="10dp"
-                android:text="Jury n°1"
-                android:textAlignment="center"
-                android:textSize="18dp" />
-        </TableRow>
-
-        <TableRow>
-
-            <TextView
-                android:layout_column="1"
-                android:background="@drawable/border_cells"
-                android:padding="10dp"
-                android:text="Jury n°2"
-                android:textAlignment="center"
-                android:textSize="18dp" />
-        </TableRow>
-
-        <TableRow>
-
-            <TextView
-                android:layout_column="1"
-                android:background="@drawable/border_cells"
-                android:padding="10dp"
-                android:text="Jury n°3"
-                android:textAlignment="center"
-                android:textSize="18dp" />
-        </TableRow>
-
-        <TableRow>
-
-            <TextView
-                android:layout_column="1"
-                android:background="@drawable/border_cells"
-                android:padding="10dp"
-                android:text="Jury n°4"
-                android:textAlignment="center"
-                android:textSize="18dp" />
-        </TableRow>
-    </TableLayout>
+        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>

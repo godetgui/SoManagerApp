@@ -1,6 +1,9 @@
 package fr.eseo.dis.godetgui.somanagerapp.threads;
 
+import android.app.ProgressDialog;
 import android.os.AsyncTask;
+import android.util.Log;
+import android.widget.ListView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -30,7 +33,6 @@ public class FetchMyJurys extends AsyncTask<Void, Void, Void> {
         this.jurysJMActivity = jurysJMActivity;
         this.user = user;
         this.token = token;
-
     }
 
     @Override
@@ -79,4 +81,9 @@ public class FetchMyJurys extends AsyncTask<Void, Void, Void> {
             e.printStackTrace();
         }
     }
+
+
+
 }
+
+
