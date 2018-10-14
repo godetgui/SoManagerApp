@@ -14,10 +14,13 @@ public class Tutors {
     @NonNull
     private int idProject;
 
+
+
     public Tutors(@NonNull int idJm, @NonNull int idProject) {
         this.idJm = idJm;
         this.idProject = idProject;
     }
+
 
     @NonNull
     public int getIdJm() {
@@ -36,4 +39,5 @@ public class Tutors {
     public void setIdProject(@NonNull int idProject) {
         this.idProject = idProject;
     }
+
 }

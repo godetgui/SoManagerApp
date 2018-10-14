@@ -13,6 +13,9 @@ public interface TutorsDao {
     @Query("SELECT * FROM tutors")
     public List<Tutors> findAllTutors();
 
+    @Query("SELECT * FROM tutors WHERE idJm = :idJm")
+    public Tutors findTutorByIdJM(int idJm);
+
 
 
 }

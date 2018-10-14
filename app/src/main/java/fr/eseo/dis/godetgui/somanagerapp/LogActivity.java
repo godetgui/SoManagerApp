@@ -48,7 +48,7 @@ public class LogActivity extends AppCompatActivity {
         this.context = this.getApplicationContext();
         //Récupération de la db
         this.db = SomanagerDatabase.getDatabase(this.context);
-        this.db.clearAllTables(); //UNIQUEMENT POUR LE DEV !!!!!!!!!!!!!!!!!
+        //this.db.clearAllTables(); //UNIQUEMENT POUR LE DEV !!!!!!!!!!!!!!!!!
 
         this.myPrefs = this.getSharedPreferences("myPrefs", MODE_PRIVATE);
         this.editor = myPrefs.edit();
@@ -113,9 +113,9 @@ public class LogActivity extends AppCompatActivity {
 
 
         if (description.equals("Professeur")){
-            this.db.jmDao().insertJm(new JM(0, surname, forename, username));
-            Intent test = new Intent(LogActivity.this,JurysJMActivity.class);
-            startActivity(test);
+            //this.db.jmDao().insertJm(new JM(0, surname, forename, username));
+            Intent goToJurysJMActivity = new Intent(LogActivity.this,JurysJMActivity.class);
+            startActivity(goToJurysJMActivity);
         }
 
     }

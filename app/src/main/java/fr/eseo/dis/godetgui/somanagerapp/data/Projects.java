@@ -15,23 +15,24 @@ public class Projects {
     @NonNull
     private String nom;
 
+    @NonNull
+    private int confidentialite;
 
     @NonNull
-    private boolean isConfidential;
-
-    @NonNull
-    private String poster;
+    private boolean poster;
 
 
-    @NonNull
-    private boolean isDone;
 
-    public Projects(@NonNull int idProject, @NonNull String nom, @NonNull boolean isConfidential, @NonNull String poster,@NonNull boolean isDone) {
+    public Projects(){};
+
+
+
+    public Projects(@NonNull int idProject, @NonNull String nom, @NonNull int confidentialite, @NonNull boolean poster) {
         this.idProject = idProject;
         this.nom = nom;
-        this.isConfidential = isConfidential;
+        this.confidentialite = confidentialite;
         this.poster = poster;
-        this.isDone = isDone;
+
     }
 
     @NonNull
@@ -53,29 +54,27 @@ public class Projects {
     }
 
     @NonNull
-    public boolean isConfidential() {
-        return isConfidential;
+    public int getConfidentialite() {
+        return confidentialite;
     }
 
-    public void setConfidential(@NonNull boolean confidential) {
-        isConfidential = confidential;
+    public void setConfidentialite(@NonNull int confidentialite) {
+        confidentialite = confidentialite;
     }
 
     @NonNull
-    public String getPoster() {
+    public boolean isPoster() {
         return poster;
     }
 
-    public void setPoster(@NonNull String poster) {
+    public void setPoster(@NonNull boolean poster) {
         this.poster = poster;
     }
 
-    @NonNull
-    public boolean isDone() {
-        return isDone;
+    @Override
+    public String toString(){
+        return "Project id: "+this.getIdProject()+", Title: "+this.getNom()+", Conf: "+this.confidentialite+", Poster: "+this.isPoster();
     }
 
-    public void setDone(@NonNull boolean done) {
-        isDone = done;
-    }
+
 }
