@@ -28,6 +28,7 @@ public class ProjectsJMActivity extends AppCompatActivity {
     private String tokenSession;
     private ListView listViewProjects;
     private JSONObject currentInfoJSONObject;
+    String Newligne=System.getProperty("line.separator");
 
 
     @Override

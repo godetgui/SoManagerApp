@@ -76,12 +76,13 @@ public class JurysJMActivity extends AppCompatActivity {
         JSONArray responseJuries = JO.getJSONArray("juries");
         final HashMap<Integer, String> hashMapId = new HashMap();
         final HashMap<Integer, String> hashMapInfo = new HashMap();
+        String Newligne=System.getProperty("line.separator");
 
         this.jurysList = new ArrayList<>();
 
         //Remplissage de la liste des jurys et du hasmamp qui stocke les id des juries en fonction de leur position dans la liste
         for(int i = 0; i<responseJuries.length(); i++){
-            this.jurysList.add(i,"Jury: "+responseJuries.getJSONObject(i).getString("idJury")+", Date: "+responseJuries.getJSONObject(i).getString("date"));
+            this.jurysList.add(i,"Jury: "+responseJuries.getJSONObject(i).getString("idJury")+ Newligne +"Date: "+responseJuries.getJSONObject(i).getString("date"));
             hashMapId.put(i,responseJuries.getJSONObject(i).getString("idJury"));
             hashMapInfo.put(i, responseJuries.getJSONObject(i).getString("info"));
 
