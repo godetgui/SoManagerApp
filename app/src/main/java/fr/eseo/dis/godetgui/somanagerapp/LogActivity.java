@@ -116,6 +116,10 @@ public class LogActivity extends AppCompatActivity {
             //this.db.jmDao().insertJm(new JM(0, surname, forename, username));
             Intent goToJurysJMActivity = new Intent(LogActivity.this,JurysJMActivity.class);
             startActivity(goToJurysJMActivity);
+
+        } else if (description.equals("Service Communications")){
+            Intent goToJAllProjectsComm = new Intent(LogActivity.this,CommAllProjectsActivity.class);
+            startActivity(goToJAllProjectsComm);
         }
 
     }

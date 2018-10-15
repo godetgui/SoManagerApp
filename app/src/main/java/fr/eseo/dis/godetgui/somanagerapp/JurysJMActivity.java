@@ -1,5 +1,6 @@
 package fr.eseo.dis.godetgui.somanagerapp;
 
+import android.arch.persistence.room.Room;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -86,21 +87,22 @@ public class JurysJMActivity extends AppCompatActivity {
             hashMapId.put(i,responseJuries.getJSONObject(i).getString("idJury"));
             hashMapInfo.put(i, responseJuries.getJSONObject(i).getString("info"));
 
-            //Récupération des projets associés et stockage en BDD
-/*            JSONArray infosArray = responseJuries.getJSONObject(i).getJSONArray("info");
-            for(int j = 0; j<infosArray.length(); j++){
-                //Récupération
-                JSONObject projectJSON = infosArray.getJSONObject(j);
+/*
+                //Récupération des projets associés et stockage en BDD
+                JSONArray projects = responseJuries.getJSONObject(i).getJSONObject("info").getJSONArray("projects");
+                for(int j = 0; j<projects.length(); j++){
+                    //Récupération
+                    JSONObject projectJSON = projects.getJSONObject(j);
 
-                //Création d'un nouveau projet
-                Projects projectToAdd = new Projects();
-                projectToAdd.setIdProject((Integer.parseInt(projectJSON.getString("projectId"))));
-                projectToAdd.setNom(projectJSON.getString("title"));
-                projectToAdd.setConfidentialite(Integer.parseInt(projectJSON.getString("confid")));
+                    //Création d'un nouveau projet
+                    Projects projectToAdd = new Projects();
+                    projectToAdd.setIdProject((Integer.parseInt(projectJSON.getString("projectId"))));
+                    projectToAdd.setNom(projectJSON.getString("title"));
+                    projectToAdd.setConfidentialite(Integer.parseInt(projectJSON.getString("confid")));
 
-                //Ajout à la BDD
+                    //Ajout à la BDD
                 SomanagerDatabase.getDatabase(this).projectsDao().insertProject(projectToAdd);
-            }*/
+            } */
         }
 
         //creation de l'adapter et association de l'adapter avec la listView
