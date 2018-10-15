@@ -21,18 +21,24 @@ public class Projects {
     @NonNull
     private boolean poster;
 
+    @NonNull
+    private String forenamesup;
+
+    @NonNull
+    private String surnamesup;
 
 
     public Projects(){};
 
 
 
-    public Projects(@NonNull int idProject, @NonNull String nom, @NonNull int confidentialite, @NonNull boolean poster) {
+    public Projects(@NonNull int idProject, @NonNull String nom, @NonNull int confidentialite, @NonNull boolean poster,  @NonNull String forenamesup, @NonNull String surnamesup) {
         this.idProject = idProject;
         this.nom = nom;
         this.confidentialite = confidentialite;
         this.poster = poster;
-
+        this.forenamesup = forenamesup;
+        this.surnamesup = surnamesup;
     }
 
     @NonNull
@@ -71,11 +77,32 @@ public class Projects {
         this.poster = poster;
     }
 
+    @NonNull
+    public String getForenameSup(){
+        return forenamesup;
+    }
+
+    public void setForenamesup(@NonNull String forenamesup) {
+        this.forenamesup = forenamesup;
+    }
+
+    @NonNull
+    public String getSurnamesup() {
+        return surnamesup;
+    }
+
+    public void setSurnamesup(@NonNull String surnamesup) {
+        this.surnamesup = surnamesup;
+    }
+
+    @NonNull
+    public String get
+
     @Override
     public String toString(){
-        String newLine = System.getProperty("line.separator");
-        return "Project id: "+this.getIdProject()+newLine+"Title: "+this.getNom()+newLine+
-                "Conf: "+this.confidentialite+newLine+"Poster: "+this.isPoster()+newLine;
+        return "Project id: "+this.getIdProject()+", Title: "+this.getNom()+", Conf: "
+                +this.confidentialite+", Poster: "+this.isPoster()
+                +;
     }
 
 
