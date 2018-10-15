@@ -73,7 +73,9 @@ public class Projects {
 
     @Override
     public String toString(){
-        return "Project id: "+this.getIdProject()+", Title: "+this.getNom()+", Conf: "+this.confidentialite+", Poster: "+this.isPoster();
+        String newLine = System.getProperty("line.separator");
+        return "Project id: "+this.getIdProject()+newLine+"Title: "+this.getNom()+newLine+
+                "Conf: "+this.confidentialite+newLine+"Poster: "+this.isPoster()+newLine;
     }
 
 
