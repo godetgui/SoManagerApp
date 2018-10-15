@@ -131,5 +131,10 @@ public class JurysJMActivity extends AppCompatActivity {
 
 
     }
+
+    public void goToAllProjects(View v){
+        Intent goToAllProjects = new Intent(JurysJMActivity.this, CommAllProjectsActivity.class);
+        startActivity(goToAllProjects);
+    }
 }
 
