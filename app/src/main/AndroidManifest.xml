@@ -22,7 +22,7 @@
         </activity>
         <activity android:name=".ProjectsJMActivity" />
         <activity android:name=".JurysJMActivity" />
-        <activity android:name=".DetailsProjectsJM" />
+        <activity android:name=".DetailsProjectsJMActivity" />
         <activity android:name=".CommAllProjectsActivity"></activity>
     </application>
 

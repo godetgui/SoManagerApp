@@ -19,6 +19,7 @@ import javax.net.ssl.HttpsURLConnection;
 
 import fr.eseo.dis.godetgui.somanagerapp.Certificates.TrustManager;
 import fr.eseo.dis.godetgui.somanagerapp.CommAllProjectsActivity;
+import fr.eseo.dis.godetgui.somanagerapp.DetailsProjectsJMActivity;
 import fr.eseo.dis.godetgui.somanagerapp.JurysJMActivity;
 
 public class FetchProjects extends AsyncTask<Void, Void, Void> {
@@ -30,11 +31,14 @@ public class FetchProjects extends AsyncTask<Void, Void, Void> {
 
     CommAllProjectsActivity CommAllProjectsActivity;
 
+
     public FetchProjects(CommAllProjectsActivity CommAllProjectsActivity, String user, String token){
         this.CommAllProjectsActivity = CommAllProjectsActivity;
         this.user = user;
         this.token = token;
     }
+
+
 
     @Override
     protected Void doInBackground(Void... voids) {
@@ -54,7 +58,6 @@ public class FetchProjects extends AsyncTask<Void, Void, Void> {
             String line="";
             while(line != null){
                 line = bufferedReader.readLine();
-                System.out.println("TEST3"+line);
                 data = data + line;
             }
             JO = new JSONObject(data);
