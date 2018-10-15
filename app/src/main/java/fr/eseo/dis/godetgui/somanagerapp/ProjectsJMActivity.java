@@ -87,7 +87,9 @@ public class ProjectsJMActivity extends AppCompatActivity {
             project.setNom(projectsArray.getJSONObject(i).getString("title"));
             project.setConfidentialite(projectsArray.getJSONObject(i).getInt("confid"));
             project.setPoster(projectsArray.getJSONObject(i).getBoolean("poster"));
-            project.set
+
+            project.setForename(projectsArray.getJSONObject(i).getJSONObject("supervisor").getString("forename"));
+            project.setSurname(projectsArray.getJSONObject(i).getJSONObject("supervisor").getString("surname"));
             listProjects.add(i,project.toString());
             hashMapId.put(i,projectsArray.getJSONObject(i).getString("projectId"));
         }

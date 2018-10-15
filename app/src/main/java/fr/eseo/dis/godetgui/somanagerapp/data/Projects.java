@@ -22,23 +22,21 @@ public class Projects {
     private boolean poster;
 
     @NonNull
-    private String forenamesup;
+    private String forename;
 
     @NonNull
-    private String surnamesup;
+    private String surname;
 
 
     public Projects(){};
 
-
-
-    public Projects(@NonNull int idProject, @NonNull String nom, @NonNull int confidentialite, @NonNull boolean poster,  @NonNull String forenamesup, @NonNull String surnamesup) {
+    public Projects(@NonNull int idProject, @NonNull String nom, @NonNull int confidentialite, @NonNull boolean poster,  @NonNull String forename, @NonNull String surname) {
         this.idProject = idProject;
         this.nom = nom;
         this.confidentialite = confidentialite;
         this.poster = poster;
-        this.forenamesup = forenamesup;
-        this.surnamesup = surnamesup;
+        this.forename = forename;
+        this.surname = surname;
     }
 
     @NonNull
@@ -78,31 +76,30 @@ public class Projects {
     }
 
     @NonNull
-    public String getForenameSup(){
-        return forenamesup;
+    public String getForename() {
+        return forename;
     }
 
-    public void setForenamesup(@NonNull String forenamesup) {
-        this.forenamesup = forenamesup;
-    }
-
-    @NonNull
-    public String getSurnamesup() {
-        return surnamesup;
-    }
-
-    public void setSurnamesup(@NonNull String surnamesup) {
-        this.surnamesup = surnamesup;
+    public void setForename(@NonNull String forename) {
+        this.forename = forename;
     }
 
     @NonNull
-    public String get
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(@NonNull String surname) {
+        this.surname = surname;
+    }
+
 
     @Override
     public String toString(){
-        return "Project id: "+this.getIdProject()+", Title: "+this.getNom()+", Conf: "
-                +this.confidentialite+", Poster: "+this.isPoster()
-                +;
+        String Newligne=System.getProperty("line.separator");
+        return "Project id: "+this.getIdProject()+Newligne+"Title: "+this.getNom()+Newligne+"Conf: "
+                +this.confidentialite+Newligne+"Poster: "+this.isPoster()+Newligne
+                +"Supervisor: "+this.getForename()+" "+this.getSurname()+Newligne;
     }
 
 

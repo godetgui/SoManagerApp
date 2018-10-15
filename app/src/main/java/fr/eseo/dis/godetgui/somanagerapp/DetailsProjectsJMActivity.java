@@ -17,9 +17,6 @@ public class DetailsProjectsJMActivity extends AppCompatActivity {
     private String usernameSession;
     private String tokenSession;
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

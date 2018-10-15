@@ -5,7 +5,7 @@ import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
 
-@Database(entities = {/*assess.class,*/ Comm.class, GradesProject.class, GradesPseudo.class, /*GradesStudent.class,*/ isMemberOf.class, IsMemberOfPseudo.class, JM.class, Juries.class, Preparations.class, Projects.class, PseudoJuries.class, /*Students.class,*/ Tutors.class, Visitors.class }, version =1)
+@Database(entities = {/*assess.class,*/ Comm.class, GradesProject.class, GradesPseudo.class, /*GradesStudent.class,*/ isMemberOf.class, IsMemberOfPseudo.class, JM.class, Juries.class, Preparations.class, Projects.class, PseudoJuries.class, /*Students.class,*/ Tutors.class, Visitors.class }, version =2)
 public abstract class SomanagerDatabase extends RoomDatabase {
 
     private static SomanagerDatabase INSTANCE;
