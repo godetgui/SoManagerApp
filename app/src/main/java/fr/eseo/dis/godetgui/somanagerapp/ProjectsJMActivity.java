@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -14,6 +16,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import fr.eseo.dis.godetgui.somanagerapp.data.Projects;
 
@@ -72,6 +75,10 @@ public class ProjectsJMActivity extends AppCompatActivity {
     }
 
     public void getProjects(JSONObject JO) throws JSONException {
+
+        final HashMap<Integer, String> hashMapId = new HashMap();
+        final String idJury = this.currentIdJury;
+
         JSONArray projectsArray = JO.getJSONArray("projects");
         ArrayList<String> listProjects = new ArrayList<>();
         for(int i =0; i<projectsArray.length(); i++){
@@ -81,10 +88,25 @@ public class ProjectsJMActivity extends AppCompatActivity {
             project.setConfidentialite(projectsArray.getJSONObject(i).getInt("confid"));
             project.setPoster(projectsArray.getJSONObject(i).getBoolean("poster"));
             listProjects.add(i,project.toString());
+            hashMapId.put(i,projectsArray.getJSONObject(i).getString("projectId"));
         }
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listProjects);
         listViewProjects.setAdapter(arrayAdapter);
+
+        //Click sur un élément de la liste
+        listViewProjects.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Intent goToDetailsProjectActivity = new Intent(ProjectsJMActivity.this, DetailsProjectsJMActivity.class);
+                goToDetailsProjectActivity.putExtra("projectId", hashMapId.get(position));
+                goToDetailsProjectActivity.putExtra("idJury", idJury);
+                startActivity(goToDetailsProjectActivity);
+
+            }
+        });
     }
 
 

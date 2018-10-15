@@ -122,7 +122,6 @@ public class JurysJMActivity extends AppCompatActivity {
                 Intent goToProjectJMActivity = new Intent(JurysJMActivity.this, ProjectsJMActivity.class);
                 goToProjectJMActivity.putExtra("idJury", hashMapId.get(position));
                 goToProjectJMActivity.putExtra("info", hashMapInfo.get(position));
-
                 startActivity(goToProjectJMActivity);
 
             }

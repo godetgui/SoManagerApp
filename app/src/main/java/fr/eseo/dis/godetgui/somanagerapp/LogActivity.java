@@ -50,6 +50,7 @@ public class LogActivity extends AppCompatActivity {
         this.db = SomanagerDatabase.getDatabase(this.context);
         //this.db.clearAllTables(); //UNIQUEMENT POUR LE DEV !!!!!!!!!!!!!!!!!
 
+
         this.myPrefs = this.getSharedPreferences("myPrefs", MODE_PRIVATE);
         this.editor = myPrefs.edit();
 
@@ -84,8 +85,6 @@ public class LogActivity extends AppCompatActivity {
             editor.putString("TOKEN", this.token);
             editor.commit();
 
-
-
             this.fetchRole();
 
         }
@@ -113,7 +112,7 @@ public class LogActivity extends AppCompatActivity {
 
 
         if (description.equals("Professeur")){
-            //this.db.jmDao().insertJm(new JM(0, surname, forename, username));
+            this.db.jmDao().insertJm(new JM(0, surname, forename, username));
             Intent goToJurysJMActivity = new Intent(LogActivity.this,JurysJMActivity.class);
             startActivity(goToJurysJMActivity);
 
