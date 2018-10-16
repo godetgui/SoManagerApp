@@ -2,9 +2,9 @@
     <string name="app_name">SoManagerApp</string>
     <string name="description">Description</string>
     <string name="retour_tous_les_projets">Retour à tous les projets</string>
-    <string name="membres">Membres</string>
-    <string name="tuteur">Tuteur</string>
     <string name="jury">Jury</string>
-    <string name="date">Date</string>
     <string name="poster">Poster</string>
+    <string name="members">Members</string>
+    <string name="supervisor">Supervisor</string>
+    <string name="students">Students</string>
 </resources>

@@ -89,11 +89,9 @@ public class DetailsProjectsJMActivity extends AppCompatActivity {
             }
 
         }
-       //this.champ_descr.setText(desc);
-
+        this.champ_descr.setText(desc);
         this.champ_titre.setText(title);
         this.champ_tut.setText(tutor);
-
 
     }
 
