@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import fr.eseo.dis.godetgui.somanagerapp.threads.SendNote;
 
 public class NoteProjectActivity extends AppCompatActivity {
@@ -18,6 +21,7 @@ public class NoteProjectActivity extends AppCompatActivity {
     private SharedPreferences myPrefs;
     private String usernameSession;
     private String tokenSession;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,11 +53,17 @@ public class NoteProjectActivity extends AppCompatActivity {
     public void onClickbtnSend(View v){
 
         SendNote sendNote = new SendNote(this,this.usernameSession, this.tokenSession, this.currentIdProject, this.champ_note.getText().toString(), this.currentIdStudent);
-
+        sendNote.execute();
     }
 
 
-    public void getData(){
+    public void getData(JSONObject JO) throws JSONException {
+
+        System.out.println("RESULTAT DE LA REQUETE"+JO.getString("result"));
+        System.out.println("RESULTAT DE LA REQUETE API"+JO.getString("api"));
+
+        finish();
+
 
     }
 }

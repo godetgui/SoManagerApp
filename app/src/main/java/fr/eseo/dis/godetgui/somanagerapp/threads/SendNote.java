@@ -79,7 +79,11 @@ public class SendNote extends AsyncTask<Void, Void, Void> {
 
     @Override
     protected void onPostExecute(Void aVoid){
-        noteProjectActivity.getData();
+        try {
+            noteProjectActivity.getData(this.JO);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
     }
 }
