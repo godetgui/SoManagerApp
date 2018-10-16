@@ -88,7 +88,7 @@ public class CommAllProjectsActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Intent goToDetailsProjectActivity = new Intent(CommAllProjectsActivity.this, DetailsProjectsJMActivity.class);
+                Intent goToDetailsProjectActivity = new Intent(CommAllProjectsActivity.this, DetailsProjectsComm.class);
                 goToDetailsProjectActivity.putExtra("projectId", hashMapId.get(position));
                 startActivity(goToDetailsProjectActivity);
 
