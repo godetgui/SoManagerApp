@@ -23,7 +23,7 @@ import fr.eseo.dis.godetgui.somanagerapp.threads.FetchProjects;
 import fr.eseo.dis.godetgui.somanagerapp.threads.FetchTutorProjects;
 import fr.eseo.dis.godetgui.somanagerapp.threads.FetchTutorProjectsDetails;
 
-public class DetailsProjectsJMActivity extends AppCompatActivity {
+public class DetailsProjectTutorJM extends AppCompatActivity {
 
     private String projectId;
     private String currentIdJury;
@@ -63,28 +63,22 @@ public class DetailsProjectsJMActivity extends AppCompatActivity {
         this.usernameSession = myPrefs.getString("USERNAME",null);
         this.tokenSession = myPrefs.getString("TOKEN",null);
 
-
-
-
-        FetchJuryProjects fetchJuryProjects= new FetchJuryProjects(DetailsProjectsJMActivity.this, this.usernameSession, this.tokenSession, this.currentIdJury, this.projectId);
-
-        fetchJuryProjects.execute();
-
-
-        //FetchPoster fetchPoster = new FetchPoster(this, this.usernameSession, this.tokenSession, this.currentIdJury );
-        //fetchPoster.execute();
+        FetchTutorProjectsDetails fetchTutorProjectsDetails= new FetchTutorProjectsDetails(DetailsProjectTutorJM.this, this.usernameSession, this.tokenSession);
+        fetchTutorProjectsDetails.execute();
 
 
 
     }
 
-    public void getDataProjectsDetails(JSONObject JO) throws JSONException {
 
+    public void getDataProjectsDetailsTutor(JSONObject JO) throws JSONException {
+
+        System.out.println("TESSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSt");
         JSONArray projectArray = JO.getJSONArray("projects");
         String title = "";
         String desc = "";
         String tutor = "";
-
+        System.out.println("-------------5---" +projectArray);
 
         for ( int i =0; i<projectArray.length(); i++){
             System.out.println("-------------1---" +this.projectId);
@@ -93,7 +87,7 @@ public class DetailsProjectsJMActivity extends AppCompatActivity {
                 System.out.println("----------------------------------");
                 desc = projectArray.getJSONObject(i).getString("descrip");
                 title = projectArray.getJSONObject(i).getString("title");
-               tutor = projectArray.getJSONObject(i).getJSONObject("supervisor").getString("forename")+" " + projectArray.getJSONObject(i).getJSONObject("supervisor").getString("surname");
+                tutor = projectArray.getJSONObject(i).getJSONObject("supervisor").getString("forename")+" " + projectArray.getJSONObject(i).getJSONObject("supervisor").getString("surname");
 
 
             }
@@ -105,14 +99,12 @@ public class DetailsProjectsJMActivity extends AppCompatActivity {
 
     }
 
-
-
-
-
     public void goToMyProjects(View v){
         finish();
     }
 
-    }
+
+
+}
 
 

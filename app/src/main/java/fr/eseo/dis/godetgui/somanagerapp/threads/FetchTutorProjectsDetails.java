@@ -5,7 +5,6 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.ListView;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -19,38 +18,33 @@ import java.net.URL;
 import javax.net.ssl.HttpsURLConnection;
 
 import fr.eseo.dis.godetgui.somanagerapp.Certificates.TrustManager;
+import fr.eseo.dis.godetgui.somanagerapp.DetailsProjectTutorJM;
 import fr.eseo.dis.godetgui.somanagerapp.DetailsProjectsJMActivity;
+import fr.eseo.dis.godetgui.somanagerapp.JurysJMActivity;
 
-public class
-FetchJuryProjects extends AsyncTask<Void, Void, Void> {
+public class FetchTutorProjectsDetails extends AsyncTask<Void, Void, Void> {
 
     String data = "";
     JSONObject JO;
     String user;
     String token;
-    String juryId;
-    String projectId;
 
-    DetailsProjectsJMActivity detailsProjectsJMActivity;
+    DetailsProjectTutorJM detailsProjectTutorJM;
 
-
-    public FetchJuryProjects(DetailsProjectsJMActivity detailsProjectsJMActivity, String user, String token, String juryId, String projectId){
-        this.detailsProjectsJMActivity = detailsProjectsJMActivity;
+    public FetchTutorProjectsDetails(DetailsProjectTutorJM detailsProjectTutorJM, String user, String token){
+        this.detailsProjectTutorJM = detailsProjectTutorJM;
         this.user = user;
         this.token = token;
-        this.juryId = juryId;
-        this.projectId= projectId;
     }
-
 
     @Override
     protected Void doInBackground(Void... voids) {
         TrustManager trustManager = new TrustManager();
-        trustManager.getCertificate(this.detailsProjectsJMActivity.getApplicationContext());
+        trustManager.getCertificate(this.detailsProjectTutorJM.getApplicationContext());
         try {
 
+            URL url =  new URL("https://192.168.4.248/pfe/webservice.php?q=MYPRJ&user="+user+"&token="+token);
 
-            URL url =  new URL("https://192.168.4.248/pfe/webservice.php?q=JYINF&user="+user+"&jury="+juryId+"&token="+token);
             //Créer une connection
             HttpsURLConnection httpsURLConnection = (HttpsURLConnection) url.openConnection();
             httpsURLConnection.setSSLSocketFactory(trustManager.getSSLContext().getSocketFactory());
@@ -61,9 +55,12 @@ FetchJuryProjects extends AsyncTask<Void, Void, Void> {
             String line="";
             while(line != null){
                 line = bufferedReader.readLine();
+                System.out.println(line);
                 data = data + line;
             }
             JO = new JSONObject(data);
+
+
 
 
         } catch (MalformedURLException e) {
@@ -78,17 +75,17 @@ FetchJuryProjects extends AsyncTask<Void, Void, Void> {
         return null;
     }
 
-
     @Override
     protected void onPostExecute(Void aVoid) {
         try {
+            detailsProjectTutorJM.getDataProjectsDetailsTutor(this.JO);
 
-            this.detailsProjectsJMActivity.getDataProjectsDetails(this.JO);
+
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
     }
-
 
 
 }

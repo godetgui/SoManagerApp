@@ -26,6 +26,7 @@ import fr.eseo.dis.godetgui.somanagerapp.data.SomanagerDatabase;
 import fr.eseo.dis.godetgui.somanagerapp.data.Tutors;
 import fr.eseo.dis.godetgui.somanagerapp.data.TutorsDao;
 import fr.eseo.dis.godetgui.somanagerapp.threads.FetchMyJurys;
+import fr.eseo.dis.godetgui.somanagerapp.threads.FetchTutorProjects;
 
 public class JurysJMActivity extends AppCompatActivity {
 
@@ -35,7 +36,9 @@ public class JurysJMActivity extends AppCompatActivity {
     private String usernameSession;
     private String tokenSession;
     private List<String> jurysList;
+    private List<String> projectTutorList;
     private ListView listViewJuries;
+    private ListView listViewprojectsTutor;
 
 
 
@@ -65,10 +68,13 @@ public class JurysJMActivity extends AppCompatActivity {
 
         //récupération de la ListView
         listViewJuries = (ListView)findViewById(R.id.listViewJuries);
-
+        listViewprojectsTutor = (ListView)findViewById(R.id.listViewprojectsTutor);
         //Appel du webService
         FetchMyJurys fetchMyJurys = new FetchMyJurys(this, this.usernameSession, this.tokenSession);
         fetchMyJurys.execute();
+
+        FetchTutorProjects fetchTutorProjects = new FetchTutorProjects(this, this.usernameSession, this.tokenSession);
+        fetchTutorProjects.execute();
 
     }
 
@@ -80,6 +86,7 @@ public class JurysJMActivity extends AppCompatActivity {
         String Newligne=System.getProperty("line.separator");
 
         this.jurysList = new ArrayList<>();
+        this.projectTutorList = new ArrayList();
 
         //Remplissage de la liste des jurys et du hasmamp qui stocke les id des juries en fonction de leur position dans la liste
         for(int i = 0; i<responseJuries.length(); i++){
@@ -109,7 +116,6 @@ public class JurysJMActivity extends AppCompatActivity {
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,jurysList);
         listViewJuries.setAdapter(arrayAdapter);
 
-
         //Click sur un élément de la liste
         listViewJuries.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -130,6 +136,64 @@ public class JurysJMActivity extends AppCompatActivity {
 
 
     }
+
+        public void getProjectsTutor(JSONObject JO) throws JSONException {
+            JSONArray responseJuries = JO.getJSONArray("projects");
+            final HashMap<Integer, String> hashMapId = new HashMap();
+            final HashMap<Integer, String> hashMapInfo = new HashMap();
+            String Newligne=System.getProperty("line.separator");
+
+            this.projectTutorList = new ArrayList();
+
+            //Remplissage de la liste des jurys et du hasmamp qui stocke les id des juries en fonction de leur position dans la liste
+            for(int i = 0; i<responseJuries.length(); i++){
+                this.projectTutorList.add(i,"Project: "+responseJuries.getJSONObject(i).getString("projectId")+ Newligne +"Title: "+responseJuries.getJSONObject(i).getString("title")+Newligne);
+                hashMapId.put(i,responseJuries.getJSONObject(i).getString("projectId"));
+
+
+    /*
+                    //Récupération des projets associés et stockage en BDD
+                    JSONArray projects = responseJuries.getJSONObject(i).getJSONObject("info").getJSONArray("projects");
+                    for(int j = 0; j<projects.length(); j++){
+                        //Récupération
+                        JSONObject projectJSON = projects.getJSONObject(j);
+
+                        //Création d'un nouveau projet
+                        Projects projectToAdd = new Projects();
+                        projectToAdd.setIdProject((Integer.parseInt(projectJSON.getString("projectId"))));
+                        projectToAdd.setNom(projectJSON.getString("title"));
+                        projectToAdd.setConfidentialite(Integer.parseInt(projectJSON.getString("confid")));
+
+                        //Ajout à la BDD
+                    SomanagerDatabase.getDatabase(this).projectsDao().insertProject(projectToAdd);
+                } */
+            }
+
+            //creation de l'adapter et association de l'adapter avec la listView
+            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,projectTutorList);
+            listViewprojectsTutor.setAdapter(arrayAdapter);
+
+            //Click sur un élément de la liste
+            listViewprojectsTutor.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    System.out.println("AU CLICK, id: "+id);
+                    System.out.println("AU CLICK, position: "+position);
+                    System.out.println("AU CLICK, view: "+view);
+                    System.out.println("ID DU JURY CLIQUÉ: "+hashMapId.get(position));
+
+                    Intent goToDetailsProjectJMActivity = new Intent(JurysJMActivity.this, DetailsProjectTutorJM.class);
+                    goToDetailsProjectJMActivity.putExtra("projectId", hashMapId.get(position));
+                    goToDetailsProjectJMActivity.putExtra("projects", hashMapInfo.get(position));
+                    startActivity(goToDetailsProjectJMActivity);
+
+                }
+            });
+
+
+
+        }
+
 
     public void goToAllProjects(View v){
         Intent goToAllProjects = new Intent(JurysJMActivity.this, CommAllProjectsActivity.class);

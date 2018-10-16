@@ -1,10 +1,18 @@
 <resources>
     <string name="app_name">SoManagerApp</string>
     <string name="description">Description</string>
+    <string name="retour_tous_les_projets">Retour à tous les projets</string>
+    <string name="membres">Membres</string>
+    <string name="tuteur">Tuteur</string>
     <string name="jury">Jury</string>
+    <string name="date">Date</string>
     <string name="poster">Poster</string>
+    <string name="your_projects">You are tutor of :</string>
+    <string name="see_all_projects">See All Projects</string>
+    <string name="your_juries">You are jury of :</string>
     <string name="members">Members</string>
     <string name="supervisor">Supervisor</string>
     <string name="students">Students</string>
     <string name="see_all_my_projects">See all my projects</string>
+    <string name="back_to_my_main_page">Back to my main page</string>
 </resources>
