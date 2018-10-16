@@ -1,7 +1,9 @@
 package fr.eseo.dis.godetgui.somanagerapp;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -59,11 +61,36 @@ public class NoteProjectActivity extends AppCompatActivity {
 
     public void getData(JSONObject JO) throws JSONException {
 
+        if(JO.getString("result").equals("OK")){
+            finish();
+        }
+        else{
+            createDialogAlert(JO.getString("error"));
+        }
+
         System.out.println("RESULTAT DE LA REQUETE"+JO.getString("result"));
         System.out.println("RESULTAT DE LA REQUETE API"+JO.getString("api"));
 
-        finish();
 
+
+
+    }
+
+    public void createDialogAlert(String logError){
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(NoteProjectActivity.this);
+
+        alertDialogBuilder
+                .setTitle("Error")
+                .setMessage(logError)
+                .setCancelable( false)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                });
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
 
     }
 }
