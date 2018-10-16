@@ -72,19 +72,14 @@ public class DetailsProjectTutorJM extends AppCompatActivity {
 
 
     public void getDataProjectsDetailsTutor(JSONObject JO) throws JSONException {
-
-        System.out.println("TESSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSt");
         JSONArray projectArray = JO.getJSONArray("projects");
         String title = "";
         String desc = "";
         String tutor = "";
-        System.out.println("-------------5---" +projectArray);
 
         for ( int i =0; i<projectArray.length(); i++){
-            System.out.println("-------------1---" +this.projectId);
 
             if( projectArray.getJSONObject(i).getString("projectId").equals(this.projectId)){
-                System.out.println("----------------------------------");
                 desc = projectArray.getJSONObject(i).getString("descrip");
                 title = projectArray.getJSONObject(i).getString("title");
                 tutor = projectArray.getJSONObject(i).getJSONObject("supervisor").getString("forename")+" " + projectArray.getJSONObject(i).getJSONObject("supervisor").getString("surname");
