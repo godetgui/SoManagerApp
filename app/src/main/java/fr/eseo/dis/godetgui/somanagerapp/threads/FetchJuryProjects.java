@@ -21,7 +21,8 @@ import javax.net.ssl.HttpsURLConnection;
 import fr.eseo.dis.godetgui.somanagerapp.Certificates.TrustManager;
 import fr.eseo.dis.godetgui.somanagerapp.DetailsProjectsJMActivity;
 
-public class FetchJuryProjects extends AsyncTask<Void, Void, Void> {
+public class
+FetchJuryProjects extends AsyncTask<Void, Void, Void> {
 
     String data = "";
     JSONObject JO;
@@ -83,7 +84,7 @@ public class FetchJuryProjects extends AsyncTask<Void, Void, Void> {
     protected void onPostExecute(Void aVoid) {
         try {
 
-            DetailsProjectsJMActivity.getDataProjectsDetails(this.JO);
+            this.detailsProjectsJMActivity.getDataProjectsDetails(this.JO);
         } catch (JSONException e) {
             e.printStackTrace();
         }

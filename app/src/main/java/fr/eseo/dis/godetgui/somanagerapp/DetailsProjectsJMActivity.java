@@ -28,7 +28,11 @@ public class DetailsProjectsJMActivity extends AppCompatActivity {
     private SharedPreferences myPrefs;
     private String usernameSession;
     private String tokenSession;
-
+    //Recupération des textView
+    private TextView champ_jur ;
+    private TextView champ_descr ;
+    private TextView champ_titre ;
+    private TextView champ_tut;
 
 
 
@@ -41,8 +45,11 @@ public class DetailsProjectsJMActivity extends AppCompatActivity {
         this.currentIdJury = intent.getStringExtra("idJury");
         this.projectId = intent.getStringExtra("projectId");
 
-        //Recupération des textView
-        TextView champ_jur = findViewById(R.id.champ_jur);
+        this.champ_jur = findViewById(R.id.champ_jur);
+        this.champ_descr = findViewById(R.id.champ_descr);
+        this.champ_titre = findViewById(R.id.champ_titre);
+        this.champ_tut = findViewById(R.id.champ_tut);
+
 
 
         champ_jur.setText(this.currentIdJury);
@@ -62,25 +69,33 @@ public class DetailsProjectsJMActivity extends AppCompatActivity {
 
     }
 
-    public static void getDataProjectsDetails(JSONObject JO) throws JSONException {
+    public void getDataProjectsDetails(JSONObject JO) throws JSONException {
+
+        JSONArray projectArray = JO.getJSONArray("projects");
+        String title = "";
+        String desc = "";
+        String tutor = "";
+
+        for ( int i =0; i<projectArray.length(); i++){
+            System.out.println("-------------1---" +this.projectId);
+
+            if( projectArray.getJSONObject(i).getString("projectId").equals(this.projectId)){
+                desc = projectArray.getJSONObject(i).getString("descrip");
+                title = projectArray.getJSONObject(i).getString("title");
+                tutor = projectArray.getJSONObject(i).getJSONObject("supervisor").getString("forename")+" " + projectArray.getJSONObject(i).getJSONObject("supervisor").getString("1");
 
 
-        JSONArray response = JO.getJSONArray("info");
-        JSONObject infos = response.getJSONObject(0);
-        String description = infos.getString("descrip");
-        String title = infos.getString("title");
-        String confid = infos.getString("confid");
-        String id = infos.getString("projectId");
-
-            System.out.println("------------"+id);
-        if (id.equals(26)) {
-           // ajout();
-        }
-        }
-
-            public void ajout(){
-            //this.champ_descr.setText("OUUIII");
             }
+
+        }
+       // this.champ_descr.setText(desc);
+
+        this.champ_titre.setText(title);
+        this.champ_tut.setText(tutor);
+
+
+    }
+
     }
 
 
