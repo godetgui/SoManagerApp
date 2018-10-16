@@ -64,38 +64,27 @@ public class CommAllProjectsActivity extends AppCompatActivity {
         this.projectsList = new ArrayList<>();
 
         //Remplissage de la liste des jurys et du hasmamp qui stocke les id des juries en fonction de leur position dans la liste
-        for(int i = 0; i<responseProjects.length(); i++){
-            this.projectsList.add(i,"Project: "+responseProjects.getJSONObject(i).getString("projectId")
-                    + Newligne +"Title: "+responseProjects.getJSONObject(i).getString("title"))
-            ;
-            hashMapId.put(i,responseProjects.getJSONObject(i).getString("projectId"));
-           // hashMapInfo.put(i, responseProjects.getJSONObject(i).getString("descrip"));
 
-/*
-                //Récupération des projets associés et stockage en BDD
-                JSONArray projects = responseJuries.getJSONObject(i).getJSONObject("info").getJSONArray("projects");
-                for(int j = 0; j<projects.length(); j++){
-                    //Récupération
-                    JSONObject projectJSON = projects.getJSONObject(j);
 
-                    //Création d'un nouveau projet
-                    Projects projectToAdd = new Projects();
-                    projectToAdd.setIdProject((Integer.parseInt(projectJSON.getString("projectId"))));
-                    projectToAdd.setNom(projectJSON.getString("title"));
-                    projectToAdd.setConfidentialite(Integer.parseInt(projectJSON.getString("confid")));
+        for(int i = 0; i<responseProjects.length(); i++) {
+            if (responseProjects.getJSONObject(i).getString("confid").equals("0")) {
 
-                    //Ajout à la BDD
-                SomanagerDatabase.getDatabase(this).projectsDao().insertProject(projectToAdd);
-            } */
+
+                this.projectsList.add(i, "Project: " + responseProjects.getJSONObject(i).getString("projectId")
+                        + Newligne + "Title: " + responseProjects.getJSONObject(i).getString("title"))
+                ;
+            }else{
+                this.projectsList.add(i, "Confidential project")
+                ;
+            }
+                hashMapId.put(i, responseProjects.getJSONObject(i).getString("projectId"));
+
+                //creation de l'adapter et association de l'adapter avec la listViewNObject(i).getString("title")
+                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, projectsList);
+                ListViewProjects.setAdapter(arrayAdapter);
+
+
         }
-
-        //creation de l'adapter et association de l'adapter avec la listView
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,projectsList);
-        ListViewProjects.setAdapter(arrayAdapter);
-
-
-
-
 
     }
 }

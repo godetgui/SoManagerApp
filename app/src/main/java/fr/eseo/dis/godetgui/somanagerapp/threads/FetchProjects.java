@@ -58,6 +58,7 @@ public class FetchProjects extends AsyncTask<Void, Void, Void> {
             String line="";
             while(line != null){
                 line = bufferedReader.readLine();
+                System.out.println(line);
                 data = data + line;
             }
             JO = new JSONObject(data);
