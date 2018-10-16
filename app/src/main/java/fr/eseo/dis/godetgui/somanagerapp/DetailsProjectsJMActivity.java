@@ -76,19 +76,20 @@ public class DetailsProjectsJMActivity extends AppCompatActivity {
         String desc = "";
         String tutor = "";
 
+
         for ( int i =0; i<projectArray.length(); i++){
             System.out.println("-------------1---" +this.projectId);
 
             if( projectArray.getJSONObject(i).getString("projectId").equals(this.projectId)){
                 desc = projectArray.getJSONObject(i).getString("descrip");
                 title = projectArray.getJSONObject(i).getString("title");
-                tutor = projectArray.getJSONObject(i).getJSONObject("supervisor").getString("forename")+" " + projectArray.getJSONObject(i).getJSONObject("supervisor").getString("1");
+               tutor = projectArray.getJSONObject(i).getJSONObject("supervisor").getString("forename")+" " + projectArray.getJSONObject(i).getJSONObject("supervisor").getString("surname");
 
 
             }
 
         }
-       // this.champ_descr.setText(desc);
+       //this.champ_descr.setText(desc);
 
         this.champ_titre.setText(title);
         this.champ_tut.setText(tutor);
