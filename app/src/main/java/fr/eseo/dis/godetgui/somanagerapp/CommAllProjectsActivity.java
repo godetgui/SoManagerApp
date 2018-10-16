@@ -19,7 +19,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import fr.eseo.dis.godetgui.somanagerapp.threads.FetchMyJurys;
 import fr.eseo.dis.godetgui.somanagerapp.threads.FetchProjects;
 
 public class CommAllProjectsActivity extends AppCompatActivity {
@@ -82,6 +81,19 @@ public class CommAllProjectsActivity extends AppCompatActivity {
                 //creation de l'adapter et association de l'adapter avec la listViewNObject(i).getString("title")
                 ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, projectsList);
                 ListViewProjects.setAdapter(arrayAdapter);
+
+        //Click sur un élément de la liste
+        ListViewProjects.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Intent goToDetailsProjectActivity = new Intent(CommAllProjectsActivity.this, DetailsProjectsJMActivity.class);
+                goToDetailsProjectActivity.putExtra("projectId", hashMapId.get(position));
+                startActivity(goToDetailsProjectActivity);
+
+            }
+        });
 
 
         }

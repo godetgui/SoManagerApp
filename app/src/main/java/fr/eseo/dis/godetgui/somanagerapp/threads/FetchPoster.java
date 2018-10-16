@@ -2,18 +2,14 @@ package fr.eseo.dis.godetgui.somanagerapp.threads;
 
 import android.os.AsyncTask;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Base64;
 
 import javax.net.ssl.HttpsURLConnection;
 
@@ -78,8 +74,7 @@ public class FetchPoster extends AsyncTask<Void, Void, Void> {
         return null;
     }
 
-   /*
-    public static void decoder(String base64Image, String pathFile) {
+/*    public static void decoder(String base64Image, String pathFile) {
         try (FileOutputStream imageOutFile = new FileOutputStream(pathFile)) {
             // Converting a Base64 String into Image byte array
             byte[] imageByteArray = Base64.getDecoder().decode(base64Image);
@@ -89,7 +84,7 @@ public class FetchPoster extends AsyncTask<Void, Void, Void> {
         } catch (IOException ioe) {
             System.out.println("Exception while reading the Image " + ioe);
         }
-    } */
+    }*/
 
     @Override
     protected void onPostExecute(Void aVoid) {

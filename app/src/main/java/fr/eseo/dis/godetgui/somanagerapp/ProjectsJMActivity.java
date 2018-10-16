@@ -43,6 +43,8 @@ public class ProjectsJMActivity extends AppCompatActivity {
         Intent intent = getIntent();
         this.currentIdJury = intent.getStringExtra("idJury");
         this.currentInfo = intent.getStringExtra("info");
+        System.out.println("DANS PROJECTJMACTIVITY, IDJURY: "+this.currentIdJury);
+        System.out.println("DANS PROJECTJMACTIVITY, INFO: "+this.currentInfo);
 
         //récupération du contexte
         this.context = this.getApplicationContext();
@@ -62,6 +64,8 @@ public class ProjectsJMActivity extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
+        System.out.println("DANS PROJECTJMACTIVITY, INFOJSONARRAY: "+currentInfoJSONObject);
 
         try {
             this.getProjects(this.currentInfoJSONObject);

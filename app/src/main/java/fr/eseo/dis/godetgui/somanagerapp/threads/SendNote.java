@@ -15,33 +15,37 @@ import java.net.URL;
 import javax.net.ssl.HttpsURLConnection;
 
 import fr.eseo.dis.godetgui.somanagerapp.Certificates.TrustManager;
-import fr.eseo.dis.godetgui.somanagerapp.CommAllProjectsActivity;
+import fr.eseo.dis.godetgui.somanagerapp.LogActivity;
+import fr.eseo.dis.godetgui.somanagerapp.NoteProjectActivity;
 
-public class FetchProjects extends AsyncTask<Void, Void, Void> {
+public class SendNote extends AsyncTask<Void, Void, Void> {
 
-    String data = "";
-    JSONObject JO;
+    NoteProjectActivity noteProjectActivity;
     String user;
     String token;
+    String idProject;
+    String note;
+    String data = "";
+    JSONObject JO;
+    String idStudent;
 
-    CommAllProjectsActivity CommAllProjectsActivity;
-
-
-    public FetchProjects(CommAllProjectsActivity CommAllProjectsActivity, String user, String token){
-        this.CommAllProjectsActivity = CommAllProjectsActivity;
+    public SendNote(NoteProjectActivity noteProjectActivity, String user, String token, String idProject, String note, String idStudent){
+        this.noteProjectActivity = noteProjectActivity;
         this.user = user;
         this.token = token;
+        this.note = note;
+        this.idProject = idProject;
+        this.idStudent = idStudent;
+
     }
-
-
 
     @Override
     protected Void doInBackground(Void... voids) {
         TrustManager trustManager = new TrustManager();
-        trustManager.getCertificate(this.CommAllProjectsActivity.getApplicationContext());
+        trustManager.getCertificate(this.noteProjectActivity.getApplicationContext());
         try {
 
-            URL url =  new URL("https://192.168.4.248/pfe/webservice.php?q=LIPRJ&user="+user+"&token="+token);
+            URL url =  new URL("https://192.168.4.248/pfe/webservice.php?q=NEWNT&user="+user+"&proj="+idProject+"&student="+idStudent+"&note="+note+"&token="+token);
 
             //Créer une connection
             HttpsURLConnection httpsURLConnection = (HttpsURLConnection) url.openConnection();
@@ -49,17 +53,14 @@ public class FetchProjects extends AsyncTask<Void, Void, Void> {
             InputStream inputStream = httpsURLConnection.getInputStream();
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
 
-            //Lecture de la réponse et stockage dans un JSONObject
             String line="";
             while(line != null){
                 line = bufferedReader.readLine();
                 System.out.println(line);
                 data = data + line;
             }
+
             JO = new JSONObject(data);
-
-
-
 
         } catch (MalformedURLException e) {
             e.printStackTrace();
@@ -74,17 +75,11 @@ public class FetchProjects extends AsyncTask<Void, Void, Void> {
     }
 
 
+
+
     @Override
-    protected void onPostExecute(Void aVoid) {
-        try {
-            CommAllProjectsActivity.getDataProjects(this.JO);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+    protected void onPostExecute(Void aVoid){
+        noteProjectActivity.getData();
+
     }
-
-
-
 }
-
-
