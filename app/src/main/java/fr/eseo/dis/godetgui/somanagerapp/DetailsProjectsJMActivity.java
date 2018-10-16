@@ -95,6 +95,10 @@ public class DetailsProjectsJMActivity extends AppCompatActivity {
 
     }
 
+    public void goToMyProjects(View v){
+        finish();
+    }
+
     }
 
 

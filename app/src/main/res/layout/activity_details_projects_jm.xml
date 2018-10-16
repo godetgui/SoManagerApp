@@ -4,22 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DetailsProjectsJMActivity"
-    tools:layout_editor_absoluteY="81dp">
+    tools:context=".DetailsProjectsJMActivity">
 
     <Button
-        android:id="@+id/buttonGoToProjects2"
+        android:id="@+id/GoToMyProjects"
+        android:onClick="goToMyProjects"
+        android:text="@string/see_all_my_projects"
         android:layout_width="208dp"
         android:layout_height="75dp"
         android:layout_marginTop="6dp"
         android:layout_marginBottom="9dp"
         android:fontFamily="sans-serif-black"
-        android:text="@string/see_all_my_projects"
         app:layout_constraintBottom_toTopOf="@+id/scrollView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints,OnClick" />
 
     <ScrollView
         android:id="@+id/scrollView"
@@ -29,8 +29,9 @@
         android:scrollbars="none"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonGoToProjects2"
+        app:layout_constraintTop_toBottomOf="@+id/GoToMyProjects"
         tools:ignore="MissingConstraints">
 
         <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -63,7 +64,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/border_cells"
                     android:padding="10dp"
-                    android:text="..."
+                    android:text="Titre"
                     android:textAlignment="center"
                     android:textSize="18sp" />
             </TableRow>
@@ -88,7 +89,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/border_cells"
                     android:padding="10dp"
-                    android:text="Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                    android:text="Ceci est une description sur plusieurs lignes"
                     android:textAlignment="center"
                     android:textSize="18sp" />
             </TableRow>
@@ -111,6 +112,7 @@
                     android:layout_column="1"
                     android:layout_weight="1"
                     android:background="@drawable/border_cells"
+                    android:text="Prénom Nom"
                     android:padding="10dp"
                     android:textAlignment="center"
                     android:textSize="18sp" />
@@ -159,7 +161,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/border_cells"
                     android:padding="10dp"
-                    android:text="xxx"
+                    android:text="Numéro X"
                     android:textAlignment="center"
                     android:textSize="18sp" />
             </TableRow>
