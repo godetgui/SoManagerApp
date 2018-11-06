@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DetailsProjectsJMActivity">
+    tools:context=".DetailsProjectsCommActivity">
 
     <Button
         android:id="@+id/GoToMyProjects"
@@ -185,7 +185,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/border_cells"
                     android:padding="10dp"
-                    android:text="Lien2"
+                    android:text="Lien"
                     android:textAlignment="center"
                     android:textSize="18sp" />
             </TableRow>

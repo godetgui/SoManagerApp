@@ -11,9 +11,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import fr.eseo.dis.godetgui.somanagerapp.threads.FetchTutorProjectsDetails;
+import fr.eseo.dis.godetgui.somanagerapp.threads.FetchCommProjectsDetails;
 
-public class DetailsProjectTutorJM extends AppCompatActivity {
+public class DetailsProjectsCommActivity extends AppCompatActivity {
 
     private String projectId;
     private String currentIdJury;
@@ -26,10 +26,12 @@ public class DetailsProjectTutorJM extends AppCompatActivity {
     private TextView champ_titre ;
     private TextView champ_tut;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_details_projects_jm);
+        setContentView(R.layout.activity_details_projects_comm);
         //recupération de l'intent et de l'idJury passé en paramètre
         Intent intent = getIntent();
         this.currentIdJury = intent.getStringExtra("idJury");
@@ -49,25 +51,38 @@ public class DetailsProjectTutorJM extends AppCompatActivity {
         this.usernameSession = myPrefs.getString("USERNAME",null);
         this.tokenSession = myPrefs.getString("TOKEN",null);
 
-        FetchTutorProjectsDetails fetchTutorProjectsDetails= new FetchTutorProjectsDetails(DetailsProjectTutorJM.this, this.usernameSession, this.tokenSession);
-        fetchTutorProjectsDetails.execute();
+        FetchCommProjectsDetails fetchCommProjectsDetails= new FetchCommProjectsDetails(DetailsProjectsCommActivity.this, this.usernameSession, this.tokenSession);
+        fetchCommProjectsDetails.execute();
+
+
     }
 
-    public void getDataProjectsDetailsTutor(JSONObject JO) throws JSONException {
+
+    public void getDataProjectsDetailsComm(JSONObject JO) throws JSONException {
+        System.out.println("MANGER" + JO);
         JSONArray projectArray = JO.getJSONArray("projects");
+
+
+        System.out.println("IT S ME"+projectArray);
+
         String title = "";
         String desc = "";
         String tutor = "";
 
+        System.out.println("JE SUIS LA" + projectArray.length());
+
         for ( int i =0; i<projectArray.length(); i++){
+            System.out.println("TEST APRES FOR"+ projectArray.getJSONObject(i).getString("projectId"));
 
             if( projectArray.getJSONObject(i).getString("projectId").equals(this.projectId)){
                 desc = projectArray.getJSONObject(i).getString("descrip");
                 title = projectArray.getJSONObject(i).getString("title");
                 tutor = projectArray.getJSONObject(i).getJSONObject("supervisor").getString("forename")+" " + projectArray.getJSONObject(i).getJSONObject("supervisor").getString("surname");
+
             }
 
         }
+
         this.champ_descr.setText(desc);
         this.champ_titre.setText(title);
         this.champ_tut.setText(tutor);
@@ -78,4 +93,8 @@ public class DetailsProjectTutorJM extends AppCompatActivity {
         finish();
     }
 
+
+
 }
+
+
