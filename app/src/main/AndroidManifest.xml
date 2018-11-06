@@ -23,9 +23,9 @@
         <activity android:name=".ProjectsJMActivity" />
         <activity android:name=".JurysJMActivity" />
         <activity android:name=".DetailsProjectsJMActivity" />
-        <activity android:name=".DetailsProjectTutorJM"></activity>
+        <activity android:name=".DetailsProjectTutorJM" />
         <activity android:name=".CommAllProjectsActivity" />
-        <activity android:name=".NoteProjectActivity"></activity>
+        <activity android:name=".NoteProjectActivity" />
     </application>
 
 </manifest>
