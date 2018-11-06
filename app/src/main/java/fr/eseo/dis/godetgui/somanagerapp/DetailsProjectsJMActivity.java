@@ -132,7 +132,8 @@ public class DetailsProjectsJMActivity extends AppCompatActivity {
                 Intent goToNoteProjectActivity = new Intent(DetailsProjectsJMActivity.this, NoteProjectActivity.class);
 
                 goToNoteProjectActivity.putExtra("idStudent", hashMapIdStudent.get(position));
-                goToNoteProjectActivity.putExtra("idProject", hashMapIdProject.get(position));
+                System.out.println("Dans DPJMA.java: "+hashMapIdProject.get(0));
+                goToNoteProjectActivity.putExtra("idProject", hashMapIdProject.get(0));
                 startActivity(goToNoteProjectActivity);
 
 

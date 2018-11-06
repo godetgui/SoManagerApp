@@ -50,6 +50,8 @@ public class FetchPoster extends AsyncTask<Void, Void, Void> {
 
             System.out.println("IMAGE: "+ bufferedReader);
 
+            //byte[] imgBytesData = android.util.Base64.decode(bufferedReader);
+
            /* //Lecture de la réponse et stockage dans un JSONObject
             String line="";
             while(line != null){
@@ -74,17 +76,6 @@ public class FetchPoster extends AsyncTask<Void, Void, Void> {
         return null;
     }
 
-/*    public static void decoder(String base64Image, String pathFile) {
-        try (FileOutputStream imageOutFile = new FileOutputStream(pathFile)) {
-            // Converting a Base64 String into Image byte array
-            byte[] imageByteArray = Base64.getDecoder().decode(base64Image);
-            imageOutFile.write(imageByteArray);
-        } catch (FileNotFoundException e) {
-            System.out.println("Image not found" + e);
-        } catch (IOException ioe) {
-            System.out.println("Exception while reading the Image " + ioe);
-        }
-    }*/
 
     @Override
     protected void onPostExecute(Void aVoid) {
