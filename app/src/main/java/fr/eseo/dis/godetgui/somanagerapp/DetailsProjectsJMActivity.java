@@ -1,17 +1,12 @@
 package fr.eseo.dis.godetgui.somanagerapp;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -22,12 +17,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import fr.eseo.dis.godetgui.somanagerapp.data.JM;
 import fr.eseo.dis.godetgui.somanagerapp.threads.FetchJuryProjects;
-import fr.eseo.dis.godetgui.somanagerapp.threads.FetchPoster;
-import fr.eseo.dis.godetgui.somanagerapp.threads.FetchProjects;
-import fr.eseo.dis.godetgui.somanagerapp.threads.FetchTutorProjects;
-import fr.eseo.dis.godetgui.somanagerapp.threads.FetchTutorProjectsDetails;
 
 public class DetailsProjectsJMActivity extends AppCompatActivity {
 
@@ -122,7 +112,6 @@ public class DetailsProjectsJMActivity extends AppCompatActivity {
         System.out.println("description: "+ this.champ_titre.getText().toString());
 
 
-        //*********************PB surement ici************************
         this.listViewStudents.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
 
