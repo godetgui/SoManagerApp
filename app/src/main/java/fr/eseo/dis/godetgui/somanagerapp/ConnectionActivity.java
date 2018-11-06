@@ -1,6 +1,5 @@
 package fr.eseo.dis.godetgui.somanagerapp;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -8,27 +7,21 @@ import android.content.SharedPreferences;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-
 
 import fr.eseo.dis.godetgui.somanagerapp.data.JM;
 import fr.eseo.dis.godetgui.somanagerapp.data.SomanagerDatabase;
-import fr.eseo.dis.godetgui.somanagerapp.data.SomanagerDatabaseCallback;
 import fr.eseo.dis.godetgui.somanagerapp.threads.FetchLogon;
 import fr.eseo.dis.godetgui.somanagerapp.threads.FetchRole;
 
-public class LogActivity extends AppCompatActivity {
+public class ConnectionActivity extends AppCompatActivity {
 
     private Button btnConnexion;
     private String status;
@@ -44,7 +37,7 @@ public class LogActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_log);
+        setContentView(R.layout.activity_connection);
         this.context = this.getApplicationContext();
         //Récupération de la db
         this.db = SomanagerDatabase.getDatabase(this.context);
@@ -113,11 +106,11 @@ public class LogActivity extends AppCompatActivity {
 
         if (description.equals("Professeur")){
             this.db.jmDao().insertJm(new JM(0, surname, forename, username));
-            Intent goToJurysJMActivity = new Intent(LogActivity.this,JurysJMActivity.class);
+            Intent goToJurysJMActivity = new Intent(ConnectionActivity.this,JurysJMActivity.class);
             startActivity(goToJurysJMActivity);
 
         } else if (description.equals("Service Communications")){
-            Intent goToJAllProjectsComm = new Intent(LogActivity.this,CommAllProjectsActivity.class);
+            Intent goToJAllProjectsComm = new Intent(ConnectionActivity.this,CommAllProjectsActivity.class);
             startActivity(goToJAllProjectsComm);
         }
 
@@ -125,7 +118,7 @@ public class LogActivity extends AppCompatActivity {
 
 
     public void createDialogAlert(){
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(LogActivity.this);
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(ConnectionActivity.this);
 
         alertDialogBuilder
                 .setTitle("Error Connection")

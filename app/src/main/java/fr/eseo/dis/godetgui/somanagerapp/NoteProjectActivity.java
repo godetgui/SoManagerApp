@@ -25,6 +25,8 @@ public class NoteProjectActivity extends AppCompatActivity {
     private String tokenSession;
 
 
+    //PB surement ici
+    //Voir si les id des students sont bien transmis et bien transmis dans la requete dans le onClickbtnSend()
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,7 +55,6 @@ public class NoteProjectActivity extends AppCompatActivity {
     }
 
     public void onClickbtnSend(View v){
-
         SendNote sendNote = new SendNote(this,this.usernameSession, this.tokenSession, this.currentIdProject, this.champ_note.getText().toString(), this.currentIdStudent);
         sendNote.execute();
     }
@@ -71,10 +72,8 @@ public class NoteProjectActivity extends AppCompatActivity {
         System.out.println("RESULTAT DE LA REQUETE"+JO.getString("result"));
         System.out.println("RESULTAT DE LA REQUETE API"+JO.getString("api"));
 
-
-
-
     }
+
 
     public void createDialogAlert(String logError){
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(NoteProjectActivity.this);

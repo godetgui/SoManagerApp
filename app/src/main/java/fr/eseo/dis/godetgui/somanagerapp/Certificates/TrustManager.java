@@ -2,11 +2,8 @@ package fr.eseo.dis.godetgui.somanagerapp.Certificates;
 
 
 import android.content.Context;
-import android.util.Log;
 
 import java.io.BufferedInputStream;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.security.KeyManagementException;
@@ -21,7 +18,6 @@ import java.security.cert.X509Certificate;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManagerFactory;
 
-import fr.eseo.dis.godetgui.somanagerapp.LogActivity;
 import fr.eseo.dis.godetgui.somanagerapp.R;
 
 public class TrustManager {

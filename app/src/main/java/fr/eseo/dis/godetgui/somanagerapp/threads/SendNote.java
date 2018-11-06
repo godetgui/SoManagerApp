@@ -15,7 +15,6 @@ import java.net.URL;
 import javax.net.ssl.HttpsURLConnection;
 
 import fr.eseo.dis.godetgui.somanagerapp.Certificates.TrustManager;
-import fr.eseo.dis.godetgui.somanagerapp.LogActivity;
 import fr.eseo.dis.godetgui.somanagerapp.NoteProjectActivity;
 
 public class SendNote extends AsyncTask<Void, Void, Void> {

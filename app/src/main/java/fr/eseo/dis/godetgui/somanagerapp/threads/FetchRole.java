@@ -1,9 +1,7 @@
 package fr.eseo.dis.godetgui.somanagerapp.threads;
 
-import android.content.Context;
 import android.os.AsyncTask;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -13,12 +11,11 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
 
 import javax.net.ssl.HttpsURLConnection;
 
 import fr.eseo.dis.godetgui.somanagerapp.Certificates.TrustManager;
-import fr.eseo.dis.godetgui.somanagerapp.LogActivity;
+import fr.eseo.dis.godetgui.somanagerapp.ConnectionActivity;
 
 public class FetchRole extends AsyncTask<Void, Void, Void> {
 
@@ -27,10 +24,10 @@ public class FetchRole extends AsyncTask<Void, Void, Void> {
     String user;
     String token;
 
-    LogActivity logActivity;
+    ConnectionActivity connectionActivity;
 
-    public FetchRole(LogActivity logActivity, String user, String token){
-        this.logActivity = logActivity;
+    public FetchRole(ConnectionActivity connectionActivity, String user, String token){
+        this.connectionActivity = connectionActivity;
         this.user = user;
         this.token = token;
 
@@ -39,7 +36,7 @@ public class FetchRole extends AsyncTask<Void, Void, Void> {
     @Override
     protected Void doInBackground(Void... voids) {
         TrustManager trustManager = new TrustManager();
-        trustManager.getCertificate(this.logActivity.getApplicationContext());
+        trustManager.getCertificate(this.connectionActivity.getApplicationContext());
         try {
 
             URL url =  new URL("https://192.168.4.248/pfe/webservice.php?q=MYINF&user="+user+"&token="+token);
@@ -75,7 +72,7 @@ public class FetchRole extends AsyncTask<Void, Void, Void> {
     protected void onPostExecute(Void aVoid) {
 
         try {
-            logActivity.getDataRole(this.JO);
+            connectionActivity.getDataRole(this.JO);
         } catch (JSONException e) {
             e.printStackTrace();
         }

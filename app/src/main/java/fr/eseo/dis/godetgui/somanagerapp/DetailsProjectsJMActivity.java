@@ -122,6 +122,7 @@ public class DetailsProjectsJMActivity extends AppCompatActivity {
         System.out.println("description: "+ this.champ_titre.getText().toString());
 
 
+        //*********************PB surement ici************************
         this.listViewStudents.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
 
