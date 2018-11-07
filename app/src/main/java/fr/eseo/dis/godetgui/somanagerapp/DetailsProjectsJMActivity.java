@@ -70,7 +70,6 @@ public class DetailsProjectsJMActivity extends AppCompatActivity {
         final HashMap<Integer, String> hashMapIdProject = new HashMap();
 
         for (int i = 0; i < projectArray.length(); i++) {
-            System.out.println("-------------1---" + this.projectId);
 
             if( projectArray.getJSONObject(i).getString("projectId").equals(this.projectId)){
                 desc = projectArray.getJSONObject(i).getString("descrip");
@@ -93,9 +92,6 @@ public class DetailsProjectsJMActivity extends AppCompatActivity {
         this.champ_titre.setText(title);
         this.champ_tut.setText(tutor);
         this.champ_descr.setText(desc);
-        System.out.println("titre: "+ this.champ_titre.getText().toString());
-        System.out.println("tutor: "+ this.champ_titre.getText().toString());
-        System.out.println("description: "+ this.champ_titre.getText().toString());
 
         this.listViewStudents.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 

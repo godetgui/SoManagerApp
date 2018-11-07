@@ -76,6 +76,7 @@ public class JurysJMActivity extends AppCompatActivity {
         FetchTutorProjects fetchTutorProjects = new FetchTutorProjects(this, this.usernameSession, this.tokenSession);
         fetchTutorProjects.execute();
 
+        System.out.println("----------" + tokenSession);
     }
 
     public void getDataJurys(JSONObject JO) throws JSONException {

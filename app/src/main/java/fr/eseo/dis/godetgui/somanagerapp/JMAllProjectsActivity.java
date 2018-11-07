@@ -20,6 +20,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import fr.eseo.dis.godetgui.somanagerapp.threads.FetchJMProjects;
+import fr.eseo.dis.godetgui.somanagerapp.threads.FetchNotes;
 
 public class JMAllProjectsActivity extends AppCompatActivity {
 
@@ -35,6 +36,7 @@ public class JMAllProjectsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_comm_all_projects);
+        this.context = this.getApplicationContext();
 
 
         //récupération du contexte
@@ -88,9 +90,13 @@ public class JMAllProjectsActivity extends AppCompatActivity {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+
                     Intent goToDetailsProjectActivity = new Intent(JMAllProjectsActivity.this, DetailsProjectsJMActivity.class);
                     goToDetailsProjectActivity.putExtra("projectId", hashMapId.get(position));
                     startActivity(goToDetailsProjectActivity);
+
+
+
 
                 }
             });

@@ -15,53 +15,52 @@ import java.net.URL;
 import javax.net.ssl.HttpsURLConnection;
 
 import fr.eseo.dis.godetgui.somanagerapp.Certificates.TrustManager;
+import fr.eseo.dis.godetgui.somanagerapp.ConnectionActivity;
 import fr.eseo.dis.godetgui.somanagerapp.NoteProjectActivity;
 
-public class SendNote extends AsyncTask<Void, Void, Void> {
+public class FetchNotes extends AsyncTask<Void, Void, Void> {
 
-    NoteProjectActivity noteProjectActivity;
-    String user;
     String token;
-    String idProject;
-    String note;
     String data = "";
     JSONObject JO;
-    String idStudent;
+    String user;
+    String idProject;
 
-    public SendNote(NoteProjectActivity noteProjectActivity, String user, String token, String idProject, String note, String idStudent){
-        this.noteProjectActivity = noteProjectActivity;
-        this.user = user;
-        this.token = token;
-        this.note = note;
+    NoteProjectActivity noteprojectactivity;
+
+    public FetchNotes(NoteProjectActivity noteprojectactivity, String idProject, String user, String token){
+        this.noteprojectactivity = noteprojectactivity;
         this.idProject = idProject;
-        this.idStudent = idStudent;
+        this.token = token;
+        this.user = user;
 
     }
 
     @Override
     protected Void doInBackground(Void... voids) {
         TrustManager trustManager = new TrustManager();
-        trustManager.getCertificate(this.noteProjectActivity.getApplicationContext());
+        trustManager.getCertificate(this.noteprojectactivity.getApplicationContext());
         try {
-            System.out.println("xxxxxxxxxxxxxxxxx"+idProject);
 
-            URL url =  new URL("https://192.168.4.248/pfe/webservice.php?q=NEWNT&user="+user+"&proj="+idProject+"&student="+idStudent+"&note="+note+"&token="+token);
-
-            System.out.println("xxxxxxxxxxxxxxxxx"+url);
+            URL url =  new URL("https://192.168.4.248/pfe/webservice.php?q=NOTES&user="+user+"&proj="+idProject+"&token="+token);
+            System.out.println(url);
             //Créer une connection
             HttpsURLConnection httpsURLConnection = (HttpsURLConnection) url.openConnection();
             httpsURLConnection.setSSLSocketFactory(trustManager.getSSLContext().getSocketFactory());
             InputStream inputStream = httpsURLConnection.getInputStream();
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
 
+            //Lecture de la réponse et stockage dans un JSONObject
             String line="";
             while(line != null){
                 line = bufferedReader.readLine();
                 System.out.println(line);
                 data = data + line;
             }
-
             JO = new JSONObject(data);
+
+
+
 
         } catch (MalformedURLException e) {
             e.printStackTrace();
@@ -75,11 +74,11 @@ public class SendNote extends AsyncTask<Void, Void, Void> {
         return null;
     }
 
-
     @Override
-    protected void onPostExecute(Void aVoid){
+    protected void onPostExecute(Void aVoid) {
+
         try {
-            noteProjectActivity.getData(this.JO);
+            noteprojectactivity.getDataNotes(this.JO);
         } catch (JSONException e) {
             e.printStackTrace();
         }
