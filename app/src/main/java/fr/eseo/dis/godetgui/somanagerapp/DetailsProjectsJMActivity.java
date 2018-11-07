@@ -33,8 +33,6 @@ public class DetailsProjectsJMActivity extends AppCompatActivity {
     private TextView champ_tut;
     private ListView listViewStudents;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,8 +48,6 @@ public class DetailsProjectsJMActivity extends AppCompatActivity {
         this.champ_tut = findViewById(R.id.champ_tut);
         this.listViewStudents = findViewById(R.id.listViewStudents);
 
-
-
         champ_jur.setText(this.currentIdJury);
 
         //récupération des variables de sessions
@@ -61,12 +57,6 @@ public class DetailsProjectsJMActivity extends AppCompatActivity {
 
         FetchJuryProjects fetchJuryProjects= new FetchJuryProjects(DetailsProjectsJMActivity.this, this.usernameSession, this.tokenSession, this.currentIdJury, this.projectId);
         fetchJuryProjects.execute();
-
-        //FetchPoster fetchPoster = new FetchPoster(this, this.usernameSession, this.tokenSession, this.currentIdJury );
-        //fetchPoster.execute();
-
-
-
     }
 
     public void getDataProjectsDetails(JSONObject JO) throws JSONException {
@@ -79,7 +69,6 @@ public class DetailsProjectsJMActivity extends AppCompatActivity {
         final HashMap<Integer, String> hashMapIdStudent = new HashMap();
         final HashMap<Integer, String> hashMapIdProject = new HashMap();
 
-
         for (int i = 0; i < projectArray.length(); i++) {
             System.out.println("-------------1---" + this.projectId);
 
@@ -91,13 +80,10 @@ public class DetailsProjectsJMActivity extends AppCompatActivity {
                 //Récupération des JSONObjects des students
                 for (int j = 0; j < projectArray.getJSONObject(i).getJSONArray("students").length(); j++) {
                     System.out.println("Taille du array STUDENTS: " + projectArray.getJSONObject(i).getJSONArray("students").length());
-                    listStudent.add(j, projectArray.getJSONObject(i).getJSONArray("students").getJSONObject(j).getString("forename") + projectArray.getJSONObject(i).getJSONArray("students").getJSONObject(j).getString("surname"));
+                    listStudent.add(j, projectArray.getJSONObject(i).getJSONArray("students").getJSONObject(j).getString("forename") +" "+ projectArray.getJSONObject(i).getJSONArray("students").getJSONObject(j).getString("surname"));
                     hashMapIdStudent.put(j, projectArray.getJSONObject(i).getJSONArray("students").getJSONObject(j).getString("userId"));
                 }
-
-
             }
-
         }
 
         //
@@ -111,7 +97,6 @@ public class DetailsProjectsJMActivity extends AppCompatActivity {
         System.out.println("tutor: "+ this.champ_titre.getText().toString());
         System.out.println("description: "+ this.champ_titre.getText().toString());
 
-
         this.listViewStudents.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
 
@@ -124,26 +109,12 @@ public class DetailsProjectsJMActivity extends AppCompatActivity {
                 System.out.println("Dans DPJMA.java: "+hashMapIdProject.get(0));
                 goToNoteProjectActivity.putExtra("idProject", hashMapIdProject.get(0));
                 startActivity(goToNoteProjectActivity);
-
-
             }
         });
-
     }
-
-
-
-
-
 
     public void goToMyProjects(View v){
         finish();
         //Click sur un élément de la liste
-
-
     }
-
-
 }
-
-

@@ -64,7 +64,6 @@
                     android:layout_weight="1"
                     android:background="@drawable/border_cells"
                     android:padding="10dp"
-                    android:text="Titre"
                     android:textAlignment="center"
                     android:textSize="18sp" />
             </TableRow>
@@ -89,7 +88,6 @@
                     android:layout_weight="1"
                     android:background="@drawable/border_cells"
                     android:padding="10dp"
-                    android:text="Ceci est une description sur plusieurs lignes"
                     android:textAlignment="center"
                     android:textSize="18sp" />
             </TableRow>
@@ -112,7 +110,6 @@
                     android:layout_column="1"
                     android:layout_weight="1"
                     android:background="@drawable/border_cells"
-                    android:text="Prénom Nom"
                     android:padding="10dp"
                     android:textAlignment="center"
                     android:textSize="18sp" />
@@ -162,7 +159,6 @@
                     android:layout_weight="1"
                     android:background="@drawable/border_cells"
                     android:padding="10dp"
-                    android:text="Numéro X"
                     android:textAlignment="center"
                     android:textSize="18sp" />
             </TableRow>
@@ -185,7 +181,6 @@
                     android:layout_weight="1"
                     android:background="@drawable/border_cells"
                     android:padding="10dp"
-                    android:text="Lien2"
                     android:textAlignment="center"
                     android:textSize="18sp" />
             </TableRow>

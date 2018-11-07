@@ -31,7 +31,6 @@ public class DetailsProjectTutorJM extends AppCompatActivity {
     private TextView champ_tut;
     private ListView listViewStudents;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,24 +73,19 @@ public class DetailsProjectTutorJM extends AppCompatActivity {
                 title = projectArray.getJSONObject(i).getString("title");
                 tutor = projectArray.getJSONObject(i).getJSONObject("supervisor").getString("forename")+" " + projectArray.getJSONObject(i).getJSONObject("supervisor").getString("surname");
                 for (int j = 0; j < projectArray.getJSONObject(i).getJSONArray("students").length(); j++) {
-                    listStudent.add(j, projectArray.getJSONObject(i).getJSONArray("students").getJSONObject(j).getString("forename") + projectArray.getJSONObject(i).getJSONArray("students").getJSONObject(j).getString("surname"));
+                    listStudent.add(j, projectArray.getJSONObject(i).getJSONArray("students").getJSONObject(j).getString("forename") +" "+ projectArray.getJSONObject(i).getJSONArray("students").getJSONObject(j).getString("surname"));
                 }
             }
-
         }
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listStudent);
         this.listViewStudents.setAdapter(arrayAdapter);
-
         this.champ_descr.setText(desc);
         this.champ_titre.setText(title);
         this.champ_tut.setText(tutor);
-
-
     }
 
     public void goToMyProjects(View v){
         finish();
     }
-
 }
