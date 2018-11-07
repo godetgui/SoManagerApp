@@ -25,7 +25,6 @@ public class DetailsProjectTutorJM extends AppCompatActivity {
     private String usernameSession;
     private String tokenSession;
     //Recupération des textView
-    private TextView champ_jur ;
     private TextView champ_descr ;
     private TextView champ_titre ;
     private TextView champ_tut;
@@ -34,7 +33,7 @@ public class DetailsProjectTutorJM extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_details_projects_jm);
+        setContentView(R.layout.activity_details_project_tutor_jm);
         //recupération de l'intent et de l'idJury passé en paramètre
         Intent intent = getIntent();
         this.currentIdJury = intent.getStringExtra("idJury");
@@ -42,13 +41,10 @@ public class DetailsProjectTutorJM extends AppCompatActivity {
 
         System.out.println("ID PROJECT: "+this.projectId);
 
-        this.champ_jur = findViewById(R.id.champ_jur);
         this.champ_descr = findViewById(R.id.champ_descr);
         this.champ_titre = findViewById(R.id.champ_titre);
         this.champ_tut = findViewById(R.id.champ_tut);
         this.listViewStudents = findViewById(R.id.listViewStudents);
-
-        champ_jur.setText(this.currentIdJury);
 
         //récupération des variables de sessions
         myPrefs = this.getSharedPreferences("myPrefs", MODE_PRIVATE);

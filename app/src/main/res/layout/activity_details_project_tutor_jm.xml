@@ -130,34 +130,11 @@
                 <ListView
                     android:id="@+id/listViewStudents"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="190dp"
                     android:background="@drawable/border_cells"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
-            </TableRow>
-
-            <TableRow>
-
-                <TextView
-                    android:layout_height="match_parent"
-                    android:layout_column="0"
-                    android:layout_weight="0"
-                    android:background="@drawable/border_cells"
-                    android:fontFamily="sans-serif-black"
-                    android:padding="10dp"
-                    android:text="@string/jury"
-                    android:textAlignment="center"
-                    android:textSize="18sp" />
-
-                <TextView
-                    android:id="@+id/champ_jur"
-                    android:layout_column="1"
-                    android:layout_weight="1"
-                    android:background="@drawable/border_cells"
-                    android:padding="10dp"
-                    android:textAlignment="center"
-                    android:textSize="18sp" />
             </TableRow>
 
             <TableRow>
