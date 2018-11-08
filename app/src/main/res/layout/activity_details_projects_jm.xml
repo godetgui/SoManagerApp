@@ -163,27 +163,20 @@
                     android:textSize="18sp" />
             </TableRow>
 
-            <TableRow>
 
-                <TextView
-                    android:layout_height="match_parent"
-                    android:layout_column="0"
-                    android:layout_weight="0"
-                    android:background="@drawable/border_cells"
-                    android:fontFamily="sans-serif-black"
-                    android:padding="10dp"
-                    android:text="@string/poster"
-                    android:textAlignment="center"
-                    android:textSize="18sp" />
-
-                <TextView
-                    android:layout_column="1"
-                    android:layout_weight="1"
-                    android:background="@drawable/border_cells"
-                    android:padding="10dp"
-                    android:textAlignment="center"
-                    android:textSize="18sp" />
-            </TableRow>
         </TableLayout>
+
     </ScrollView>
+
+    <Button
+        android:id="@+id/btnViewPoster"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        android:onClick="goToViewPoster"
+        tools:layout_editor_absoluteX="148dp"
+        tools:layout_editor_absoluteY="432dp"
+        tools:ignore="MissingConstraints" />
+
+
 </android.support.constraint.ConstraintLayout>

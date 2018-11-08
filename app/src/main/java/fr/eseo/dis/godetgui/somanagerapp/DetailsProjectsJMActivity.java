@@ -32,6 +32,7 @@ public class DetailsProjectsJMActivity extends AppCompatActivity {
     private TextView champ_titre ;
     private TextView champ_tut;
     private ListView listViewStudents;
+    final HashMap<Integer, String> hashMapIdProject = new HashMap();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +68,7 @@ public class DetailsProjectsJMActivity extends AppCompatActivity {
         String tutor = "";
         ArrayList<String> listStudent = new ArrayList<>();
         final HashMap<Integer, String> hashMapIdStudent = new HashMap();
-        final HashMap<Integer, String> hashMapIdProject = new HashMap();
+
 
         for (int i = 0; i < projectArray.length(); i++) {
 
@@ -112,5 +113,12 @@ public class DetailsProjectsJMActivity extends AppCompatActivity {
     public void goToMyProjects(View v){
         finish();
         //Click sur un élément de la liste
+    }
+
+    public void goToViewPoster(View v){
+        Intent goToPosterActivity = new Intent(DetailsProjectsJMActivity.this, PosterActivity.class);
+        goToPosterActivity.putExtra("idProject", hashMapIdProject.get(0));
+        startActivity(goToPosterActivity);
+
     }
 }
