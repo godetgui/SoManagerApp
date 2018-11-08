@@ -8,18 +8,35 @@
 
     <Button
         android:id="@+id/GoToMyProjects"
+        android:layout_width="167dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="9dp"
+        android:fontFamily="sans-serif-black"
         android:onClick="goToMyProjects"
         android:text="@string/see_all_my_projects"
-        android:layout_width="208dp"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints,OnClick" />
+
+    <Button
+        android:id="@+id/btnViewPoster"
+        android:layout_width="165dp"
         android:layout_height="75dp"
         android:layout_marginTop="6dp"
         android:layout_marginBottom="9dp"
         android:fontFamily="sans-serif-black"
+        android:onClick="goToViewPoster"
+        android:text="See Poster"
         app:layout_constraintBottom_toTopOf="@+id/scrollView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.926"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints,OnClick" />
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="MissingConstraints" />
 
     <ScrollView
         android:id="@+id/scrollView"
@@ -43,7 +60,8 @@
             android:stretchColumns="1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/btnViewPoster">
 
             <TableRow>
 
@@ -133,8 +151,8 @@
                     android:id="@+id/listViewStudents"
                     android:layout_width="fill_parent"
                     android:layout_height="190dp"
-                    android:isScrollContainer="true"
                     android:background="@drawable/border_cells"
+                    android:isScrollContainer="true"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
@@ -167,16 +185,5 @@
         </TableLayout>
 
     </ScrollView>
-
-    <Button
-        android:id="@+id/btnViewPoster"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
-        android:onClick="goToViewPoster"
-        tools:layout_editor_absoluteX="148dp"
-        tools:layout_editor_absoluteY="432dp"
-        tools:ignore="MissingConstraints" />
-
 
 </android.support.constraint.ConstraintLayout>
