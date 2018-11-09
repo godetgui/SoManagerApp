@@ -62,6 +62,7 @@ public class ConnectionActivity extends AppCompatActivity {
         PseudoJuriesManager m = new PseudoJuriesManager(this);
         m.open();
         PseudoJuries a=m.getPJ(this.login.getText().toString());
+
         if(!a.getMdpPj().equals("") && a.getMdpPj().equals(password.getText().toString())){
             Intent goToVisitorProjectsActivity = new Intent(ConnectionActivity.this, VisitorProjectsActivity.class);
             startActivity(goToVisitorProjectsActivity);
