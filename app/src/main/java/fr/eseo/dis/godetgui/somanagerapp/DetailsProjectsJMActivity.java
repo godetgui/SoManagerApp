@@ -62,6 +62,8 @@ public class DetailsProjectsJMActivity extends AppCompatActivity {
 
     public void getDataProjectsDetails(JSONObject JO) throws JSONException {
 
+        System.out.println("ID DU PROJET: "+this.projectId);
+
         JSONArray projectArray = JO.getJSONArray("projects");
         String title = "";
         String desc = "";
@@ -117,7 +119,7 @@ public class DetailsProjectsJMActivity extends AppCompatActivity {
 
     public void goToViewPoster(View v){
         Intent goToPosterActivity = new Intent(DetailsProjectsJMActivity.this, PosterActivity.class);
-        goToPosterActivity.putExtra("idProject", hashMapIdProject.get(0));
+        goToPosterActivity.putExtra("idProject", this.projectId);
         startActivity(goToPosterActivity);
 
     }

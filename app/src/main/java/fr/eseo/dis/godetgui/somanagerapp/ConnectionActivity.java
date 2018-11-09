@@ -55,6 +55,7 @@ public class ConnectionActivity extends AppCompatActivity {
 
 
     public void onClickBtn(View view) {
+        //addTable();
         this.login = (EditText) findViewById(R.id.loginText);
         EditText password = (EditText) findViewById(R.id.passwordText);
         PseudoJuriesManager m = new PseudoJuriesManager(this);
@@ -155,8 +156,8 @@ public class ConnectionActivity extends AppCompatActivity {
         m.open();
 // ouverture de la table en lecture/écriture
 // insertion. L'id sera attribué automatiquement par incrément
-       // m.addPJ(new
-         //      PseudoJuries(0, "admin","network","ADMIN","@"));
+       m.addPJ(new
+               PseudoJuries(0, "admin","network","ADMIN","@"));
 
 // modification du nom de l'animal dont l'id est 1
         PseudoJuries a=m.getPJ(this.login.getText().toString());
