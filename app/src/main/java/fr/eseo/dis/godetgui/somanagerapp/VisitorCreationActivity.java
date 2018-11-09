@@ -36,7 +36,6 @@ public class VisitorCreationActivity extends AppCompatActivity {
         PseudoJuries a=m.getPJ(this.visitor_login.getText().toString());
         if( this.visitor_login.getText().toString().equals("") || this.visitor_password.getText().toString().equals("")){
             createDialogAlertEmpty();
-
         }else {
             if (a.getMdpPj().equals("")) {
                 m.addPJ(new
@@ -46,16 +45,12 @@ public class VisitorCreationActivity extends AppCompatActivity {
             } else {
                 createDialogAlertUser();
             }
-
         }
         m.close();
-
-
     }
 
     public void createDialogAlertUser() {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(VisitorCreationActivity.this);
-
         alertDialogBuilder
                 .setTitle("Error Login")
                 .setMessage("User already exists")
@@ -65,7 +60,6 @@ public class VisitorCreationActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                     }
                 });
-
         AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.show();
 
