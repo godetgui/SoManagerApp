@@ -5,19 +5,37 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DetailsProjectTutorJM">
+
     <Button
         android:id="@+id/GoToMyProjects"
+        android:layout_width="167dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="9dp"
+        android:fontFamily="sans-serif-black"
         android:onClick="goToMyProjects"
         android:text="@string/back_to_my_main_page"
-        android:layout_width="208dp"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints,OnClick" />
+
+    <Button
+        android:id="@+id/btnViewPoster"
+        android:layout_width="165dp"
         android:layout_height="75dp"
         android:layout_marginTop="6dp"
         android:layout_marginBottom="9dp"
         android:fontFamily="sans-serif-black"
+        android:onClick="goToViewPoster"
+        android:text="See Poster"
         app:layout_constraintBottom_toTopOf="@+id/scrollView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.926"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
         tools:ignore="MissingConstraints,OnClick" />
 
     <ScrollView
@@ -77,6 +95,8 @@
                     android:background="@drawable/border_cells"
                     android:fontFamily="sans-serif-black"
                     android:padding="10dp"
+                    android:text="Description"
+
                     android:textAlignment="center"
                     android:textSize="18sp" />
 
@@ -137,27 +157,6 @@
                     app:layout_constraintStart_toStartOf="parent" />
             </TableRow>
 
-            <TableRow>
-
-                <TextView
-                    android:layout_height="match_parent"
-                    android:layout_column="0"
-                    android:layout_weight="0"
-                    android:background="@drawable/border_cells"
-                    android:fontFamily="sans-serif-black"
-                    android:padding="10dp"
-                    android:text="@string/poster"
-                    android:textAlignment="center"
-                    android:textSize="18sp" />
-
-                <TextView
-                    android:layout_column="1"
-                    android:layout_weight="1"
-                    android:background="@drawable/border_cells"
-                    android:padding="10dp"
-                    android:textAlignment="center"
-                    android:textSize="18sp" />
-            </TableRow>
         </TableLayout>
     </ScrollView>
 </android.support.constraint.ConstraintLayout>

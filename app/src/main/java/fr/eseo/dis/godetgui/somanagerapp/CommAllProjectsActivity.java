@@ -23,7 +23,7 @@ import fr.eseo.dis.godetgui.somanagerapp.threads.FetchProjects;
 
 public class CommAllProjectsActivity extends AppCompatActivity {
 
-    public Button buttonGoToProjects;
+    public Button goToCreateVisitor;
     private Context context;
     private SharedPreferences myPrefs;
     private String usernameSession;
@@ -96,7 +96,13 @@ public class CommAllProjectsActivity extends AppCompatActivity {
         });
 
 
+
         }
 
+    }
+
+    public void goToCreateVisitor(View v){
+        Intent goToCreateVisitor = new Intent(CommAllProjectsActivity.this, VisitorCreationActivity.class);
+        startActivity(goToCreateVisitor);
     }
 }

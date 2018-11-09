@@ -29,6 +29,8 @@
         <activity android:name=".DetailsProjectsCommActivity" />
         <activity android:name=".PosterActivity" />
         <activity android:name=".VisitorProjectsActivity"></activity>
+        <activity android:name=".DetailsProjectsVisitorActivity" />
+        <activity android:name=".VisitorCreationActivity"></activity>
     </application>
 
 </manifest>
