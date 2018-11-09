@@ -121,6 +121,5 @@ public class DetailsProjectsJMActivity extends AppCompatActivity {
         Intent goToPosterActivity = new Intent(DetailsProjectsJMActivity.this, PosterActivity.class);
         goToPosterActivity.putExtra("idProject", this.projectId);
         startActivity(goToPosterActivity);
-
     }
 }

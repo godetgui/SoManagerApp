@@ -90,4 +90,10 @@ public class DetailsProjectsCommActivity extends AppCompatActivity {
     public void goToMyProjects(View v){
         finish();
     }
+
+    public void goToViewPoster(View v){
+        Intent goToPosterActivity = new Intent(DetailsProjectsCommActivity.this, PosterActivity.class);
+        goToPosterActivity.putExtra("idProject", this.projectId);
+        startActivity(goToPosterActivity);
+    }
 }

@@ -84,4 +84,10 @@ public class DetailsProjectTutorJM extends AppCompatActivity {
     public void goToMyProjects(View v){
         finish();
     }
+
+    public void goToViewPoster(View v){
+        Intent goToPosterActivity = new Intent(DetailsProjectTutorJM.this, PosterActivity.class);
+        goToPosterActivity.putExtra("idProject", this.projectId);
+        startActivity(goToPosterActivity);
+    }
 }

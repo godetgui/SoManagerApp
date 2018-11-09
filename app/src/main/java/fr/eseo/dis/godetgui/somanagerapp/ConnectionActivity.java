@@ -20,8 +20,6 @@ import org.json.JSONObject;
 
 import fr.eseo.dis.godetgui.somanagerapp.data.JM;
 import fr.eseo.dis.godetgui.somanagerapp.data.PseudoJuries;
-import fr.eseo.dis.godetgui.somanagerapp.data.PseudoJuryProject;
-
 import fr.eseo.dis.godetgui.somanagerapp.data.PseudoJuriesManager;
 import fr.eseo.dis.godetgui.somanagerapp.data.SomanagerDatabase;
 import fr.eseo.dis.godetgui.somanagerapp.threads.FetchLogon;
@@ -57,6 +55,7 @@ public class ConnectionActivity extends AppCompatActivity {
 
 
     public void onClickBtn(View view) {
+        //addTable();
         this.login = (EditText) findViewById(R.id.loginText);
         EditText password = (EditText) findViewById(R.id.passwordText);
         PseudoJuriesManager m = new PseudoJuriesManager(this);
