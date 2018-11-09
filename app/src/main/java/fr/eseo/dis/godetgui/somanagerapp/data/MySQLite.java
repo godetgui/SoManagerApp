@@ -5,6 +5,8 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import fr.eseo.dis.godetgui.somanagerapp.PseudoJuryProjectManager;
+
 public class MySQLite extends SQLiteOpenHelper {
 
     private static final
@@ -32,6 +34,8 @@ public class MySQLite extends SQLiteOpenHelper {
         // Création de la base de données
         // on exécute ici les requêtes de création des tables
         sqLiteDatabase.execSQL(PseudoJuriesManager.CREATE_TABLE_PSEUDO_JURIES);
+        sqLiteDatabase.execSQL(PseudoJuryProjectManager.CREATE_TABLE_PSEUDO_JURIES_PROJECT);
+
     }
 
     @Override
