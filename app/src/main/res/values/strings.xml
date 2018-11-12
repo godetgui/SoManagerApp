@@ -16,4 +16,7 @@
     <string name="see_all_my_projects">See all my projects</string>
     <string name="back_to_my_main_page">Back to my main page</string>
     <string name="all_projects">All Projects</string>
+    <string name="login">Login</string>
+    <string name="password">Password</string>
+    <string name="connexion">Connexion</string>
 </resources>
