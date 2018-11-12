@@ -42,6 +42,7 @@ public class DetailsProjectsJMActivity extends AppCompatActivity {
         Intent intent = getIntent();
         this.currentIdJury = intent.getStringExtra("idJury");
         this.projectId = intent.getStringExtra("projectId");
+        System.out.println("Dans detailProjectActivity, id du projet: "+this.projectId);
 
         this.champ_jur = findViewById(R.id.champ_jur);
         this.champ_descr = findViewById(R.id.champ_descr);
@@ -70,6 +71,7 @@ public class DetailsProjectsJMActivity extends AppCompatActivity {
         String tutor = "";
         ArrayList<String> listStudent = new ArrayList<>();
         final HashMap<Integer, String> hashMapIdStudent = new HashMap();
+        final String projectId = this.projectId;
 
 
         for (int i = 0; i < projectArray.length(); i++) {
@@ -106,7 +108,7 @@ public class DetailsProjectsJMActivity extends AppCompatActivity {
 
                 goToNoteProjectActivity.putExtra("idStudent", hashMapIdStudent.get(position));
                 System.out.println("Dans DPJMA.java: "+hashMapIdProject.get(0));
-                goToNoteProjectActivity.putExtra("idProject", hashMapIdProject.get(0));
+                goToNoteProjectActivity.putExtra("idProject", projectId);
                 startActivity(goToNoteProjectActivity);
             }
         });

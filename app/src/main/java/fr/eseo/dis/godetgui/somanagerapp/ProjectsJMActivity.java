@@ -104,6 +104,7 @@ public class ProjectsJMActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 Intent goToDetailsProjectActivity = new Intent(ProjectsJMActivity.this, DetailsProjectsJMActivity.class);
+                System.out.println("Dans projectJMActivity, projectId send: "+hashMapId.get(position));
                 goToDetailsProjectActivity.putExtra("projectId", hashMapId.get(position));
                 goToDetailsProjectActivity.putExtra("idJury", idJury);
                 startActivity(goToDetailsProjectActivity);

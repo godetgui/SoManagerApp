@@ -88,9 +88,6 @@ public class NoteProjectActivity extends AppCompatActivity {
 
                 if( notesArray.getJSONObject(i).getString("userId").equals(this.currentIdStudent)){
 
-                    System.out.println("qqqqqq"+ notesArray.getJSONObject(i).getString("avgNote"));
-                    System.out.println("2qqqqqq"+ notesArray.getJSONObject(i).getString("mynote"));
-
 
                     averageNote = notesArray.getJSONObject(i).getString("avgNote");
                     currentNote = notesArray.getJSONObject(i).getString("mynote");

@@ -1,6 +1,7 @@
 package fr.eseo.dis.godetgui.somanagerapp.threads;
 
 import android.os.AsyncTask;
+import android.support.v7.app.AppCompatActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -16,6 +17,7 @@ import javax.net.ssl.HttpsURLConnection;
 
 import fr.eseo.dis.godetgui.somanagerapp.Certificates.TrustManager;
 import fr.eseo.dis.godetgui.somanagerapp.CommAllProjectsActivity;
+import fr.eseo.dis.godetgui.somanagerapp.VisitorCreationActivity;
 
 public class FetchProjects extends AsyncTask<Void, Void, Void> {
 
@@ -24,11 +26,18 @@ public class FetchProjects extends AsyncTask<Void, Void, Void> {
     String user;
     String token;
 
-    CommAllProjectsActivity CommAllProjectsActivity;
+    CommAllProjectsActivity commAllProjectsActivity;
+    VisitorCreationActivity visitorCreationActivity;
 
 
-    public FetchProjects(CommAllProjectsActivity CommAllProjectsActivity, String user, String token){
-        this.CommAllProjectsActivity = CommAllProjectsActivity;
+    public FetchProjects(CommAllProjectsActivity commAllProjectsActivity, String user, String token){
+        this.commAllProjectsActivity = commAllProjectsActivity;
+        this.user = user;
+        this.token = token;
+    }
+
+    public FetchProjects(VisitorCreationActivity visitorCreationActivity, String user, String token){
+        this.visitorCreationActivity = visitorCreationActivity;
         this.user = user;
         this.token = token;
     }
@@ -38,7 +47,12 @@ public class FetchProjects extends AsyncTask<Void, Void, Void> {
     @Override
     protected Void doInBackground(Void... voids) {
         TrustManager trustManager = new TrustManager();
-        trustManager.getCertificate(this.CommAllProjectsActivity.getApplicationContext());
+        try{
+            trustManager.getCertificate(this.commAllProjectsActivity.getApplicationContext());
+        } catch(NullPointerException e) {
+            trustManager.getCertificate(this.visitorCreationActivity.getApplicationContext());
+        }
+
         try {
 
             URL url =  new URL("https://192.168.4.248/pfe/webservice.php?q=LIPRJ&user="+user+"&token="+token);
@@ -77,7 +91,13 @@ public class FetchProjects extends AsyncTask<Void, Void, Void> {
     @Override
     protected void onPostExecute(Void aVoid) {
         try {
-            CommAllProjectsActivity.getDataProjects(this.JO);
+            try{
+                commAllProjectsActivity.getDataProjects(this.JO);
+            } catch (NullPointerException e){
+                visitorCreationActivity.getDataProjects(this.JO);
+            }
+
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
