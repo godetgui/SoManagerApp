@@ -105,7 +105,6 @@ public class ConnectionActivity extends AppCompatActivity {
 
     }
 
-    //Impossibilité de récupérer le context de l'activity dans cette méthode ????
     public void fetchRole() {
         FetchRole fetchRole = new FetchRole(this, userConnected, token);
         fetchRole.execute();

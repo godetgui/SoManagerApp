@@ -1,7 +1,6 @@
 package fr.eseo.dis.godetgui.somanagerapp.threads;
 
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -16,70 +15,48 @@ import java.net.URL;
 import javax.net.ssl.HttpsURLConnection;
 
 import fr.eseo.dis.godetgui.somanagerapp.Certificates.TrustManager;
-import fr.eseo.dis.godetgui.somanagerapp.CommAllProjectsActivity;
 import fr.eseo.dis.godetgui.somanagerapp.VisitorCreationActivity;
 
-public class FetchProjects extends AsyncTask<Void, Void, Void> {
+public class FetchRandomProject extends AsyncTask<Void, Void, Void> {
 
-    String data = "";
-    JSONObject JO;
+    VisitorCreationActivity visitorCreationActivity;
     String user;
     String token;
+    String data = "";
+    JSONObject JO;
 
-    CommAllProjectsActivity commAllProjectsActivity;
-    VisitorCreationActivity visitorCreationActivity;
-
-
-    public FetchProjects(CommAllProjectsActivity commAllProjectsActivity, String user, String token){
-        this.commAllProjectsActivity = commAllProjectsActivity;
-        this.user = user;
-        this.token = token;
-    }
-
-    public FetchProjects(VisitorCreationActivity visitorCreationActivity, String user, String token){
+    public FetchRandomProject(VisitorCreationActivity visitorCreationActivity, String user, String token) {
         this.visitorCreationActivity = visitorCreationActivity;
         this.user = user;
         this.token = token;
     }
 
-
-
     @Override
     protected Void doInBackground(Void... voids) {
         TrustManager trustManager = new TrustManager();
-        try{
-            trustManager.getCertificate(this.commAllProjectsActivity.getApplicationContext());
-        } catch(NullPointerException e) {
-            trustManager.getCertificate(this.visitorCreationActivity.getApplicationContext());
-        }
-
+        trustManager.getCertificate(this.visitorCreationActivity.getApplicationContext());
+        URL url = null;
         try {
-
-            URL url =  new URL("https://192.168.4.248/pfe/webservice.php?q=LIPRJ&user="+user+"&token="+token);
-
-            //Créer une connection
+            url = new URL("https://192.168.4.248/pfe/webservice.php?q=PORTE&user=" + user + "&token=" + token);
+            System.out.println(url);
             HttpsURLConnection httpsURLConnection = (HttpsURLConnection) url.openConnection();
             httpsURLConnection.setSSLSocketFactory(trustManager.getSSLContext().getSocketFactory());
             InputStream inputStream = httpsURLConnection.getInputStream();
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
 
             //Lecture de la réponse et stockage dans un JSONObject
-            String line="";
-            while(line != null){
+            String line = "";
+            while (line != null) {
                 line = bufferedReader.readLine();
                 System.out.println(line);
                 data = data + line;
             }
             JO = new JSONObject(data);
-
-
-
-
         } catch (MalformedURLException e) {
             e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
         } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
@@ -87,24 +64,12 @@ public class FetchProjects extends AsyncTask<Void, Void, Void> {
         return null;
     }
 
-
     @Override
     protected void onPostExecute(Void aVoid) {
         try {
-            try{
-                commAllProjectsActivity.getDataProjects(this.JO);
-            } catch (NullPointerException e){
-                //visitorCreationActivity.getDataProjects(this.JO);
-            }
-
-
+            visitorCreationActivity.getData(this.JO);
         } catch (JSONException e) {
             e.printStackTrace();
         }
     }
-
-
-
 }
-
-
