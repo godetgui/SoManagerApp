@@ -21,6 +21,7 @@ import org.json.JSONObject;
 import fr.eseo.dis.godetgui.somanagerapp.data.JM;
 import fr.eseo.dis.godetgui.somanagerapp.data.PseudoJuries;
 import fr.eseo.dis.godetgui.somanagerapp.data.PseudoJuriesManager;
+import fr.eseo.dis.godetgui.somanagerapp.data.PseudoJuryProject;
 import fr.eseo.dis.godetgui.somanagerapp.data.SomanagerDatabase;
 import fr.eseo.dis.godetgui.somanagerapp.threads.FetchLogon;
 import fr.eseo.dis.godetgui.somanagerapp.threads.FetchRole;
@@ -100,9 +101,6 @@ public class ConnectionActivity extends AppCompatActivity {
             createDialogAlert();
         }
 
-
-
-
     }
 
     public void fetchRole() {
@@ -151,19 +149,26 @@ public class ConnectionActivity extends AppCompatActivity {
     }
 
     public void addTable() {
-        PseudoJuriesManager m = new PseudoJuriesManager(this);
+        PseudoJuryProjectManager m = new PseudoJuryProjectManager(this);
 
         m.open();
 // ouverture de la table en lecture/écriture
 // insertion. L'id sera attribué automatiquement par incrément
-       // m.addPJ(new
-         //      PseudoJuries(0, "admin","network","ADMIN","@"));
 
+        m.addPJ(new
+                PseudoJuryProject(0, 1, 21, "12", "test"));
+        m.addPJ(new
+                PseudoJuryProject(0, 1, 22, "14", "test2"));
+
+        m.addPJ(new
+                PseudoJuryProject(0, 1, 23, "12", "test3"));
+        m.addPJ(new
+                PseudoJuryProject(0, 1, 24, "14", "test4"));
+
+        m.addPJ(new
+                PseudoJuryProject(0, 1, 25, "12", "test5"));
+        m.close();
 // modification du nom de l'animal dont l'id est 1
-        PseudoJuries a=m.getPJ(this.login.getText().toString());
-        a.getEmailPj();
-
-        m.modPJ(a);
 
 
 // Listing des enregistrements de la table

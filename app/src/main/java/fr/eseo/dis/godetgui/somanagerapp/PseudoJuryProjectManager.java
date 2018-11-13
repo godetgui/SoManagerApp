@@ -10,7 +10,11 @@ import android.content.ContentValues;
         import android.database.Cursor;
         import android.database.sqlite.SQLiteDatabase;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import fr.eseo.dis.godetgui.somanagerapp.data.MySQLite;
+import fr.eseo.dis.godetgui.somanagerapp.data.PseudoJuries;
 import fr.eseo.dis.godetgui.somanagerapp.data.PseudoJuryProject;
 
 public class PseudoJuryProjectManager {
@@ -71,8 +75,7 @@ public class PseudoJuryProjectManager {
         // Ajout d'un enregistrement dans la table
 
         ContentValues values = new ContentValues();
-        values.put(KEY_ID_PSEUDO_JURY_PJP, pj.getIdPseudoJuryProject());
-        values.put(KEY_ID_PJP, pj.getIdPseudoJury());
+        values.put(KEY_ID_PSEUDO_JURY_PJP, pj.getIdPseudoJury());
         values.put(KEY_ID_PROJECT_PJP, pj.getIdProject());
         values.put(KEY_GRADE_PJ, pj.getGrade());
         values.put(KEY_COMMENT_PJ, pj.getComment());
@@ -109,34 +112,39 @@ public class PseudoJuryProjectManager {
         return db.delete(TABLE_NAME, where, whereArgs);
     }
 
-    /*
-    public PseudoJuries getPJ(String garde) {
-        // Retourne le pj dont l'id est passé en paramètre
+    public List<PseudoJuryProject> getPJ(int idPJ) {
+        List<PseudoJuryProject> pseudoProject = new ArrayList<>();
 
-        PseudoJuries a=new PseudoJuries(0,
-                "", "","","");
+        // Select All Query
+        String selectQuery = "SELECT  * FROM " + TABLE_NAME + " WHERE "+
+                KEY_ID_PSEUDO_JURY_PJP+"="+idPJ;
 
         Cursor c = db.rawQuery(
                 "SELECT * FROM "+TABLE_NAME+" WHERE "+
-                        KEY_GRADE_PJ+"='"+gr+"'", null);
-        if (c.moveToFirst())
-        {
-            a.setIdPseudoJuries(c.
-                    getInt(c.getColumnIndex(KEY_ID_PJ)));
-            a.setLoginPj(c.
-                    getString(c.getColumnIndex(KEY_LOGIN_PJ)));
-            a.setMdpPj(c.
-                    getString(c.getColumnIndex(KEY_MDP_PJ)));
-            a.setFonctionPj(c.
-                    getString(c.getColumnIndex(KEY_FONCTION_PJ)));
-            a.setEmailPj(c.
-                    getString(c.getColumnIndex(KEY_EMAIL_PJ)));
-            c.close();
+                        KEY_ID_PROJECT_PJP+"='"+idPJ+"'", null);
+
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                PseudoJuryProject pjp = new PseudoJuryProject(0,0,0,"","");
+                pjp.setIdProject(cursor.getInt(cursor.getColumnIndex(KEY_ID_PROJECT_PJP)));
+                pjp.setIdPseudoJury(cursor.getInt(cursor.getColumnIndex(KEY_ID_PSEUDO_JURY_PJP)));
+                pjp.setGrade(cursor.getString(cursor.getColumnIndex(KEY_GRADE_PJ)));
+                pjp.setComment(cursor.getString(cursor.getColumnIndex(KEY_COMMENT_PJ)));
+
+                pseudoProject.add(pjp);
+            } while (cursor.moveToNext());
         }
 
-        return a;
+        // close db connection
+        db.close();
+
+        // return notes list
+        return pseudoProject;
     }
-    */
+
 
     public Cursor getPJ() {
         // sélection de tous les enregistrements de la table

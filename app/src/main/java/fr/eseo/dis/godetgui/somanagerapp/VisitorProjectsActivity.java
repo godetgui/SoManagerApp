@@ -19,7 +19,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import fr.eseo.dis.godetgui.somanagerapp.threads.FetchVisitorProjects;
+        import fr.eseo.dis.godetgui.somanagerapp.data.PseudoJuries;
+        import fr.eseo.dis.godetgui.somanagerapp.data.PseudoJuriesManager;
+        import fr.eseo.dis.godetgui.somanagerapp.data.PseudoJuryProject;
+        import fr.eseo.dis.godetgui.somanagerapp.threads.FetchVisitorProjects;
 
 public class VisitorProjectsActivity extends AppCompatActivity {
 
@@ -54,6 +57,14 @@ public class VisitorProjectsActivity extends AppCompatActivity {
     }
 
     public void getDataVisitorProjects(JSONObject JO) throws JSONException {
+    System.out.println("TESTTTTTT");
+        //Remplissage de la liste des jurys et du hasmamp qui stocke les id des juries en fonction de leur position dans la liste
+        PseudoJuryProjectManager m = new PseudoJuryProjectManager(this);
+
+        m.open();
+
+        List<PseudoJuryProject> a = m.getPJ(1);
+
 
         JSONArray responseProjects = JO.getJSONArray("projects");
         final HashMap<Integer, String> hashMapId = new HashMap();
@@ -62,18 +73,21 @@ public class VisitorProjectsActivity extends AppCompatActivity {
 
         this.projectsList = new ArrayList<>();
 
-        //Remplissage de la liste des jurys et du hasmamp qui stocke les id des juries en fonction de leur position dans la liste
+
 
 
         for(int i = 0; i<responseProjects.length(); i++) {
-            if (responseProjects.getJSONObject(i).getString("confid").equals("0")) {
 
+            if (Integer.parseInt(responseProjects.getJSONObject(i).getString("projectId"))==a.get(0).getIdProject() || Integer.parseInt(responseProjects.getJSONObject(i).getString("projectId"))==a.get(1).getIdProject() || Integer.parseInt(responseProjects.getJSONObject(i).getString("projectId"))==a.get(2).getIdProject() || Integer.parseInt(responseProjects.getJSONObject(i).getString("projectId"))==a.get(3).getIdProject() || Integer.parseInt(responseProjects.getJSONObject(i).getString("projectId"))==a.get(4).getIdProject()){
+                    System.out.println("ROULEPOULE");
 
-                this.projectsList.add(i, "Project: " + responseProjects.getJSONObject(i).getString("projectId")
-                        + Newligne + "Title: " + responseProjects.getJSONObject(i).getString("title"))
-                ;
-            }else{
-                this.projectsList.add(i, "Confidential project")
+                    this.projectsList.add(i, "Project: " + responseProjects.getJSONObject(i).getString("projectId")
+                            + Newligne + "Title: " + responseProjects.getJSONObject(i).getString("title"))
+                    ;
+
+            }
+            else{
+                this.projectsList.add(i, "No Access to project " + responseProjects.getJSONObject(i).getString("projectId") )
                 ;
             }
             hashMapId.put(i, responseProjects.getJSONObject(i).getString("projectId"));
@@ -97,7 +111,10 @@ public class VisitorProjectsActivity extends AppCompatActivity {
 
 
 
+
         }
+
+        m.close();
 
     }
 }

@@ -42,6 +42,7 @@ public class FetchVisitorProjects extends AsyncTask<Void, Void, Void> {
 
             URL url =  new URL("https://192.168.4.248/pfe/webservice.php?q=LIPRJ&user="+user+"&token="+token);
 
+            System.out.println("aussi" + url);
             //Créer une connection
             HttpsURLConnection httpsURLConnection = (HttpsURLConnection) url.openConnection();
             httpsURLConnection.setSSLSocketFactory(trustManager.getSSLContext().getSocketFactory());

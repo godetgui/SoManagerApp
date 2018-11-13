@@ -59,6 +59,7 @@ public class VisitorCreationActivity extends AppCompatActivity {
             if (a.getMdpPj().equals("")) {
                 m.addPJ(new
                         PseudoJuries(0, this.visitor_login.getText().toString(), this.visitor_password.getText().toString(), this.visitor_function.getText().toString(), this.visitor_mail.getText().toString()));
+
                 m.close();
                 finish();
             } else {
