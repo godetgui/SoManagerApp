@@ -19,9 +19,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-        import fr.eseo.dis.godetgui.somanagerapp.data.PseudoJuries;
-        import fr.eseo.dis.godetgui.somanagerapp.data.PseudoJuriesManager;
         import fr.eseo.dis.godetgui.somanagerapp.data.PseudoJuryProject;
+        import fr.eseo.dis.godetgui.somanagerapp.data.PseudoJuryProjectManager;
         import fr.eseo.dis.godetgui.somanagerapp.threads.FetchVisitorProjects;
 
 public class VisitorProjectsActivity extends AppCompatActivity {

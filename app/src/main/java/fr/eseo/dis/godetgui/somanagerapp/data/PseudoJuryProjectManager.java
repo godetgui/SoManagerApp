@@ -1,4 +1,4 @@
-package fr.eseo.dis.godetgui.somanagerapp;
+package fr.eseo.dis.godetgui.somanagerapp.data;
 
 import android.content.ContentValues;
 import android.content.Context;

@@ -22,6 +22,7 @@ import fr.eseo.dis.godetgui.somanagerapp.data.JM;
 import fr.eseo.dis.godetgui.somanagerapp.data.PseudoJuries;
 import fr.eseo.dis.godetgui.somanagerapp.data.PseudoJuriesManager;
 import fr.eseo.dis.godetgui.somanagerapp.data.PseudoJuryProject;
+import fr.eseo.dis.godetgui.somanagerapp.data.PseudoJuryProjectManager;
 import fr.eseo.dis.godetgui.somanagerapp.data.SomanagerDatabase;
 import fr.eseo.dis.godetgui.somanagerapp.threads.FetchLogon;
 import fr.eseo.dis.godetgui.somanagerapp.threads.FetchRole;

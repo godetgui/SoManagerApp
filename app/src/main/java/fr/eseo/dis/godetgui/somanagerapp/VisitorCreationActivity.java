@@ -1,7 +1,6 @@
 package fr.eseo.dis.godetgui.somanagerapp;
 
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -18,7 +17,7 @@ import java.util.ArrayList;
 import fr.eseo.dis.godetgui.somanagerapp.data.PseudoJuries;
 import fr.eseo.dis.godetgui.somanagerapp.data.PseudoJuriesManager;
 import fr.eseo.dis.godetgui.somanagerapp.data.PseudoJuryProject;
-import fr.eseo.dis.godetgui.somanagerapp.threads.FetchLogon;
+import fr.eseo.dis.godetgui.somanagerapp.data.PseudoJuryProjectManager;
 import fr.eseo.dis.godetgui.somanagerapp.threads.FetchRandomProject;
 
 public class VisitorCreationActivity extends AppCompatActivity {
