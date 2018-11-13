@@ -111,11 +111,24 @@ public class VisitorCreationActivity extends AppCompatActivity {
         for (int i = 0; i < projectsArray.length(); i++) {
             listIdRndProject.add(i, projectsArray.getJSONObject(i).get("idProject").toString());
         }
+        PseudoJuryProjectManager m = new PseudoJuryProjectManager(this);
+        PseudoJuriesManager p = new PseudoJuriesManager(this);
 
+        m.open();
+        p.open();
         System.out.println("Liste des id des projets random");
         for (int i = 0; i < listIdRndProject.size(); i++) {
             System.out.println(listIdRndProject.get(i));
+            System.out.println("france"+ p.getPJ(this.visitor_login.getText().toString()).getIdPseudoJuries());
+            m.addPJ(new
+                    PseudoJuryProject(0, p.getPJ(this.visitor_login.getText().toString()).getIdPseudoJuries(), Integer.parseInt(listIdRndProject.get(i)), "", ""));
+
+
         }
+        m.close();
+        p.close();
+
+
 
     }
 }
