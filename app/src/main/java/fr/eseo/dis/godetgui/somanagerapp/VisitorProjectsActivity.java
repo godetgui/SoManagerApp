@@ -69,12 +69,20 @@ public class VisitorProjectsActivity extends AppCompatActivity {
             this.projectsList.add(i, "Project: " + id
                     + Newligne + "Title: " + title)
             ;
-            //System.out.println("test"+tablePJP.getPJList(idUser).get(i).getIdProject());
-
-
-
-
         }
+
+        tablePJP.open();
+
+        System.out.println("test23"+tablePJP.getPJ(7).getTitle());
+        // modification du nom de l'animal dont l'id est 1
+        PseudoJuryProject a=tablePJP.getPJ(
+                7);
+        a.setGrade("12");
+System.out.println("vvvvvvvvv"+a.getIdPseudoJuryProject());
+        tablePJP.modPJ(a);
+
+        tablePJP.close();
+
 
         //creation de l'adapter et association de l'adapter avec la listViewNObject(i).getString("title")
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, projectsList);

@@ -92,20 +92,17 @@ public class PseudoJuryProjectManager {
                 TABLE_NAME,null,values);
     }
 
-    public int modPJ(PseudoJuryProject pj
+    public int modPJ(PseudoJuryProject animal
     ) {
         // modification d'un enregistrement
         // valeur de retour : (int) nombre de lignes affectées par la requête
 
         ContentValues values = new ContentValues();
-        values.put(KEY_ID_PSEUDO_JURY_PJP, pj.getIdPseudoJury());
-        values.put(KEY_ID_PROJECT_PJP, pj.getIdProject());
-        values.put(KEY_GRADE_PJ, pj.getGrade());
-        values.put(KEY_COMMENT_PJ, pj.getComment());
-        values.put(KEY_TITLE_PJ, pj.getTitle());
-        values.put(KEY_DESC_PJ, pj.getDescription());
-        String where = KEY_ID_PSEUDO_JURY_PJP+" = ?";
-        String[] whereArgs = {pj.getIdPseudoJuryProject()+""};
+        values.put(KEY_GRADE_PJ, animal.getGrade());
+
+        String where = KEY_ID_PJP+" = ?";
+        System.out.println("gggggg"+animal.getIdPseudoJuryProject());
+        String[] whereArgs = {animal.getIdPseudoJuryProject()+""};
 
         return db.update(TABLE_NAME, values, where, whereArgs);
     }
@@ -156,6 +153,32 @@ public class PseudoJuryProjectManager {
         // sélection de tous les enregistrements de la table
         return db.rawQuery("SELECT * FROM "+TABLE_NAME,
                 null);
+    }
+
+    public PseudoJuryProject getPJ(int id) {
+        // Retourne le pj dont l'id est passé en paramètre
+
+        PseudoJuryProject pjp=new PseudoJuryProject(0,
+                0, 0,"","","","");
+
+        Cursor cursor = db.rawQuery(
+                "SELECT * FROM "+TABLE_NAME+" WHERE "+
+                        KEY_ID_PROJECT_PJP+"='"+id+"'", null);
+
+        if (cursor.moveToFirst())
+        {
+            pjp.setIdPseudoJuryProject(cursor.getInt(cursor.getColumnIndex(KEY_ID_PJP)));
+
+            pjp.setIdProject(cursor.getInt(cursor.getColumnIndex(KEY_ID_PROJECT_PJP)));
+            pjp.setIdPseudoJury(cursor.getInt(cursor.getColumnIndex(KEY_ID_PSEUDO_JURY_PJP)));
+            pjp.setGrade(cursor.getString(cursor.getColumnIndex(KEY_GRADE_PJ)));
+            pjp.setComment(cursor.getString(cursor.getColumnIndex(KEY_COMMENT_PJ)));
+            pjp.setTitle(cursor.getString(cursor.getColumnIndex(KEY_TITLE_PJ)));
+            pjp.setDescription(cursor.getString(cursor.getColumnIndex(KEY_COMMENT_PJ)));
+            cursor.close();
+        }
+
+        return pjp;
     }
 
 }
