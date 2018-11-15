@@ -156,8 +156,8 @@ public class ConnectionActivity extends AppCompatActivity {
 // ouverture de la table en lecture/écriture
 // insertion. L'id sera attribué automatiquement par incrément
 
-        m.addPJ(new
-                PseudoJuryProject(0, 1, 21, "12", "test"));
+        /*m.addPJ(new
+                PseudoJuryProject(0, 1, 21, "12", "test", "", ""));
         m.addPJ(new
                 PseudoJuryProject(0, 1, 22, "14", "test2"));
 
@@ -167,7 +167,7 @@ public class ConnectionActivity extends AppCompatActivity {
                 PseudoJuryProject(0, 1, 24, "14", "test4"));
 
         m.addPJ(new
-                PseudoJuryProject(0, 1, 25, "12", "test5"));
+                PseudoJuryProject(0, 1, 25, "12", "test5"));*/
         m.close();
 // modification du nom de l'animal dont l'id est 1
 

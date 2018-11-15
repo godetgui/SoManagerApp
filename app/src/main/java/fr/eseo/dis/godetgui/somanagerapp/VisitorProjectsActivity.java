@@ -45,75 +45,13 @@ public class VisitorProjectsActivity extends AppCompatActivity {
         //récupération des variables de sessions
         myPrefs = this.getSharedPreferences("myPrefs", MODE_PRIVATE);
         this.usernameSession = myPrefs.getString("USERNAME",null);
-        this.tokenSession = myPrefs.getString("TOKEN",null);
 
         //récupération de la ListView
         ListViewProjects = (ListView)findViewById(R.id.ListViewProjects);
 
-        //Appel du webService
-        FetchVisitorProjects fetchvisitorProjects = new FetchVisitorProjects(this, this.usernameSession, this.tokenSession);
-        fetchvisitorProjects.execute();
-    }
-
-    public void getDataVisitorProjects(JSONObject JO) throws JSONException {
-    System.out.println("TESTTTTTT");
-        //Remplissage de la liste des jurys et du hasmamp qui stocke les id des juries en fonction de leur position dans la liste
-        PseudoJuryProjectManager m = new PseudoJuryProjectManager(this);
-
-        m.open();
-
-        List<PseudoJuryProject> a = m.getPJ(1);
-
-
-        JSONArray responseProjects = JO.getJSONArray("projects");
-        final HashMap<Integer, String> hashMapId = new HashMap();
-        //final HashMap<Integer, String> hashMapInfo = new HashMap();
-        String Newligne=System.getProperty("line.separator");
-
-        this.projectsList = new ArrayList<>();
-
-
-
-
-        for(int i = 0; i<responseProjects.length(); i++) {
-
-            if (Integer.parseInt(responseProjects.getJSONObject(i).getString("projectId"))==a.get(0).getIdProject() || Integer.parseInt(responseProjects.getJSONObject(i).getString("projectId"))==a.get(1).getIdProject() || Integer.parseInt(responseProjects.getJSONObject(i).getString("projectId"))==a.get(2).getIdProject() || Integer.parseInt(responseProjects.getJSONObject(i).getString("projectId"))==a.get(3).getIdProject() || Integer.parseInt(responseProjects.getJSONObject(i).getString("projectId"))==a.get(4).getIdProject()){
-                    System.out.println("ROULEPOULE");
-
-                    this.projectsList.add(i, "Project: " + responseProjects.getJSONObject(i).getString("projectId")
-                            + Newligne + "Title: " + responseProjects.getJSONObject(i).getString("title"))
-                    ;
-
-            }
-            else{
-                this.projectsList.add(i, "No Access to project " + responseProjects.getJSONObject(i).getString("projectId") )
-                ;
-            }
-            hashMapId.put(i, responseProjects.getJSONObject(i).getString("projectId"));
-
-            //creation de l'adapter et association de l'adapter avec la listViewNObject(i).getString("title")
-            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, projectsList);
-            ListViewProjects.setAdapter(arrayAdapter);
-
-            //Click sur un élément de la liste
-            ListViewProjects.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                    Intent goToDetailsProjectActivity = new Intent(VisitorProjectsActivity.this, DetailsProjectsVisitorActivity.class);
-                    goToDetailsProjectActivity.putExtra("projectId", hashMapId.get(position));
-                    startActivity(goToDetailsProjectActivity);
-
-                }
-            });
-
-
-
-
-        }
-
-        m.close();
+        //Appel de la base de donnée et récupération des projets liés à ce visiteur
 
     }
+
+
 }
