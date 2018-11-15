@@ -128,10 +128,6 @@ public class PseudoJuryProjectManager {
         String selectQuery = "SELECT  * FROM " + TABLE_NAME + " WHERE "+
                 KEY_ID_PSEUDO_JURY_PJP+"="+idPJ;
 
-        Cursor c = db.rawQuery(
-                "SELECT * FROM "+TABLE_NAME+" WHERE "+
-                        KEY_ID_PROJECT_PJP+"='"+idPJ+"'", null);
-
         Cursor cursor = db.rawQuery(selectQuery, null);
 
         // looping through all rows and adding to list
