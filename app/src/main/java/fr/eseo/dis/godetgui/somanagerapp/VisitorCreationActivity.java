@@ -128,7 +128,6 @@ public class VisitorCreationActivity extends AppCompatActivity {
             m.addPJ(new
                     PseudoJuryProject(0, p.getPJ(this.visitor_login.getText().toString()).getIdPseudoJuries(), Integer.parseInt(listIdRndProject.get(i)), "", "",listTitleRndProject.get(i),listDescRndProject.get(i)));
 
-
         }
         m.close();
         p.close();

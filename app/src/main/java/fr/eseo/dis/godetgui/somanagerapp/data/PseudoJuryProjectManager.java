@@ -85,6 +85,8 @@ public class PseudoJuryProjectManager {
         values.put(KEY_ID_PROJECT_PJP, pj.getIdProject());
         values.put(KEY_GRADE_PJ, pj.getGrade());
         values.put(KEY_COMMENT_PJ, pj.getComment());
+        values.put(KEY_TITLE_PJ, pj.getTitle());
+        values.put(KEY_DESC_PJ, pj.getDescription());
         // insert() retourne l'id du nouvel enregistrement inséré, ou -1 en cas d'erreur
         return db.insert(
                 TABLE_NAME,null,values);

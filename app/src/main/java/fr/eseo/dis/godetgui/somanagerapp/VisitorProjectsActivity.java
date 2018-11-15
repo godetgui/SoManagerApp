@@ -9,6 +9,9 @@ import android.widget.ListView;
 
 import java.util.List;
 
+import fr.eseo.dis.godetgui.somanagerapp.data.PseudoJuries;
+import fr.eseo.dis.godetgui.somanagerapp.data.PseudoJuriesManager;
+import fr.eseo.dis.godetgui.somanagerapp.data.PseudoJuryProject;
 import fr.eseo.dis.godetgui.somanagerapp.data.PseudoJuryProjectManager;
 
 public class VisitorProjectsActivity extends AppCompatActivity {
@@ -36,12 +39,20 @@ public class VisitorProjectsActivity extends AppCompatActivity {
 
         //récupération de la ListView
         ListViewProjects = (ListView)findViewById(R.id.ListViewProjects);
+
         //Appel de la base de donnée et récupération des projets liés à ce visiteur
-        PseudoJuryProjectManager m = new PseudoJuryProjectManager(this);
+        PseudoJuryProjectManager tablePJP = new PseudoJuryProjectManager(this);
+        PseudoJuriesManager tablePJ = new PseudoJuriesManager(this);
+        tablePJ.open();
+        tablePJP.open();
 
-        m.open();
 
-        m.close();
+        PseudoJuries infosUserLogin=tablePJ.getPJ(this.uservisitor);
+
+
+
+        tablePJ.close();
+        tablePJP.close();
     }
 
 
