@@ -4,9 +4,11 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import fr.eseo.dis.godetgui.somanagerapp.data.PseudoJuries;
@@ -26,6 +28,8 @@ public class VisitorProjectsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        String Newligne=System.getProperty("line.separator");
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_visitor_projects);
 
@@ -40,19 +44,45 @@ public class VisitorProjectsActivity extends AppCompatActivity {
         //récupération de la ListView
         ListViewProjects = (ListView)findViewById(R.id.ListViewProjects);
 
+        this.projectsList = new ArrayList<>();
+
         //Appel de la base de donnée et récupération des projets liés à ce visiteur
         PseudoJuryProjectManager tablePJP = new PseudoJuryProjectManager(this);
         PseudoJuriesManager tablePJ = new PseudoJuriesManager(this);
         tablePJ.open();
-        tablePJP.open();
-
-
-        PseudoJuries infosUserLogin=tablePJ.getPJ(this.uservisitor);
-
-
-
+        int idUser=tablePJ.getPJ(this.uservisitor).getIdPseudoJuries();
         tablePJ.close();
-        tablePJP.close();
+
+
+
+
+        for (int i=0; i< 5;i++){
+            tablePJP.open();
+            int id =tablePJP.getPJList(idUser).get(i).getIdProject();
+            tablePJP.close();
+
+            tablePJP.open();
+            String title = tablePJP.getPJList(idUser).get(i).getTitle();
+            tablePJP.close();
+
+
+            this.projectsList.add(i, "Project: " + id
+                    + Newligne + "Title: " + title)
+            ;
+            //System.out.println("test"+tablePJP.getPJList(idUser).get(i).getIdProject());
+
+
+
+
+        }
+
+        //creation de l'adapter et association de l'adapter avec la listViewNObject(i).getString("title")
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, projectsList);
+        ListViewProjects.setAdapter(arrayAdapter);
+
+
+
+
     }
 
 
