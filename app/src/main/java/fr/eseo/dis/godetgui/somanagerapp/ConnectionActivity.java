@@ -21,12 +21,15 @@ import org.json.JSONObject;
 import fr.eseo.dis.godetgui.somanagerapp.data.JM;
 import fr.eseo.dis.godetgui.somanagerapp.data.PseudoJuries;
 import fr.eseo.dis.godetgui.somanagerapp.data.PseudoJuriesManager;
+import fr.eseo.dis.godetgui.somanagerapp.data.PseudoJuryProject;
 import fr.eseo.dis.godetgui.somanagerapp.data.PseudoJuryProjectManager;
 import fr.eseo.dis.godetgui.somanagerapp.threads.FetchLogon;
 import fr.eseo.dis.godetgui.somanagerapp.threads.FetchRole;
 
 public class ConnectionActivity extends AppCompatActivity {
 
+    private Button btnConnexion;
+    private String status;
     private EditText login;
     private String token;
     private String userConnected;
@@ -40,6 +43,9 @@ public class ConnectionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_connection);
         this.context = this.getApplicationContext();
+        //Récupération de la db
+        //this.db.clearAllTables(); //UNIQUEMENT POUR LE DEV !!!!!!!!!!!!!!!!!
+
 
         this.myPrefs = this.getSharedPreferences("myPrefs", MODE_PRIVATE);
         this.editor = myPrefs.edit();
@@ -48,13 +54,16 @@ public class ConnectionActivity extends AppCompatActivity {
 
 
     public void onClickBtn(View view) {
+
         this.login = (EditText) findViewById(R.id.loginText);
         EditText password = (EditText) findViewById(R.id.passwordText);
         PseudoJuriesManager m = new PseudoJuriesManager(this);
         m.open();
-        PseudoJuries a=m.getPJ(this.login.getText().toString());
+        PseudoJuries infosUser=m.getPJ(this.login.getText().toString());
 
-        if(!a.getMdpPj().equals("") && a.getMdpPj().equals(password.getText().toString())){
+        if(!infosUser.getMdpPj().equals("") && infosUser.getMdpPj().equals(password.getText().toString())){
+            editor.putString("USERVISITOR",this.login.getText().toString());
+            editor.commit();
             Intent goToVisitorProjectsActivity = new Intent(ConnectionActivity.this, VisitorProjectsActivity.class);
             startActivity(goToVisitorProjectsActivity);
         }else{

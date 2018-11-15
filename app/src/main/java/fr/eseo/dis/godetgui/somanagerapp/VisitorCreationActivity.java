@@ -32,6 +32,7 @@ public class VisitorCreationActivity extends AppCompatActivity {
     private ArrayList<String> listTitleRndProject = new ArrayList<>();
     private ArrayList<String> listDescRndProject = new ArrayList<>();
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -114,6 +115,7 @@ public class VisitorCreationActivity extends AppCompatActivity {
             listTitleRndProject.add(i, projectsArray.getJSONObject(i).get("title").toString());
             listDescRndProject.add(i, projectsArray.getJSONObject(i).get("description").toString());
         }
+
         PseudoJuryProjectManager m = new PseudoJuryProjectManager(this);
         PseudoJuriesManager p = new PseudoJuriesManager(this);
 
@@ -124,7 +126,7 @@ public class VisitorCreationActivity extends AppCompatActivity {
             System.out.println(listIdRndProject.get(i));
             System.out.println("france"+ p.getPJ(this.visitor_login.getText().toString()).getIdPseudoJuries());
             m.addPJ(new
-                    PseudoJuryProject(0, p.getPJ(this.visitor_login.getText().toString()).getIdPseudoJuries(), Integer.parseInt(listIdRndProject.get(i)), "", "", listTitleRndProject.get(i), listDescRndProject.get(i)));
+                    PseudoJuryProject(0, p.getPJ(this.visitor_login.getText().toString()).getIdPseudoJuries(), Integer.parseInt(listIdRndProject.get(i)), "", "",listTitleRndProject.get(i),listDescRndProject.get(i)));
 
 
         }

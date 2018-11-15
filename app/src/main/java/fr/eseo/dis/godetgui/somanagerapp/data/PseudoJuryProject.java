@@ -5,7 +5,7 @@ import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
-@Entity(tableName = "pseudojuryproject", primaryKeys = {"idPseudoJuryProject"})
+@Entity(tableName = "pseudojuryprojects", primaryKeys = {"idPseudoJuryProject"})
 public class PseudoJuryProject {
 
     @NonNull
@@ -19,19 +19,19 @@ public class PseudoJuryProject {
 
     private String comment;
 
-    private String titleProject;
+    private String title;
 
     private String description;
 
-    public PseudoJuryProject(@NonNull int idPseudoJuryProject, int idPseudoJury, int idProject, String grade, String comment, String titleProject, String description) {
+    public PseudoJuryProject(@NonNull int idPseudoJuryProject, int idPseudoJury, int idProject, String grade, String comment,String title, String description) {
         this.idPseudoJuryProject = idPseudoJuryProject;
 
         this.idPseudoJury = idPseudoJury;
         this.idProject = idProject;
         this.grade = grade;
         this.comment = comment;
-        this.titleProject = titleProject;
-        this.description = description;
+        this.title=title;
+        this.description=description;
     }
 
     @NonNull
@@ -75,12 +75,12 @@ public class PseudoJuryProject {
         this.comment = comment;
     }
 
-    public String getTitleProject() {
-        return titleProject;
+    public String getTitle() {
+        return title;
     }
 
-    public void setTitleProject(String titleProject) {
-        this.titleProject = titleProject;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getDescription() {
