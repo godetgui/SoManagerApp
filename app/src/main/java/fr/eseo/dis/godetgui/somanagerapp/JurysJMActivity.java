@@ -22,7 +22,6 @@ import java.util.List;
 
 import fr.eseo.dis.godetgui.somanagerapp.data.Projects;
 import fr.eseo.dis.godetgui.somanagerapp.data.ProjectsDao;
-import fr.eseo.dis.godetgui.somanagerapp.data.SomanagerDatabase;
 import fr.eseo.dis.godetgui.somanagerapp.data.Tutors;
 import fr.eseo.dis.godetgui.somanagerapp.data.TutorsDao;
 import fr.eseo.dis.godetgui.somanagerapp.threads.FetchMyJurys;

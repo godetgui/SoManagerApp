@@ -64,7 +64,6 @@ public class DetailsProjectsCommActivity extends AppCompatActivity {
         String tutor = "";
 
         for ( int i =0; i<projectArray.length(); i++){
-            System.out.println("TEST APRES FOR"+ projectArray.getJSONObject(i).getString("projectId"));
 
             if( projectArray.getJSONObject(i).getString("projectId").equals(this.projectId)){
                 desc = projectArray.getJSONObject(i).getString("descrip");

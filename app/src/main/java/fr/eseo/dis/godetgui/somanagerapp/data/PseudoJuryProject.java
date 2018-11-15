@@ -19,13 +19,19 @@ public class PseudoJuryProject {
 
     private String comment;
 
-    public PseudoJuryProject(@NonNull int idPseudoJuryProject, int idPseudoJury, int idProject, String grade, String comment) {
+    private String titleProject;
+
+    private String description;
+
+    public PseudoJuryProject(@NonNull int idPseudoJuryProject, int idPseudoJury, int idProject, String grade, String comment, String titleProject, String description) {
         this.idPseudoJuryProject = idPseudoJuryProject;
 
         this.idPseudoJury = idPseudoJury;
         this.idProject = idProject;
         this.grade = grade;
         this.comment = comment;
+        this.titleProject = titleProject;
+        this.description = description;
     }
 
     @NonNull
@@ -67,5 +73,21 @@ public class PseudoJuryProject {
 
     public void setComment(String comment) {
         this.comment = comment;
+    }
+
+    public String getTitleProject() {
+        return titleProject;
+    }
+
+    public void setTitleProject(String titleProject) {
+        this.titleProject = titleProject;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

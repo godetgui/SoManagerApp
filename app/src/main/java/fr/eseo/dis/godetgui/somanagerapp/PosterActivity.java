@@ -55,7 +55,6 @@ public class PosterActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         this.projectId = intent.getStringExtra("idProject");
-        System.out.println("Project ID: "+this.projectId);
 
         //récupération des variables de sessions
         myPrefs = this.getSharedPreferences("myPrefs", MODE_PRIVATE);

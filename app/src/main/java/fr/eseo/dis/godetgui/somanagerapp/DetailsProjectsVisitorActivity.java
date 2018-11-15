@@ -65,10 +65,7 @@ public class DetailsProjectsVisitorActivity extends AppCompatActivity {
         String desc = "";
         String tutor = "";
 
-        System.out.println("JE SUIS LA" + projectArray.length());
-
         for ( int i =0; i<projectArray.length(); i++){
-            System.out.println("TEST APRES FOR"+ projectArray.getJSONObject(i).getString("projectId"));
 
             if( projectArray.getJSONObject(i).getString("projectId").equals(this.projectId)){
                 desc = projectArray.getJSONObject(i).getString("descrip");

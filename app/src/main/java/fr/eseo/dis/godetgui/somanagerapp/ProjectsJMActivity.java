@@ -65,8 +65,6 @@ public class ProjectsJMActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        System.out.println("DANS PROJECTJMACTIVITY, INFOJSONARRAY: "+currentInfoJSONObject);
-
         try {
             this.getProjects(this.currentInfoJSONObject);
         } catch (JSONException e) {

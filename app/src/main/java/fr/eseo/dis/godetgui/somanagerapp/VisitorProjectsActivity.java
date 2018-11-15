@@ -1,6 +1,6 @@
 package fr.eseo.dis.godetgui.somanagerapp;
 
-        import android.content.Context;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -19,9 +19,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-        import fr.eseo.dis.godetgui.somanagerapp.data.PseudoJuryProject;
-        import fr.eseo.dis.godetgui.somanagerapp.data.PseudoJuryProjectManager;
-        import fr.eseo.dis.godetgui.somanagerapp.threads.FetchVisitorProjects;
+import fr.eseo.dis.godetgui.somanagerapp.data.PseudoJuryProject;
+import fr.eseo.dis.godetgui.somanagerapp.data.PseudoJuryProjectManager;
 
 public class VisitorProjectsActivity extends AppCompatActivity {
 

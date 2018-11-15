@@ -29,6 +29,8 @@ public class VisitorCreationActivity extends AppCompatActivity {
     private String usernameSession;
     private String tokenSession;
     private ArrayList<String> listIdRndProject = new ArrayList<>();
+    private ArrayList<String> listTitleRndProject = new ArrayList<>();
+    private ArrayList<String> listDescRndProject = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,6 +111,8 @@ public class VisitorCreationActivity extends AppCompatActivity {
 
         for (int i = 0; i < projectsArray.length(); i++) {
             listIdRndProject.add(i, projectsArray.getJSONObject(i).get("idProject").toString());
+            listTitleRndProject.add(i, projectsArray.getJSONObject(i).get("title").toString());
+            listDescRndProject.add(i, projectsArray.getJSONObject(i).get("description").toString());
         }
         PseudoJuryProjectManager m = new PseudoJuryProjectManager(this);
         PseudoJuriesManager p = new PseudoJuriesManager(this);
@@ -120,7 +124,7 @@ public class VisitorCreationActivity extends AppCompatActivity {
             System.out.println(listIdRndProject.get(i));
             System.out.println("france"+ p.getPJ(this.visitor_login.getText().toString()).getIdPseudoJuries());
             m.addPJ(new
-                    PseudoJuryProject(0, p.getPJ(this.visitor_login.getText().toString()).getIdPseudoJuries(), Integer.parseInt(listIdRndProject.get(i)), "", ""));
+                    PseudoJuryProject(0, p.getPJ(this.visitor_login.getText().toString()).getIdPseudoJuries(), Integer.parseInt(listIdRndProject.get(i)), "", "", listTitleRndProject.get(i), listDescRndProject.get(i)));
 
 
         }

@@ -43,7 +43,6 @@ public class FetchNotes extends AsyncTask<Void, Void, Void> {
         try {
 
             URL url =  new URL("https://192.168.4.248/pfe/webservice.php?q=NOTES&user="+user+"&proj="+idProject+"&token="+token);
-            System.out.println(url);
             //Créer une connection
             HttpsURLConnection httpsURLConnection = (HttpsURLConnection) url.openConnection();
             httpsURLConnection.setSSLSocketFactory(trustManager.getSSLContext().getSocketFactory());

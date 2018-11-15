@@ -32,6 +32,10 @@ public class PseudoJuryProjectManager {
     String KEY_GRADE_PJ="grade";
     public static final
     String KEY_COMMENT_PJ="comment";
+    public static final
+    String KEY_TITLEPROJECT_PJ = "titleProject";
+    public static final
+    String KEY_DESCRIPTIONPROJECT_PJ = "description";
 
 
     public static final
@@ -43,6 +47,8 @@ public class PseudoJuryProjectManager {
             " "+KEY_ID_PROJECT_PJP+" INTEGER," +
             " "+KEY_GRADE_PJ+" TEXT," +
             " "+KEY_COMMENT_PJ+" TEXT" +
+            " " + KEY_TITLEPROJECT_PJ + " TEXT" +
+            " " + KEY_DESCRIPTIONPROJECT_PJ + " TEXT" +
             ");";
 
 
@@ -79,6 +85,8 @@ public class PseudoJuryProjectManager {
         values.put(KEY_ID_PROJECT_PJP, pj.getIdProject());
         values.put(KEY_GRADE_PJ, pj.getGrade());
         values.put(KEY_COMMENT_PJ, pj.getComment());
+        values.put(KEY_TITLEPROJECT_PJ, pj.getTitleProject());
+        values.put(KEY_DESCRIPTIONPROJECT_PJ, pj.getDescription());
         // insert() retourne l'id du nouvel enregistrement inséré, ou -1 en cas d'erreur
         return db.insert(
                 TABLE_NAME,null,values);
@@ -94,6 +102,8 @@ public class PseudoJuryProjectManager {
         values.put(KEY_ID_PROJECT_PJP, pj.getIdProject());
         values.put(KEY_GRADE_PJ, pj.getGrade());
         values.put(KEY_COMMENT_PJ, pj.getComment());
+        values.put(KEY_TITLEPROJECT_PJ, pj.getTitleProject());
+        values.put(KEY_DESCRIPTIONPROJECT_PJ, pj.getDescription());
 
         String where = KEY_ID_PSEUDO_JURY_PJP+" = ?";
         String[] whereArgs = {pj.getIdPseudoJuryProject()+""};
@@ -128,11 +138,13 @@ public class PseudoJuryProjectManager {
         // looping through all rows and adding to list
         if (cursor.moveToFirst()) {
             do {
-                PseudoJuryProject pjp = new PseudoJuryProject(0,0,0,"","");
+                PseudoJuryProject pjp = new PseudoJuryProject(0, 0, 0, "", "", "", "");
                 pjp.setIdProject(cursor.getInt(cursor.getColumnIndex(KEY_ID_PROJECT_PJP)));
                 pjp.setIdPseudoJury(cursor.getInt(cursor.getColumnIndex(KEY_ID_PSEUDO_JURY_PJP)));
                 pjp.setGrade(cursor.getString(cursor.getColumnIndex(KEY_GRADE_PJ)));
                 pjp.setComment(cursor.getString(cursor.getColumnIndex(KEY_COMMENT_PJ)));
+                pjp.setTitleProject(cursor.getString(cursor.getColumnIndex(KEY_TITLEPROJECT_PJ)));
+                pjp.setDescription(cursor.getString(cursor.getColumnIndex(KEY_DESCRIPTIONPROJECT_PJ)));
 
                 pseudoProject.add(pjp);
             } while (cursor.moveToNext());

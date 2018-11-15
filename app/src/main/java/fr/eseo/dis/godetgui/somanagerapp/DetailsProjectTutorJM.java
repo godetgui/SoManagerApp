@@ -39,8 +39,6 @@ public class DetailsProjectTutorJM extends AppCompatActivity {
         this.currentIdJury = intent.getStringExtra("idJury");
         this.projectId = intent.getStringExtra("projectId");
 
-        System.out.println("ID PROJECT: "+this.projectId);
-
         this.champ_descr = findViewById(R.id.champ_descr);
         this.champ_titre = findViewById(R.id.champ_titre);
         this.champ_tut = findViewById(R.id.champ_tut);

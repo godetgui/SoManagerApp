@@ -42,7 +42,6 @@ public class DetailsProjectsJMActivity extends AppCompatActivity {
         Intent intent = getIntent();
         this.currentIdJury = intent.getStringExtra("idJury");
         this.projectId = intent.getStringExtra("projectId");
-        System.out.println("Dans detailProjectActivity, id du projet: "+this.projectId);
 
         this.champ_jur = findViewById(R.id.champ_jur);
         this.champ_descr = findViewById(R.id.champ_descr);
@@ -83,7 +82,6 @@ public class DetailsProjectsJMActivity extends AppCompatActivity {
                 hashMapIdProject.put(i, this.projectId);
                 //Récupération des JSONObjects des students
                 for (int j = 0; j < projectArray.getJSONObject(i).getJSONArray("students").length(); j++) {
-                    System.out.println("Taille du array STUDENTS: " + projectArray.getJSONObject(i).getJSONArray("students").length());
                     listStudent.add(j, projectArray.getJSONObject(i).getJSONArray("students").getJSONObject(j).getString("forename") +" "+ projectArray.getJSONObject(i).getJSONArray("students").getJSONObject(j).getString("surname"));
                     hashMapIdStudent.put(j, projectArray.getJSONObject(i).getJSONArray("students").getJSONObject(j).getString("userId"));
                 }
@@ -107,7 +105,6 @@ public class DetailsProjectsJMActivity extends AppCompatActivity {
                 Intent goToNoteProjectActivity = new Intent(DetailsProjectsJMActivity.this, NoteProjectActivity.class);
 
                 goToNoteProjectActivity.putExtra("idStudent", hashMapIdStudent.get(position));
-                System.out.println("Dans DPJMA.java: "+hashMapIdProject.get(0));
                 goToNoteProjectActivity.putExtra("idProject", projectId);
                 startActivity(goToNoteProjectActivity);
             }

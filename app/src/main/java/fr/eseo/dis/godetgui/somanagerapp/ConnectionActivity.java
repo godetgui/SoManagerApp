@@ -21,23 +21,18 @@ import org.json.JSONObject;
 import fr.eseo.dis.godetgui.somanagerapp.data.JM;
 import fr.eseo.dis.godetgui.somanagerapp.data.PseudoJuries;
 import fr.eseo.dis.godetgui.somanagerapp.data.PseudoJuriesManager;
-import fr.eseo.dis.godetgui.somanagerapp.data.PseudoJuryProject;
 import fr.eseo.dis.godetgui.somanagerapp.data.PseudoJuryProjectManager;
-import fr.eseo.dis.godetgui.somanagerapp.data.SomanagerDatabase;
 import fr.eseo.dis.godetgui.somanagerapp.threads.FetchLogon;
 import fr.eseo.dis.godetgui.somanagerapp.threads.FetchRole;
 
 public class ConnectionActivity extends AppCompatActivity {
 
-    private Button btnConnexion;
-    private String status;
     private EditText login;
     private String token;
     private String userConnected;
     private Context context;
     SharedPreferences myPrefs;
     SharedPreferences.Editor editor;
-    SomanagerDatabase db;
 
 
     @Override
@@ -45,10 +40,6 @@ public class ConnectionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_connection);
         this.context = this.getApplicationContext();
-        //Récupération de la db
-        this.db = SomanagerDatabase.getDatabase(this.context);
-        //this.db.clearAllTables(); //UNIQUEMENT POUR LE DEV !!!!!!!!!!!!!!!!!
-
 
         this.myPrefs = this.getSharedPreferences("myPrefs", MODE_PRIVATE);
         this.editor = myPrefs.edit();
@@ -57,7 +48,6 @@ public class ConnectionActivity extends AppCompatActivity {
 
 
     public void onClickBtn(View view) {
-        //addTable();
         this.login = (EditText) findViewById(R.id.loginText);
         EditText password = (EditText) findViewById(R.id.passwordText);
         PseudoJuriesManager m = new PseudoJuriesManager(this);
@@ -119,7 +109,6 @@ public class ConnectionActivity extends AppCompatActivity {
 
 
         if (description.equals("Professeur")) {
-            this.db.jmDao().insertJm(new JM(0, surname, forename, username));
             Intent goToJurysJMActivity = new Intent(ConnectionActivity.this, JurysJMActivity.class);
             startActivity(goToJurysJMActivity);
 
@@ -149,49 +138,7 @@ public class ConnectionActivity extends AppCompatActivity {
 
     }
 
-    public void addTable() {
-        PseudoJuryProjectManager m = new PseudoJuryProjectManager(this);
 
-        m.open();
-// ouverture de la table en lecture/écriture
-// insertion. L'id sera attribué automatiquement par incrément
-
-        /*m.addPJ(new
-                PseudoJuryProject(0, 1, 21, "12", "test", "", ""));
-        m.addPJ(new
-                PseudoJuryProject(0, 1, 22, "14", "test2"));
-
-        m.addPJ(new
-                PseudoJuryProject(0, 1, 23, "12", "test3"));
-        m.addPJ(new
-                PseudoJuryProject(0, 1, 24, "14", "test4"));
-
-        m.addPJ(new
-                PseudoJuryProject(0, 1, 25, "12", "test5"));*/
-        m.close();
-// modification du nom de l'animal dont l'id est 1
-
-
-// Listing des enregistrements de la table
-        Cursor c = m.getPJ();
-        if (c.moveToFirst()) {
-            do {
-                Log.d("test",
-
-                        c.getInt(c.
-                                getColumnIndex(PseudoJuriesManager.KEY_ID_PJ)) + "," +
-                                c.getString(c.
-                                        getColumnIndex(PseudoJuriesManager.KEY_LOGIN_PJ))
-                );
-            }
-            while (c.moveToNext());
-
-        }
-        c.close(); // fermeture du curseur
-
-// fermeture du gestionnaire
-        m.close();
-    }
 
 
 }
