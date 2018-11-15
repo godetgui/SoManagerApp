@@ -5,8 +5,6 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import fr.eseo.dis.godetgui.somanagerapp.PseudoJuryProjectManager;
-
 public class MySQLite extends SQLiteOpenHelper {
 
     private static final
