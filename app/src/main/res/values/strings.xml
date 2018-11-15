@@ -19,4 +19,6 @@
     <string name="login">Login</string>
     <string name="password">Password</string>
     <string name="connexion">Connexion</string>
+    <string name="create_pseudo_juries">CREATE PSEUDO-JURIES</string>
+    <string name="see_pseudo_juries_notes">SEE PSEUDO-JURIES NOTES</string>
 </resources>

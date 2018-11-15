@@ -105,4 +105,9 @@ public class CommAllProjectsActivity extends AppCompatActivity {
         Intent goToCreateVisitor = new Intent(CommAllProjectsActivity.this, VisitorCreationActivity.class);
         startActivity(goToCreateVisitor);
     }
+
+    public void goSeePJNotes(View v){
+        Intent goSeePJNotes = new Intent(CommAllProjectsActivity.this, NotePseudoJuriesActivity.class);
+        startActivity(goSeePJNotes);
+    }
 }

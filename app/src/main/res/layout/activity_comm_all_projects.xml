@@ -7,45 +7,68 @@
     tools:context=".CommAllProjectsActivity">
 
     <Button
-        android:layout_width="196dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="94dp"
+        android:id="@+id/GoCreatePseudoJuries"
+        android:layout_width="167dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="15dp"
         android:layout_marginTop="6dp"
-        android:layout_marginEnd="94dp"
-        android:text="CREATE PSEUDO-JURIES"
+        android:layout_marginEnd="21dp"
+        android:layout_marginBottom="9dp"
+        android:fontFamily="sans-serif-black"
         android:onClick="goToCreateVisitor"
-        app:layout_constraintBottom_toTopOf="@+id/textView3"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Create Pseudo Juries"
+        app:layout_constraintBottom_toTopOf="@+id/ListViewProjects"
+        app:layout_constraintEnd_toStartOf="@+id/GoSeePJNotes"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints,OnClick"
-        />
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="MissingConstraints,OnClick" />
+
+    <Button
+        android:id="@+id/GoSeePJNotes"
+        android:layout_width="165dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="9dp"
+        android:fontFamily="sans-serif-black"
+        android:onClick="goSeePJNotes"
+        android:text="See Pseudo-Juries Notes"
+        app:layout_constraintBottom_toTopOf="@+id/ListViewProjects"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.926"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="MissingConstraints,OnClick" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="54dp"
-        android:layout_marginBottom="11dp"
+        android:layout_height="35dp"
         android:text="@string/all_projects"
         android:textSize="25dp"
         app:layout_constraintBottom_toTopOf="@+id/ListViewProjects"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/GoCreatePseudoJuries"
+        tools:ignore="MissingConstraints" />
 
     <ListView
         android:id="@+id/ListViewProjects"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="44dp"
+        android:layout_marginBottom="8dp"
         android:background="@drawable/border_cells"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:layout_constraintVertical_bias="1.0" />
 
 
 </android.support.constraint.ConstraintLayout>

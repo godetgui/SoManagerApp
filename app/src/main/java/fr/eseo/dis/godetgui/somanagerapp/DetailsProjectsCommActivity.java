@@ -59,13 +59,9 @@ public class DetailsProjectsCommActivity extends AppCompatActivity {
         ArrayList<String> listStudent = new ArrayList<>();
         JSONArray projectArray = JO.getJSONArray("projects");
 
-        System.out.println("IT S ME"+projectArray);
-
         String title = "";
         String desc = "";
         String tutor = "";
-
-        System.out.println("JE SUIS LA" + projectArray.length());
 
         for ( int i =0; i<projectArray.length(); i++){
             System.out.println("TEST APRES FOR"+ projectArray.getJSONObject(i).getString("projectId"));

@@ -28,9 +28,10 @@
         <activity android:name=".NoteProjectActivity" />
         <activity android:name=".DetailsProjectsCommActivity" />
         <activity android:name=".PosterActivity" />
-        <activity android:name=".VisitorProjectsActivity"></activity>
+        <activity android:name=".VisitorProjectsActivity" />
         <activity android:name=".DetailsProjectsVisitorActivity" />
-        <activity android:name=".VisitorCreationActivity"></activity>
+        <activity android:name=".VisitorCreationActivity" />
+        <activity android:name=".NotePseudoJuriesActivity"></activity>
     </application>
 
 </manifest>
