@@ -1,21 +1,21 @@
 package fr.eseo.dis.godetgui.somanagerapp;
 
-        import android.content.Intent;
-        import android.content.SharedPreferences;
-        import android.os.Bundle;
-        import android.support.v7.app.AppCompatActivity;
-        import android.view.View;
-        import android.widget.ArrayAdapter;
-        import android.widget.ListView;
-        import android.widget.TextView;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
 
-        import org.json.JSONArray;
-        import org.json.JSONException;
-        import org.json.JSONObject;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-        import java.util.ArrayList;
+import java.util.ArrayList;
 
-        import fr.eseo.dis.godetgui.somanagerapp.threads.FetchVisitorProjectsDetails;
+import fr.eseo.dis.godetgui.somanagerapp.data.PseudoJuryProjectManager;
 
 public class DetailsProjectsVisitorActivity extends AppCompatActivity {
 
@@ -43,16 +43,19 @@ public class DetailsProjectsVisitorActivity extends AppCompatActivity {
 
         this.champ_descr = findViewById(R.id.champ_descr);
         this.champ_titre = findViewById(R.id.champ_titre);
-        this.champ_tut = findViewById(R.id.champ_tut);
-        this.listViewStudents = findViewById(R.id.listViewStudents);
 
         //récupération des variables de sessions
         myPrefs = this.getSharedPreferences("myPrefs", MODE_PRIVATE);
         this.usernameSession = myPrefs.getString("USERNAME",null);
-        this.tokenSession = myPrefs.getString("TOKEN",null);
 
-        FetchVisitorProjectsDetails fetchVisitorProjectsDetails= new FetchVisitorProjectsDetails(DetailsProjectsVisitorActivity.this, this.usernameSession, this.tokenSession);
-        fetchVisitorProjectsDetails.execute();
+        PseudoJuryProjectManager pseudoJuryProjectManger = new PseudoJuryProjectManager(this);
+
+        for(int i = 0; i < pseudoJuryProjectManger.getPJProjectById(Integer.parseInt(this.projectId)).size(); i++ ){
+            pseudoJuryProjectManger.getPJProjectById(Integer.parseInt(this.projectId)).get(i).getTitle();
+            pseudoJuryProjectManger.getPJProjectById(Integer.parseInt(this.projectId)).get(i).getComment();
+        }
+        //pseudoJuryProjectManger.getPJProjectById(Integer.parseInt(this.projectId));
+
     }
 
     public void getDataProjectsDetailsVisitor(JSONObject JO) throws JSONException {

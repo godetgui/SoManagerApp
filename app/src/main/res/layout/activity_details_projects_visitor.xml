@@ -6,160 +6,153 @@ android:layout_width="match_parent"
 android:layout_height="match_parent"
 tools:context=".DetailsProjectsVisitorActivity">
 
-<Button
-    android:id="@+id/GoToMyProjects"
-    android:layout_width="167dp"
-    android:layout_height="75dp"
-    android:layout_marginStart="15dp"
-    android:layout_marginTop="6dp"
-    android:layout_marginBottom="9dp"
-    android:fontFamily="sans-serif-black"
-    android:onClick="goToMyProjects"
-    android:text="@string/see_all_my_projects"
-    app:layout_constraintBottom_toTopOf="@+id/scrollView"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    tools:ignore="MissingConstraints,OnClick" />
 
-<Button
-    android:id="@+id/btnViewPoster"
-    android:layout_width="165dp"
-    android:layout_height="75dp"
-    android:layout_marginTop="6dp"
-    android:layout_marginBottom="9dp"
-    android:fontFamily="sans-serif-black"
-    android:onClick="goToViewPoster"
-    android:text="See Poster"
-    app:layout_constraintBottom_toTopOf="@+id/scrollView"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.926"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintVertical_bias="0.0"
-    tools:ignore="MissingConstraints,OnClick" />
+    <Button
+        android:id="@+id/GoToMyProjects"
+        android:layout_width="165dp"
+        android:layout_height="75dp"
+        android:fontFamily="sans-serif-black"
+        android:onClick="goToMyProjects"
+        android:text="@string/see_all_my_projects"
+        tools:ignore="MissingConstraints,OnClick"
+        tools:layout_editor_absoluteX="110dp"
+        tools:layout_editor_absoluteY="16dp" />
 
-<ScrollView
-    android:id="@+id/scrollView"
-    android:layout_width="0dp"
-    android:layout_height="0dp"
-    android:layout_marginBottom="12dp"
-    android:scrollbars="none"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.0"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/GoToMyProjects"
-    tools:ignore="MissingConstraints">
 
-    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/tableDetailsProject"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginStart="12dp"
-        android:layout_marginEnd="12dp"
-        android:stretchColumns="1"
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/btnViewPoster">
+        app:layout_constraintTop_toBottomOf="@+id/GoToMyProjects"
+        app:layout_constraintVertical_bias="0.043"
+        tools:ignore="MissingConstraints">
 
-        <TableRow>
+        <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/tableDetailsProject"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:stretchColumns="1">
 
-            <TextView
-                android:layout_height="match_parent"
-                android:layout_column="0"
-                android:layout_weight="0"
-                android:background="@drawable/border_cells"
-                android:fontFamily="sans-serif-black"
-                android:padding="10dp"
-                android:text="Title"
-                android:textAlignment="center"
-                android:textSize="18sp" />
+            <TableRow>
 
-            <TextView
-                android:id="@+id/champ_titre"
-                android:layout_column="1"
-                android:layout_weight="1"
-                android:background="@drawable/border_cells"
-                android:padding="10dp"
-                android:textAlignment="center"
-                android:textSize="18sp" />
-        </TableRow>
+                <TextView
+                    android:layout_height="match_parent"
+                    android:layout_column="0"
+                    android:layout_weight="0"
+                    android:background="@drawable/border_cells"
+                    android:fontFamily="sans-serif-black"
+                    android:padding="10dp"
+                    android:text="Title"
+                    android:textAlignment="center"
+                    android:textSize="18sp" />
 
-        <TableRow>
+                <TextView
+                    android:id="@+id/champ_titre"
+                    android:layout_column="1"
+                    android:layout_weight="1"
+                    android:background="@drawable/border_cells"
+                    android:padding="10dp"
+                    android:textAlignment="center"
+                    android:textSize="18sp" />
+            </TableRow>
 
-            <TextView
-                android:layout_width="128dp"
-                android:layout_height="match_parent"
-                android:layout_column="0"
-                android:layout_weight="0"
-                android:background="@drawable/border_cells"
-                android:fontFamily="sans-serif-black"
-                android:padding="10dp"
-                android:text="@string/description"
-                android:textAlignment="center"
-                android:textSize="18sp" />
+            <TableRow>
 
-            <TextView
-                android:id="@+id/champ_descr"
-                android:layout_column="1"
-                android:layout_weight="1"
-                android:background="@drawable/border_cells"
-                android:padding="10dp"
-                android:textAlignment="center"
-                android:textSize="18sp" />
-        </TableRow>
+                <TextView
+                    android:layout_width="128dp"
+                    android:layout_height="match_parent"
+                    android:layout_column="0"
+                    android:layout_weight="0"
+                    android:background="@drawable/border_cells"
+                    android:fontFamily="sans-serif-black"
+                    android:padding="10dp"
+                    android:text="@string/description"
+                    android:textAlignment="center"
+                    android:textSize="18sp" />
 
-        <TableRow>
+                <TextView
+                    android:id="@+id/champ_descr"
+                    android:layout_column="1"
+                    android:layout_weight="1"
+                    android:background="@drawable/border_cells"
+                    android:padding="10dp"
+                    android:textAlignment="center"
+                    android:textSize="18sp" />
+            </TableRow>
 
-            <TextView
-                android:layout_height="match_parent"
-                android:layout_column="0"
-                android:layout_weight="0"
-                android:background="@drawable/border_cells"
-                android:fontFamily="sans-serif-black"
-                android:padding="10dp"
-                android:text="@string/supervisor"
-                android:textAlignment="center"
-                android:textSize="18sp" />
+        </TableLayout>
 
-            <TextView
-                android:id="@+id/champ_tut"
-                android:layout_column="1"
-                android:layout_weight="1"
-                android:background="@drawable/border_cells"
-                android:padding="10dp"
-                android:textAlignment="center"
-                android:textSize="18sp" />
-        </TableRow>
+    </ScrollView>
 
-        <TableRow>
+    <TextView
+        android:id="@+id/textviewAvg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="90dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="33dp"
+        android:layout_marginBottom="35dp"
+        android:text="Current Note:"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/champ_new_note"
+        app:layout_constraintEnd_toStartOf="@+id/champ_current_note"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_column="0"
-                android:layout_weight="0"
-                android:background="@drawable/border_cells"
-                android:fontFamily="sans-serif-black"
-                android:padding="10dp"
-                android:text="@string/students"
-                android:textAlignment="center"
-                android:textSize="18sp" />
+    <TextView
+        android:id="@+id/champ_current_note"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginEnd="90dp"
+        android:text="TextView"
+        android:textSize="18sp"
+        app:layout_constraintTop_toTopOf="@+id/textviewAvg"
 
-            <ListView
-                android:id="@+id/listViewStudents"
-                android:layout_width="fill_parent"
-                android:layout_height="190dp"
-                android:background="@drawable/border_cells"
-                android:isScrollContainer="true"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-        </TableRow>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textviewAvg"
+        app:layout_constraintBottom_toBottomOf="@+id/textviewAvg" />
 
-    </TableLayout>
+    <EditText
+        android:id="@+id/champ_new_note"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="90dp"
+        android:layout_marginTop="30dp"
+        android:ems="10"
+        android:hint="Your Note of the Poster"
+        android:inputType="number"
+        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/textviewAvg"
+        app:layout_constraintTop_toBottomOf="@+id/textviewAvg"/>
 
-</ScrollView>
+    <EditText
+        android:id="@+id/champ_new_comment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="88dp"
+        android:layout_marginTop="30dp"
+        android:ems="10"
+        android:hint="Your Comment"
+        android:inputType="text"
+        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintTop_toBottomOf="@+id/champ_new_note"
+        app:layout_constraintStart_toStartOf="@+id/textviewAvg"/>
+
+    <Button
+        android:id="@+id/buttonSend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="149dp"
+        android:text="Send"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/champ_new_comment"/>
 
 </android.support.constraint.ConstraintLayout>

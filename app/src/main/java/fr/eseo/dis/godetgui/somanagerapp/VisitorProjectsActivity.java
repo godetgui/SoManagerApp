@@ -1,17 +1,20 @@
 package fr.eseo.dis.godetgui.somanagerapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
-import fr.eseo.dis.godetgui.somanagerapp.data.PseudoJuries;
 import fr.eseo.dis.godetgui.somanagerapp.data.PseudoJuriesManager;
 import fr.eseo.dis.godetgui.somanagerapp.data.PseudoJuryProject;
 import fr.eseo.dis.godetgui.somanagerapp.data.PseudoJuryProjectManager;
@@ -29,6 +32,7 @@ public class VisitorProjectsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         String Newligne=System.getProperty("line.separator");
+        final HashMap<Integer, String> hashMapId = new HashMap();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_visitor_projects);
@@ -60,6 +64,7 @@ public class VisitorProjectsActivity extends AppCompatActivity {
             tablePJP.open();
             int id =tablePJP.getPJList(idUser).get(i).getIdProject();
             tablePJP.close();
+            hashMapId.put(i,String.valueOf(id));
 
             tablePJP.open();
             String title = tablePJP.getPJList(idUser).get(i).getTitle();
@@ -88,6 +93,18 @@ System.out.println("vvvvvvvvv"+a.getIdPseudoJuryProject());
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, projectsList);
         ListViewProjects.setAdapter(arrayAdapter);
 
+        //Click sur un élément de la liste
+        ListViewProjects.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Intent goToDetailsProjectActivity = new Intent(VisitorProjectsActivity.this, DetailsProjectsVisitorActivity.class);
+                goToDetailsProjectActivity.putExtra("projectId", hashMapId.get(position));
+                startActivity(goToDetailsProjectActivity);
+
+            }
+        });
 
 
 

@@ -21,4 +21,5 @@
     <string name="connexion">Connexion</string>
     <string name="create_pseudo_juries">CREATE PSEUDO-JURIES</string>
     <string name="see_pseudo_juries_notes">SEE PSEUDO-JURIES NOTES</string>
+    <string name="see_poster">See Poster</string>
 </resources>

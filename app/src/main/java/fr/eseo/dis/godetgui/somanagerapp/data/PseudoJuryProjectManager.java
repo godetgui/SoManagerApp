@@ -5,17 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import android.content.ContentValues;
-        import android.content.Context;
-        import android.database.Cursor;
-        import android.database.sqlite.SQLiteDatabase;
-
 import java.util.ArrayList;
 import java.util.List;
-
-import fr.eseo.dis.godetgui.somanagerapp.data.MySQLite;
-import fr.eseo.dis.godetgui.somanagerapp.data.PseudoJuries;
-import fr.eseo.dis.godetgui.somanagerapp.data.PseudoJuryProject;
 
 public class PseudoJuryProjectManager {
 
@@ -124,6 +115,40 @@ public class PseudoJuryProjectManager {
         // Select All Query
         String selectQuery = "SELECT  * FROM " + TABLE_NAME + " WHERE "+
                 KEY_ID_PSEUDO_JURY_PJP+"="+idPJ;
+
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                PseudoJuryProject pjp = new PseudoJuryProject(0,0,0,"","","","");
+                pjp.setIdProject(cursor.getInt(cursor.getColumnIndex(KEY_ID_PROJECT_PJP)));
+                pjp.setIdPseudoJury(cursor.getInt(cursor.getColumnIndex(KEY_ID_PSEUDO_JURY_PJP)));
+                pjp.setGrade(cursor.getString(cursor.getColumnIndex(KEY_GRADE_PJ)));
+                pjp.setComment(cursor.getString(cursor.getColumnIndex(KEY_COMMENT_PJ)));
+                pjp.setTitle(cursor.getString(cursor.getColumnIndex(KEY_TITLE_PJ)));
+                pjp.setDescription(cursor.getString(cursor.getColumnIndex(KEY_COMMENT_PJ)));
+                pseudoProject.add(pjp);
+            } while (cursor.moveToNext());
+        }
+
+        // close db connection
+        db.close();
+
+        // return notes list
+        return pseudoProject;
+    }
+
+    public List<PseudoJuryProject> getPJProjectById(int idProject) {
+        List<PseudoJuryProject> pseudoProject = new ArrayList<>();
+
+        // Select All Query
+        String selectQuery = "SELECT  * FROM " + TABLE_NAME + " WHERE "+
+                KEY_ID_PROJECT_PJP+"="+idProject;
+
+        Cursor c = db.rawQuery(
+                "SELECT * FROM "+TABLE_NAME+" WHERE "+
+                        KEY_ID_PROJECT_PJP+"='"+idProject+"'", null);
 
         Cursor cursor = db.rawQuery(selectQuery, null);
 
