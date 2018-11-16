@@ -62,8 +62,6 @@ public class DetailsProjectsJMActivity extends AppCompatActivity {
 
     public void getDataProjectsDetails(JSONObject JO) throws JSONException {
 
-        System.out.println("ID DU PROJET: "+this.projectId);
-
         JSONArray projectArray = JO.getJSONArray("projects");
         String title = "";
         String desc = "";

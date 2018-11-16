@@ -128,6 +128,33 @@ public class PseudoJuriesManager {
         return a;
     }
 
+    public PseudoJuries getPJById(int id) {
+        // Retourne le pj dont l'id est passé en paramètre
+
+        PseudoJuries a=new PseudoJuries(0,
+                "", "","","");
+
+        Cursor c = db.rawQuery(
+                "SELECT * FROM "+TABLE_NAME+" WHERE "+
+                        KEY_ID_PJ+"='"+id+"'", null);
+        if (c.moveToFirst())
+        {
+            a.setIdPseudoJuries(c.
+                    getInt(c.getColumnIndex(KEY_ID_PJ)));
+            a.setLoginPj(c.
+                    getString(c.getColumnIndex(KEY_LOGIN_PJ)));
+            a.setMdpPj(c.
+                    getString(c.getColumnIndex(KEY_MDP_PJ)));
+            a.setFonctionPj(c.
+                    getString(c.getColumnIndex(KEY_FONCTION_PJ)));
+            a.setEmailPj(c.
+                    getString(c.getColumnIndex(KEY_EMAIL_PJ)));
+            c.close();
+        }
+
+        return a;
+    }
+
     public Cursor getPJ() {
         // sélection de tous les enregistrements de la table
         return db.rawQuery("SELECT * FROM "+TABLE_NAME,

@@ -141,6 +141,35 @@ public class PseudoJuryProjectManager {
         return pseudoProject;
     }
 
+    public List<PseudoJuryProject> getPJListAll() {
+        List<PseudoJuryProject> pseudoProject = new ArrayList<>();
+
+        // Select All Query
+        String selectQuery = "SELECT  * FROM " + TABLE_NAME ;
+
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                PseudoJuryProject pjp = new PseudoJuryProject(0,0,0,"","","","");
+                pjp.setIdProject(cursor.getInt(cursor.getColumnIndex(KEY_ID_PROJECT_PJP)));
+                pjp.setIdPseudoJury(cursor.getInt(cursor.getColumnIndex(KEY_ID_PSEUDO_JURY_PJP)));
+                pjp.setGrade(cursor.getString(cursor.getColumnIndex(KEY_GRADE_PJ)));
+                pjp.setComment(cursor.getString(cursor.getColumnIndex(KEY_COMMENT_PJ)));
+                pjp.setTitle(cursor.getString(cursor.getColumnIndex(KEY_TITLE_PJ)));
+                pjp.setDescription(cursor.getString(cursor.getColumnIndex(KEY_COMMENT_PJ)));
+                pseudoProject.add(pjp);
+            } while (cursor.moveToNext());
+        }
+
+        // close db connection
+        db.close();
+
+        // return notes list
+        return pseudoProject;
+    }
+
     public List<PseudoJuryProject> getPJProjectById(int idProject) {
         List<PseudoJuryProject> pseudoProject = new ArrayList<>();
 
@@ -174,6 +203,7 @@ public class PseudoJuryProjectManager {
         // return notes list
         return pseudoProject;
     }
+
 
 
     public Cursor getPJ() {

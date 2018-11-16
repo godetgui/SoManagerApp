@@ -1,8 +1,10 @@
 package fr.eseo.dis.godetgui.somanagerapp;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -88,9 +90,11 @@ public class CommAllProjectsActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Intent goToDetailsProjectActivity = new Intent(CommAllProjectsActivity.this, DetailsProjectsCommActivity.class);
-                goToDetailsProjectActivity.putExtra("projectId", hashMapId.get(position));
-                startActivity(goToDetailsProjectActivity);
+
+                    Intent goToDetailsProjectActivity = new Intent(CommAllProjectsActivity.this, DetailsProjectsCommActivity.class);
+                    goToDetailsProjectActivity.putExtra("projectId", hashMapId.get(position));
+                    startActivity(goToDetailsProjectActivity);
+
 
             }
         });
@@ -102,12 +106,40 @@ public class CommAllProjectsActivity extends AppCompatActivity {
     }
 
     public void goToCreateVisitor(View v){
+        if(myPrefs.getString("USERNAME",null).equals("jpo")) {
         Intent goToCreateVisitor = new Intent(CommAllProjectsActivity.this, VisitorCreationActivity.class);
         startActivity(goToCreateVisitor);
+        }else{
+            createDialogAlert();
+        }
     }
 
     public void goSeePJNotes(View v){
-        Intent goSeePJNotes = new Intent(CommAllProjectsActivity.this, NotePseudoJuriesActivity.class);
+        System.out.println("jeanne"+myPrefs.getString("USERNAME",null));
+        if(myPrefs.getString("USERNAME",null).equals("jpo")) {
+
+            Intent goSeePJNotes = new Intent(CommAllProjectsActivity.this, NotePseudoJuriesActivity.class);
         startActivity(goSeePJNotes);
+        }else{
+            createDialogAlert();
+        }
+    }
+
+    public void createDialogAlert() {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(CommAllProjectsActivity.this);
+
+        alertDialogBuilder
+                .setTitle("Error Access")
+                .setMessage("You can't go here")
+                .setCancelable(false)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                });
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+
     }
 }
