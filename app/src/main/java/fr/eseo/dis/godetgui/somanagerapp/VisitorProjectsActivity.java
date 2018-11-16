@@ -76,17 +76,7 @@ public class VisitorProjectsActivity extends AppCompatActivity {
             ;
         }
 
-        tablePJP.open();
 
-        System.out.println("test23"+tablePJP.getPJ(7).getTitle());
-        // modification du nom de l'animal dont l'id est 1
-        PseudoJuryProject a=tablePJP.getPJ(
-                7);
-        a.setGrade("12");
-System.out.println("vvvvvvvvv"+a.getIdPseudoJuryProject());
-        tablePJP.modPJ(a);
-
-        tablePJP.close();
 
 
         //creation de l'adapter et association de l'adapter avec la listViewNObject(i).getString("title")

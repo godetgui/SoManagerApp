@@ -83,17 +83,19 @@ public class PseudoJuryProjectManager {
                 TABLE_NAME,null,values);
     }
 
-    public int modPJ(PseudoJuryProject animal
+    public int modPJ(PseudoJuryProject pjp
     ) {
         // modification d'un enregistrement
         // valeur de retour : (int) nombre de lignes affectées par la requête
 
         ContentValues values = new ContentValues();
-        values.put(KEY_GRADE_PJ, animal.getGrade());
+        values.put(KEY_GRADE_PJ, pjp.getGrade());
+        values.put(KEY_COMMENT_PJ, pjp.getComment());
+
 
         String where = KEY_ID_PJP+" = ?";
-        System.out.println("gggggg"+animal.getIdPseudoJuryProject());
-        String[] whereArgs = {animal.getIdPseudoJuryProject()+""};
+        System.out.println("gggggg"+pjp.getIdPseudoJuryProject());
+        String[] whereArgs = {pjp.getIdPseudoJuryProject()+""};
 
         return db.update(TABLE_NAME, values, where, whereArgs);
     }
@@ -161,7 +163,7 @@ public class PseudoJuryProjectManager {
                 pjp.setGrade(cursor.getString(cursor.getColumnIndex(KEY_GRADE_PJ)));
                 pjp.setComment(cursor.getString(cursor.getColumnIndex(KEY_COMMENT_PJ)));
                 pjp.setTitle(cursor.getString(cursor.getColumnIndex(KEY_TITLE_PJ)));
-                pjp.setDescription(cursor.getString(cursor.getColumnIndex(KEY_COMMENT_PJ)));
+                pjp.setDescription(cursor.getString(cursor.getColumnIndex(KEY_DESC_PJ)));
                 pseudoProject.add(pjp);
             } while (cursor.moveToNext());
         }

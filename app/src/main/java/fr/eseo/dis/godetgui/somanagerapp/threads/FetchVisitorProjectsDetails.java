@@ -69,15 +69,7 @@ public class FetchVisitorProjectsDetails extends AsyncTask<Void, Void, Void> {
         return null;
     }
 
-    @Override
-    protected void onPostExecute(Void aVoid) {
-        try {
 
-            detailsProjectsVisitorActivity.getDataProjectsDetailsVisitor(this.JO);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-    }
 
 
 }
