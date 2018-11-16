@@ -1,28 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-tools:context=".DetailsProjectsVisitorActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DetailsProjectsVisitorActivity">
 
 
     <Button
         android:id="@+id/GoToMyProjects"
         android:layout_width="165dp"
         android:layout_height="75dp"
+        android:layout_marginStart="110dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="109dp"
         android:fontFamily="sans-serif-black"
         android:onClick="goToMyProjects"
         android:text="@string/see_all_my_projects"
-        tools:ignore="MissingConstraints,OnClick"
-        tools:layout_editor_absoluteX="110dp"
-        tools:layout_editor_absoluteY="16dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints,OnClick" />
 
 
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="130dp"
         android:scrollbars="none"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -95,8 +99,7 @@ tools:context=".DetailsProjectsVisitorActivity">
         android:id="@+id/textviewAvg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="90dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginStart="60dp"
         android:layout_marginEnd="33dp"
         android:layout_marginBottom="35dp"
         android:text="Current Note:"
@@ -110,9 +113,8 @@ tools:context=".DetailsProjectsVisitorActivity">
         android:id="@+id/current_comment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="90dp"
-        android:layout_marginTop="30dp"
-        android:text="Current Comment:"
+        android:layout_marginTop="90dp"
+        android:text="Comment:"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/champ_new_note"
         app:layout_constraintEnd_toStartOf="@+id/champ_current_note"
@@ -121,9 +123,9 @@ tools:context=".DetailsProjectsVisitorActivity">
 
     <TextView
         android:id="@+id/champ_current_comment"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_marginEnd="90dp"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="60dp"
         android:text="TextView"
         android:textSize="18sp"
         app:layout_constraintTop_toTopOf="@+id/current_comment"
@@ -133,8 +135,8 @@ tools:context=".DetailsProjectsVisitorActivity">
 
     <TextView
         android:id="@+id/champ_current_note"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="90dp"
         android:text="TextView"
         android:textSize="18sp"
@@ -154,8 +156,8 @@ tools:context=".DetailsProjectsVisitorActivity">
         android:hint="Your Note of the Poster"
         android:inputType="number"
         app:layout_constraintVertical_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/textviewAvg"
-        app:layout_constraintTop_toBottomOf="@+id/textviewAvg"/>
+        app:layout_constraintStart_toStartOf="@+id/current_comment"
+        app:layout_constraintTop_toBottomOf="@+id/current_comment"/>
 
     <EditText
         android:id="@+id/champ_new_comment"
@@ -168,7 +170,7 @@ tools:context=".DetailsProjectsVisitorActivity">
         android:inputType="text"
         app:layout_constraintVertical_bias="1.0"
         app:layout_constraintTop_toBottomOf="@+id/champ_new_note"
-        app:layout_constraintStart_toStartOf="@+id/textviewAvg"/>
+        app:layout_constraintStart_toStartOf="@+id/champ_new_note"/>
 
     <Button
         android:id="@+id/modifyGrade"
@@ -177,6 +179,7 @@ tools:context=".DetailsProjectsVisitorActivity">
         android:layout_marginTop="30dp"
         android:layout_marginEnd="149dp"
         android:text="Send"
+        android:fontFamily="sans-serif-black"
         android:onClick="modifyGrade"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/champ_new_comment"/>

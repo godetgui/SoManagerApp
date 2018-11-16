@@ -7,16 +7,9 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
 
 import fr.eseo.dis.godetgui.somanagerapp.data.PseudoJuryProject;
 import fr.eseo.dis.godetgui.somanagerapp.data.PseudoJuryProjectManager;
@@ -63,7 +56,7 @@ public class DetailsProjectsVisitorActivity extends AppCompatActivity {
         champ_titre.setText(pseudoJuryProjectManger.getPJProjectById(Integer.parseInt(this.projectId)).get(0).getTitle());
         pseudoJuryProjectManger.close();
         pseudoJuryProjectManger.open();
-        //champ_descr.setText(pseudoJuryProjectManger.getPJProjectById(Integer.parseInt(this.projectId)).get(0).getDescription());
+        champ_descr.setText(pseudoJuryProjectManger.getPJProjectById(Integer.parseInt(this.projectId)).get(0).getDescription());
         pseudoJuryProjectManger.close();
         pseudoJuryProjectManger.open();
         champ_current_note.setText(pseudoJuryProjectManger.getPJProjectById(Integer.parseInt(this.projectId)).get(0).getGrade());
